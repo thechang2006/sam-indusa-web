@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thechang2006.github.io/sam-indusa-web/sitemap.xml

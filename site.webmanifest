@@ -1,0 +1,13 @@
+{
+  "name": "Sam Indusa — Tostones del Zulia",
+  "short_name": "Sam Indusa",
+  "description": "Tostones de plátano zuliano. Calidad industrializada, con amor y tradición.",
+  "lang": "es-VE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAF7",
+  "theme_color": "#1B6B38",
+  "icons": [
+    { "src": "img/favicon.png", "sizes": "256x256", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
