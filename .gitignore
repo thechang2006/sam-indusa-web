@@ -1,0 +1,17 @@
+# macOS / Windows
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Temporales de trabajo
+_t-*.html
+_tmp-*.html
+*.log
+
+# Node (si algún día se añade tooling)
+node_modules/
