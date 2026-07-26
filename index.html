@@ -234,84 +234,54 @@ mark{
 }
 
 /* ============================================================
-   HERO — vídeo scroll-driven (efecto Apple) con fallback
+   HERO — vídeo a pantalla completa en bucle
    ============================================================ */
-.hero{height:420vh;position:relative;background:var(--green-dark)}
-.hero-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:grid}
+.hero{
+  position:relative;
+  height:100vh;
+  /* dvh corrige la barra de direcciones de los móviles, que en vh deja un salto */
+  height:100dvh;
+  overflow:hidden;
+  background:var(--green-dark);
+}
 .hero-media{position:absolute;inset:0}
 .hero-media video,.hero-fallback{position:absolute;inset:0;width:100%;height:100%}
-.hero-media video{object-fit:cover}
+/* cover recorta lo que sobra; el vídeo es más panorámico que la mayoría de pantallas */
+.hero-media video{object-fit:cover;object-position:50% 50%}
 .hero-fallback{
   background:
     radial-gradient(ellipse 62% 52% at 50% 40%,rgba(255,202,40,.3),transparent 68%),
     linear-gradient(168deg,var(--green-dark),var(--green) 74%,#14532d);
-  overflow:hidden;
 }
-/* Foto a sangre completa: nada de cajas con fondo blanco sobre el degradado */
-.hero-fallback img{
-  width:100%;height:110%;object-fit:cover;object-position:50% 42%;
-  will-change:transform;
-}
-/* Sin vídeo el hero deja de ser scroll-driven.
-   Arranca CON .no-video y el JS la quita solo si el vídeo carga de verdad,
-   así nunca se ve un hueco negro mientras se resuelve. */
-.hero.no-video{height:100vh}
-.hero.no-video .hero-sticky{position:relative}
-.hero.no-video .scroll-cue,.hero.no-video .hero-bar{display:none}
-/* opacity en vez de display:none: display:none impediría cargar la metadata */
+/* Arranca con .no-video puesto; el JS la quita solo cuando el vídeo
+   confirma que puede reproducirse. Así nunca se ve un hueco negro. */
 .hero.no-video .hero-media video{opacity:0;pointer-events:none}
 .hero:not(.no-video) .hero-fallback{display:none}
 
-.hero-scrim{
-  position:absolute;inset:0;z-index:2;
-  background:linear-gradient(180deg,rgba(13,56,30,.62) 0%,rgba(13,56,30,.38) 40%,rgba(13,56,30,.78) 100%);
+/* Velo superior: el nav va en blanco y el vídeo puede tener zonas claras.
+   Sin esto, sobre el plano del platanal a plena luz apenas se lee. */
+.hero::after{
+  content:"";position:absolute;top:0;left:0;right:0;z-index:3;
+  height:calc(var(--nav-h) + 90px);pointer-events:none;
+  background:linear-gradient(180deg,rgba(13,56,30,.72),rgba(13,56,30,.34) 55%,transparent);
 }
-.hero-body{
-  position:relative;z-index:3;place-self:center;text-align:center;
-  padding:calc(var(--nav-h) + 24px) 24px 80px;max-width:64rem;
-  will-change:transform,opacity;
-}
-.hero-body .eyebrow{color:var(--lemon)}
-.hero-body .eyebrow::before{background:var(--lemon)}
-.hero h1{color:#fff;text-shadow:0 4px 40px rgba(0,0,0,.4)}
-.hero h1 .accent{
-  color:var(--lemon);
-  display:inline-block;
-  background:linear-gradient(180deg,var(--lemon),var(--yellow));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-}
-.hero-lede{
-  font-size:clamp(1.06rem,1.7vw,1.3rem);color:rgba(255,255,255,.9);
-  max-width:44ch;margin:0 auto 34px;
-}
-.hero-body .btn-row{justify-content:center}
-.hero-logo{width:clamp(78px,10vw,104px);margin:0 auto 22px;filter:drop-shadow(0 10px 26px rgba(0,0,0,.45))}
 
-/* Pistas y barra de progreso del vídeo */
+/* Indicador de scroll */
 .scroll-cue{
-  position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:4;
+  position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:4;
   display:flex;flex-direction:column;align-items:center;gap:8px;
   font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.82);
+  color:rgba(255,255,255,.9);text-decoration:none;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+  transition:opacity .3s var(--ease),color .3s;
 }
-.scroll-cue span{display:block;width:1px;height:34px;background:linear-gradient(180deg,transparent,var(--lemon));animation:cue 2.1s var(--ease) infinite}
+.scroll-cue:hover{color:var(--lemon)}
+.scroll-cue span{
+  display:block;width:1px;height:34px;
+  background:linear-gradient(180deg,transparent,var(--lemon));
+  animation:cue 2.1s var(--ease) infinite;
+}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:0 0}45%{transform:scaleY(1);transform-origin:0 0}55%{transform:scaleY(1);transform-origin:0 100%}100%{transform:scaleY(0);transform-origin:0 100%}}
-.hero-bar{position:absolute;left:0;bottom:0;width:100%;height:4px;background:rgba(255,255,255,.16);z-index:5}
-.hero-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yellow),var(--lemon));box-shadow:0 0 18px rgba(255,202,40,.7)}
-
-/* Motas flotantes */
-.motes{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
-.motes i{
-  position:absolute;bottom:-8%;width:9px;height:9px;border-radius:50% 50% 48% 52%;
-  background:var(--lemon);opacity:0;
-  animation:float-up 11s ease-in-out infinite;
-}
-@keyframes float-up{
-  0%{transform:translateY(0) rotate(0);opacity:0}
-  12%{opacity:.75}
-  80%{opacity:.35}
-  100%{transform:translateY(-88vh) rotate(220deg);opacity:0}
-}
 
 /* ============================================================
    DOS CAMINOS
@@ -791,9 +761,8 @@ mark{
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}
-  .hero{height:100vh!important}
-  .hero-sticky{position:relative!important}
-  .motes,.scroll-cue{display:none}
+  /* El vídeo del hero no se reproduce solo; queda el póster fijo (lo hace el JS) */
+  .scroll-cue{display:none}
 }
 </style>
 </head>
@@ -849,32 +818,24 @@ mark{
 
 <main id="main">
 
-<!-- ===== HERO: vídeo scroll-driven ===== -->
+<!-- ===== HERO: vídeo a pantalla completa en bucle =====
+     El vídeo lleva su propio texto incrustado, así que no se superpone nada encima.
+     El <h1> va oculto visualmente: sin él la página perdería su encabezado
+     principal para buscadores y lectores de pantalla.
+     El src lo elige el JS (escritorio u móvil) antes de cargar, para no
+     descargar los dos archivos. -->
 <section class="hero no-video" id="inicio">
-  <div class="hero-sticky">
-    <div class="hero-media">
-      <video id="heroVideo" src="assets/hero.mp4" poster="assets/abanico.jpg"
-             playsinline muted preload="auto" aria-hidden="true" tabindex="-1"></video>
-      <!-- Fallback sin vídeo: degradado + luz dorada según el brief.
-           Sin foto: las que hay son pósters con su propia tipografía y compiten con el titular. -->
-      <div class="hero-fallback"></div>
-    </div>
-    <div class="hero-scrim"></div>
-    <div class="motes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <h1 class="sr">Tostones Sam — plátano chips y snacks salados naturales de Indusa, C.A., Estado Zulia, Venezuela</h1>
 
-    <div class="hero-body" id="heroBody">
-      <p class="eyebrow">Indusa, C.A. · Estado Zulia, Venezuela</p>
-      <h1>Plátano chips y snacks salados <span class="accent">naturales</span></h1>
-      <p class="hero-lede">Producimos, comercializamos y distribuimos con capital 100 % venezolano y estándares de calidad industrial.</p>
-      <div class="btn-row">
-        <a class="btn btn--lg" href="#mayorista">Solicitar cotización <svg><use href="#i-arrow"></use></svg></a>
-        <a class="btn btn--lg btn--gold" href="#productos">Ver productos</a>
-      </div>
-    </div>
-
-    <div class="scroll-cue" aria-hidden="true">Desliza<span></span></div>
-    <div class="hero-bar" aria-hidden="true"><i id="heroBar"></i></div>
+  <div class="hero-media">
+    <video id="heroVideo" poster="assets/hero-poster.jpg"
+           autoplay muted loop playsinline preload="auto"
+           disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+    <!-- Se ve si el vídeo no carga: degradado verde con luz dorada -->
+    <div class="hero-fallback"></div>
   </div>
+
+  <a class="scroll-cue" href="#productos" aria-label="Ir a productos">Desliza<span></span></a>
 </section>
 
 <!-- ===== DOS CAMINOS ===== -->
@@ -1503,68 +1464,84 @@ mark{
   /* ============================================================
      PARALLAX (rAF, transform-only)
      ============================================================ */
-  var pxItems = [
-    { el: $("#heroBody"), speed: -0.16, fade: true }
-  ].filter(function(o){ return !!o.el; });
+  function parallax(){ /* el hero ya no lleva parallax: el vídeo lo ocupa entero */ }
 
-  function parallax(){
-    if(reduce) return;
-    var vh = window.innerHeight;
-    for(var i = 0; i < pxItems.length; i++){
-      var it = pxItems[i], r = it.el.getBoundingClientRect();
-      if(r.bottom < -200 || r.top > vh + 200) continue;
-      var mid = r.top + r.height / 2;
-      var off = (mid - vh / 2) * it.speed;
-      var css = "translate3d(0," + off.toFixed(2) + "px,0)";
-      if(it.fade){
-        var p = Math.min(1, Math.max(0, -r.top / (vh * 0.85)));
-        it.el.style.opacity = String(1 - p * 0.9);
-        css += " scale(" + (1 - p * 0.06).toFixed(3) + ")";
-      }
-      it.el.style.transform = css;
+  /* ============================================================
+     HERO — vídeo a pantalla completa en bucle infinito
+     ============================================================ */
+  var hero = $("#inicio"), video = $("#heroVideo");
+  var MQ_MOBILE = "(max-width: 860px)";
+  var isMobile = window.matchMedia(MQ_MOBILE).matches;
+  var loadedSrc = null;
+
+  var SRC = {
+    desktop: { video: "assets/hero.mp4",        poster: "assets/hero-poster.jpg" },
+    mobile:  { video: "assets/hero-mobile.mp4", poster: "assets/hero-poster-mobile.jpg" }
+  };
+
+  function noVideo(){ hero.classList.add("no-video"); }
+
+  /* Carga la versión que toca. Solo se descarga una de las dos. */
+  function loadHeroVideo(){
+    var pick = isMobile ? SRC.mobile : SRC.desktop;
+    if(loadedSrc === pick.video) return;
+    loadedSrc = pick.video;
+    video.poster = pick.poster;
+    video.src = pick.video;
+    video.load();
+    tryPlay();
+  }
+
+  /* El autoplay puede rechazarse (modo ahorro de energía en iOS, ajustes del
+     navegador). Si pasa, dejamos el póster visible en vez de un hueco negro. */
+  function tryPlay(){
+    var p = video.play();
+    if(p && typeof p.catch === "function"){
+      p.catch(function(){
+        /* Reintento tras la primera interacción del usuario */
+        var retry = function(){
+          video.play().catch(function(){});
+          document.removeEventListener("touchstart", retry);
+          document.removeEventListener("click", retry);
+        };
+        document.addEventListener("touchstart", retry, { once: true, passive: true });
+        document.addEventListener("click", retry, { once: true });
+      });
     }
   }
 
-  /* ============================================================
-     HERO — vídeo scroll-driven con fallback
-     ============================================================ */
-  var hero = $("#inicio"), video = $("#heroVideo"), heroBar = $("#heroBar");
-  var videoOK = false, videoReady = false;
-  var isMobile = window.matchMedia("(max-width: 860px)").matches;
-
-  function noVideo(){ videoOK = false; hero.classList.add("no-video"); measure(); }
-
   if(reduce){
-    noVideo();
+    /* Sin animación: se queda el póster fijo, sin reproducir */
+    video.removeAttribute("autoplay");
+    video.poster = isMobile ? SRC.mobile.poster : SRC.desktop.poster;
+    hero.classList.remove("no-video");
   } else {
     video.addEventListener("error", noVideo);
-    video.addEventListener("loadedmetadata", function(){
-      if(!video.duration || !isFinite(video.duration)){ noVideo(); return; }
-      videoOK = true; videoReady = true;
+    /* canplay = hay datos suficientes para pintar: recién ahí quitamos el fallback */
+    video.addEventListener("canplay", function(){
       hero.classList.remove("no-video");
-      if(isMobile){ video.loop = true; video.play().catch(function(){}); }
-      else { video.pause(); video.currentTime = 0; }
-      measure();
+      tryPlay();
     });
-    /* Si en 2,5 s no hay metadata utilizable, caemos al hero estático */
-    setTimeout(function(){ if(!videoReady) noVideo(); }, 2500);
-    video.load();
-  }
-
-  function heroScroll(){
-    if(!videoOK || !videoReady || isMobile) return;
-    var r = hero.getBoundingClientRect();
-    var scrollable = hero.offsetHeight - window.innerHeight;
-    if(scrollable <= 0) return;
-    var p = Math.min(1, Math.max(0, -r.top / scrollable));
-    var t = p * video.duration;
-    if(isFinite(t)) video.currentTime = t;
-    heroBar.style.width = (p * 100) + "%";
+    /* Cinturón: si el navegador pausa el vídeo por su cuenta, lo reanudamos */
+    video.addEventListener("pause", function(){
+      if(!document.hidden && !video.ended) tryPlay();
+    });
+    /* loop es un atributo del <video>, pero algunos navegadores lo ignoran
+       si el archivo trae metadatos raros; esto lo garantiza. */
+    video.addEventListener("ended", function(){
+      video.currentTime = 0;
+      tryPlay();
+    });
+    document.addEventListener("visibilitychange", function(){
+      if(!document.hidden) tryPlay();
+    });
+    loadHeroVideo();
+    setTimeout(function(){ if(video.readyState < 2) noVideo(); }, 6000);
   }
 
   /* ---------- Bucle único de scroll ---------- */
   var ticking = false;
-  function frame(){ onScroll(); heroScroll(); parallax(); ticking = false; }
+  function frame(){ onScroll(); ticking = false; }
   window.addEventListener("scroll", function(){
     if(!ticking){ requestAnimationFrame(frame); ticking = true; }
   }, { passive: true });
@@ -1573,18 +1550,12 @@ mark{
   window.addEventListener("resize", function(){
     clearTimeout(rzT);
     rzT = setTimeout(function(){
-      isMobile = window.matchMedia("(max-width: 860px)").matches;
+      var wasMobile = isMobile;
+      isMobile = window.matchMedia(MQ_MOBILE).matches;
+      /* Solo recarga si se cruzó el umbral: evita recargar al girar el móvil */
+      if(wasMobile !== isMobile && !reduce) loadHeroVideo();
       measure(); frame();
-    }, 150);
-  });
-
-  /* Motas: posiciones y retardos repartidos */
-  $$(".motes i").forEach(function(m, i){
-    m.style.left = (6 + i * 13.5) + "%";
-    m.style.animationDelay = (i * 1.45) + "s";
-    m.style.animationDuration = (9.5 + (i % 3) * 1.8) + "s";
-    m.style.width = m.style.height = (6 + (i % 3) * 4) + "px";
-    if(i % 3 === 1) m.style.background = "var(--yellow)";
+    }, 200);
   });
 
   /* ============================================================

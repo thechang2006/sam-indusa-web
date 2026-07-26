@@ -7,23 +7,26 @@ Un único `index.html` autocontenido: CSS y JS en línea. Recursos externos: Goo
 ## Estructura
 
 ```
-index.html          La web completa (HTML + CSS + JS)
+index.html                  La web completa (HTML + CSS + JS)
 assets/
-  logo.png          Logo Sam / Indusa
-  favicon.png       Icono de pestaña
-  producto-30g.jpg  Empaque 30 g
-  producto-80g.jpg  Empaque 80 g
-  producto-150g.jpg Empaque 150 g
-  abanico.jpg       Póster del vídeo del hero
-  campo-a-mesa.jpg  Imagen para compartir en redes (og:image)
-  hero.mp4          (opcional) vídeo del hero — ver abajo
+  hero.mp4                  Vídeo del hero, escritorio (1866×864)
+  hero-mobile.mp4           Vídeo del hero, móvil (900×1598)
+  hero-poster.jpg           Primer fotograma, escritorio
+  hero-poster-mobile.jpg    Primer fotograma, móvil
+  logo.png                  Logo Sam / Indusa
+  favicon.png               Icono de pestaña
+  producto-30g.jpg          Empaque 30 g
+  producto-80g.jpg          Empaque 80 g
+  producto-150g.jpg         Empaque 150 g
+  abanico.jpg               Imagen del producto (JSON-LD)
+  campo-a-mesa.jpg          Imagen para compartir en redes (og:image)
 ```
 
 ## Orden de las secciones
 
 El producto va primero; la empresa después.
 
-1. **Hero** — vídeo scroll-driven
+1. **Hero** — vídeo a pantalla completa en bucle
 2. **¿En qué podemos ayudarte?** — canal mayorista / catálogo
 3. **Productos** — configurador de presentación y sabor
 4. **Proceso** — trazabilidad en 5 pasos + especificaciones
@@ -37,16 +40,51 @@ Abre `index.html` en el navegador. No necesita servidor.
 
 ## El hero con vídeo
 
-El hero está montado con el efecto scroll-driven tipo Apple: el vídeo avanza fotograma a fotograma con el scroll.
+El hero es un vídeo a pantalla completa (100dvh) en **bucle infinito**, silenciado y sin texto superpuesto, porque el propio vídeo lleva su rotulación incrustada.
 
-Para activarlo, coloca el vídeo en **`assets/hero.mp4`**. El JS lo detecta solo:
+Hay dos archivos y **solo se descarga uno**: el JS elige según el ancho de pantalla antes de cargar, con el umbral en 860 px.
 
-- **Con vídeo** → hero de 420vh, el vídeo se sincroniza con el scroll y aparece la barra de progreso.
-- **Sin vídeo** → cae automáticamente a un hero de 100vh con degradado verde y luz dorada. No se rompe nada.
-- **En móvil** → el vídeo se reproduce en bucle silenciado (el scroll-driven no funciona bien en táctil).
-- **Con `prefers-reduced-motion`** → hero estático.
+| | Archivo | Resolución |
+|---|---|---|
+| Escritorio | `hero.mp4` | 1866×864 |
+| Móvil | `hero-mobile.mp4` | 900×1598 |
 
-La velocidad se ajusta con el `height` de `.hero` en el CSS: menos altura = el vídeo avanza más rápido.
+Comportamiento:
+
+- **Bucle** garantizado por triple vía: atributo `loop`, evento `ended` que reinicia, y evento `pause` que reanuda si el navegador lo detiene por su cuenta.
+- **Si el autoplay se bloquea** (modo ahorro de energía en iOS, ajustes del navegador), queda el póster visible y se reintenta en la primera interacción del usuario.
+- **Si el vídeo no carga** → degradado verde con luz dorada. No se rompe nada.
+- **Al volver a la pestaña** se reanuda la reproducción.
+- **Con `prefers-reduced-motion`** → póster fijo, sin reproducir.
+- **Velo superior** para que el nav en blanco se lea sobre zonas claras del vídeo.
+
+Como el `<h1>` visible desapareció, hay un `<h1 class="sr">` oculto: sin él la página perdería su encabezado principal para buscadores y lectores de pantalla.
+
+### Si cambias los vídeos
+
+Comprime antes de subirlos. Los originales pesaban 90 MB cada uno; así quedaron en ~5 MB:
+
+```bash
+# Escritorio
+ffmpeg -i original.mp4 -an -vf "scale=-2:864,fps=25" \
+  -c:v libx264 -preset slow -crf 30 -pix_fmt yuv420p -movflags +faststart hero.mp4
+
+# Móvil
+ffmpeg -i original-vertical.mp4 -an -vf "scale=900:-2,fps=25" \
+  -c:v libx264 -preset slow -crf 30 -pix_fmt yuv420p -movflags +faststart hero-mobile.mp4
+
+# Pósters
+ffmpeg -i hero.mp4 -frames:v 1 -q:v 6 hero-poster.jpg
+```
+
+`-an` quita el audio (el autoplay solo funciona en silencio) y `+faststart` permite que empiece a reproducirse antes de descargarse completo.
+
+### Aviso sobre el vídeo actual
+
+El metraje montado es **provisional, para presentación interna**. Dos cosas a corregir en el definitivo:
+
+1. Rotula **«Mérida - Venezuela»**, cuando la empresa es del **Zulia**, que es lo que dice toda la web.
+2. **No incrustes texto en el vídeo.** El rótulo centrado se recorta en móvil, porque los teléfonos son más estrechos (9:19.5) que el vídeo (9:16) y `object-fit: cover` come los laterales. Si el texto va en HTML en lugar de quemado en el vídeo, se mantiene nítido, no se recorta nunca y los buscadores lo leen.
 
 ## El mapa de oficinas
 
