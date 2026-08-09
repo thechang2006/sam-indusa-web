@@ -1,0 +1,19 @@
+/* ============================================================
+   REVEALS — coreografía de scroll
+   ============================================================ */
+[data-reveal]{opacity:0;transition:opacity .85s var(--ease-out),transform .85s var(--ease-out),clip-path .95s var(--ease-out);transition-delay:calc(var(--i,0) * 85ms)}
+[data-reveal="up"]{transform:translateY(38px)}
+[data-reveal="down"]{transform:translateY(-26px)}
+[data-reveal="left"]{transform:translateX(-44px)}
+[data-reveal="right"]{transform:translateX(44px)}
+[data-reveal="scale"]{transform:scale(.9)}
+[data-reveal="clip"]{clip-path:inset(0 0 100% 0);transform:translateY(14px)}
+[data-reveal].is-in{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}
+  /* El vídeo del hero no se reproduce solo; queda el póster fijo (lo hace el JS) */
+  .scroll-cue{display:none}
+}

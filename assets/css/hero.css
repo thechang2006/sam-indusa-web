@@ -1,0 +1,50 @@
+/* ============================================================
+   HERO — vídeo a pantalla completa en bucle
+   ============================================================ */
+.hero{
+  position:relative;
+  height:100vh;
+  /* dvh corrige la barra de direcciones de los móviles, que en vh deja un salto */
+  height:100dvh;
+  overflow-x:hidden;
+  overflow-x:clip;
+  background:var(--green-dark);
+}
+.hero-media{position:absolute;inset:0}
+.hero-media video,.hero-fallback{position:absolute;inset:0;width:100%;height:100%}
+/* cover recorta lo que sobra; el vídeo es más panorámico que la mayoría de pantallas */
+.hero-media video{object-fit:cover;object-position:50% 50%}
+.hero-fallback{
+  background:
+    radial-gradient(ellipse 62% 52% at 50% 40%,rgba(255,202,40,.3),transparent 68%),
+    linear-gradient(168deg,var(--green-dark),var(--green) 74%,#14532d);
+}
+/* Arranca con .no-video puesto; el JS la quita solo cuando el vídeo
+   confirma que puede reproducirse. Así nunca se ve un hueco negro. */
+.hero.no-video .hero-media video{opacity:0;pointer-events:none}
+.hero:not(.no-video) .hero-fallback{display:none}
+
+/* Velo superior: el nav va en blanco y el vídeo puede tener zonas claras.
+   Sin esto, sobre el plano del platanal a plena luz apenas se lee. */
+.hero::after{
+  content:"";position:absolute;top:0;left:0;right:0;z-index:3;
+  height:calc(var(--nav-h) + 90px);pointer-events:none;
+  background:linear-gradient(180deg,rgba(13,56,30,.72),rgba(13,56,30,.34) 55%,transparent);
+}
+
+/* Indicador de scroll */
+.scroll-cue{
+  position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:4;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.9);text-decoration:none;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+  transition:opacity .3s var(--ease),color .3s;
+}
+.scroll-cue:hover{color:var(--lemon)}
+.scroll-cue span{
+  display:block;width:1px;height:34px;
+  background:linear-gradient(180deg,transparent,var(--lemon));
+  animation:cue 2.1s var(--ease) infinite;
+}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:0 0}45%{transform:scaleY(1);transform-origin:0 0}55%{transform:scaleY(1);transform-origin:0 100%}100%{transform:scaleY(0);transform-origin:0 100%}}

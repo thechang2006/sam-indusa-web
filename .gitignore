@@ -15,3 +15,6 @@ _tmp-*.html
 
 # Node (si algún día se añade tooling)
 node_modules/
+
+# Generado por build.js — no se versiona
+dist/

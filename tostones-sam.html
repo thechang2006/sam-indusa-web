@@ -5,10 +5,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Términos de uso — Grupo Indusa</title>
-<meta name="description" content="Condiciones de uso del sitio web de Grupo Indusa, marcas Tostones Sam y Sharitos.">
+<title>Tostones Sam — Plátano chips en 4 sabores y 3 presentaciones | Grupo Indusa</title>
+<meta name="description" content="Tostones Sam: plátano verde del Sur del Lago seleccionado a mano, frito a temperatura constante y sellado con nitrógeno alimentario. Natural con sal, limón, ajo y picante en 30 g, 80 g y 150 g.">
 <meta name="theme-color" content="#0D381E">
-<link rel="canonical" href="https://grupoindusa.com/terminos">
+<link rel="canonical" href="https://grupoindusa.com/tostones-sam">
 
 
 <link rel="icon" href="assets/favicon.png" type="image/png">
@@ -16,9 +16,9 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grupo Indusa">
-<meta property="og:url" content="https://grupoindusa.com/terminos">
-<meta property="og:title" content="Términos de uso — Grupo Indusa">
-<meta property="og:description" content="Condiciones de uso del sitio web de Grupo Indusa, marcas Tostones Sam y Sharitos.">
+<meta property="og:url" content="https://grupoindusa.com/tostones-sam">
+<meta property="og:title" content="Tostones Sam — Plátano chips en 4 sabores y 3 presentaciones | Grupo Indusa">
+<meta property="og:description" content="Tostones Sam: plátano verde del Sur del Lago seleccionado a mano, frito a temperatura constante y sellado con nitrógeno alimentario. Natural con sal, limón, ajo y picante en 30 g, 80 g y 150 g.">
 <meta property="og:image" content="https://grupoindusa.com/assets/campo-a-mesa.jpg">
 <meta property="og:locale" content="es_VE">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,11 +35,16 @@
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/reveal.css">
   <link rel="stylesheet" href="assets/css/page-hero.css">
-  <link rel="stylesheet" href="assets/css/legal.css">
+  <link rel="stylesheet" href="assets/css/brand.css">
+  <link rel="stylesheet" href="assets/css/configurador.css">
+  <link rel="stylesheet" href="assets/css/proceso.css">
+  <link rel="stylesheet" href="assets/css/faq.css">
 
 <script src="assets/js/core.js" defer></script>
   <script src="assets/js/nav.js" defer></script>
   <script src="assets/js/reveal.js" defer></script>
+  <script src="assets/js/configurador.js" defer></script>
+  <script src="assets/js/faq.js" defer></script>
 </head>
 <body>
 
@@ -99,7 +104,7 @@
             </a>
           </li>
           <li>
-            <a href="tostones-sam.html" data-nav="tostones-sam">
+            <a href="tostones-sam.html" data-nav="tostones-sam" aria-current="page">
               <b>Tostones Sam</b>
               <span>Plátano chips, 4 sabores</span>
             </a>
@@ -125,49 +130,168 @@
 </header>
 
 <main id="main">
-<section class="page-hero page-hero--light">
+<section class="page-hero">
   <div class="wrap">
     <ol class="crumbs">
       <li><a href="index.html">Inicio</a></li>
-      <li aria-current="page">Términos de uso</li>
+      <li><a href="marcas.html">Nuestras marcas</a></li>
+      <li aria-current="page">Tostones Sam</li>
     </ol>
-    <h1>Términos de uso</h1>
+    <p class="eyebrow">Marca</p>
+    <h1>Tostones Sam</h1>
+    <p class="lede">
+      Plátano verde del Sur del Lago de Maracaibo, seleccionado a mano en su punto exacto de firmeza.
+      Cuatro sabores, tres presentaciones y una sola forma de hacerlo: bien.
+    </p>
   </div>
 </section>
 
+<!-- ===== CONFIGURADOR ===== -->
+<section class="sec" id="productos" aria-labelledby="productos-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Catálogo</p>
+      <h2 id="productos-t" data-reveal="up" style="--i:1">Un tostón para cada momento</h2>
+      <p class="lede" data-reveal="up" style="--i:2">Elige presentación y sabor. Te armamos la cotización con esa combinación exacta.</p>
+    </div>
+
+    <div class="config" data-reveal="scale">
+      <div class="config-stage">
+        <span class="flavor-ribbon" id="ribbon" aria-hidden="true"></span>
+        <span class="size-badge" id="sizeBadge">30 g</span>
+        <img id="prodImg" src="assets/producto-30g.jpg" alt="Empaque de Tostones Sam de 30 gramos" width="700" height="700" loading="lazy">
+      </div>
+
+      <div>
+        <div class="ctrl">
+          <span class="ctrl-lbl" id="lblSize">Presentación</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lblSize" id="segSize">
+            <button type="button" role="radio" aria-checked="true"  data-size="30"  tabindex="0"><b>30 g</b><i>Individual</i></button>
+            <button type="button" role="radio" aria-checked="false" data-size="80"  tabindex="-1"><b>80 g</b><i>Compartir</i></button>
+            <button type="button" role="radio" aria-checked="false" data-size="150" tabindex="-1"><b>150 g</b><i>Familiar</i></button>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <span class="ctrl-lbl" id="lblFlavor">Sabor</span>
+          <div class="flavors" role="radiogroup" aria-labelledby="lblFlavor" id="segFlavor">
+            <button class="flavor" type="button" role="radio" aria-checked="true"  data-flavor="natural" tabindex="0"  style="--fc:#F5A623"><span class="dot"></span><span>Natural con sal</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="limon"   tabindex="-1" style="--fc:#FFCA28"><span class="dot"></span><span>Limón</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="ajo"     tabindex="-1" style="--fc:#E53935"><span class="dot"></span><span>Ajo</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="picante" tabindex="-1" style="--fc:#B71C1C"><span class="dot"></span><span>Picante</span></button>
+          </div>
+        </div>
+
+        <div class="config-out" aria-live="polite">
+          <h3 id="outName">Tostón Natural con Sal · 30 g</h3>
+          <p id="outDesc">Sal marina y punto justo de fritura. El de siempre, el que no falla.</p>
+          <span class="use" id="outUse">Ideal para: meriendas rápidas, colegios, antojo diario.</span>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn--wa" id="prodWa" href="#" target="_blank" rel="noopener">
+            <svg><use href="#i-wa"></use></svg> Consultar esta combinación
+          </a>
+          <a class="btn btn--ghost" href="mayoristas.html#cotizar">Cotizar al mayor</a>
+        </div>
+        <p class="hint" id="imgNote">La foto muestra el empaque real de la presentación seleccionada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SELLOS Y CIFRAS ===== -->
+<section class="sec sec--dark" aria-labelledby="specs-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Lo que hay dentro</p>
+      <h2 id="specs-t" data-reveal="up" style="--i:1">Sin atajos ni letra pequeña</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat" data-reveal="up">
+        <span class="stat-ic"><svg><use href="#i-leaf"></use></svg></span>
+        <b><span class="num" data-to="100">0</span><span class="u">%</span></b>
+        <span class="stat-l">Plátano natural</span>
+        <span class="stat-d">Materia prima cultivada y seleccionada en el Sur del Lago de Maracaibo.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:1">
+        <span class="stat-ic"><svg><use href="#i-shield"></use></svg></span>
+        <b><span class="num" data-to="0">0</span><span class="u">g</span></b>
+        <span class="stat-l">Grasas trans</span>
+        <span class="stat-d">Fritura controlada, sin aceites parcialmente hidrogenados.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:2">
+        <span class="stat-ic"><svg><use href="#i-drop"></use></svg></span>
+        <b><span class="num" data-to="4">0</span></b>
+        <span class="stat-l">Sabores</span>
+        <span class="stat-d">Natural con sal, limón, ajo criollo y picante real.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:3">
+        <span class="stat-ic"><svg><use href="#i-seal"></use></svg></span>
+        <b><span class="num" data-to="3">0</span></b>
+        <span class="stat-l">Presentaciones</span>
+        <span class="stat-d">30 g individual, 80 g para compartir y 150 g familiar.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SELLOS ===== -->
 <section class="sec">
   <div class="wrap">
-    <div class="legal">
-    <p class="legal-updated">Última actualización: <mark>24 de julio de 2026</mark></p>
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Certificaciones y garantías</p>
+      <h2 data-reveal="up" style="--i:1">Apto para cualquier mesa</h2>
+    </div>
+    <ul class="seals seals--center" data-reveal="up">
+      <li><svg><use href="#i-leaf"></use></svg>Sin gluten</li>
+      <li><svg><use href="#i-leaf"></use></svg>Vegano</li>
+      <li><svg><use href="#i-seal"></use></svg>No GMO</li>
+      <li><svg><use href="#i-shield"></use></svg>Sin grasas trans</li>
+      <li><svg><use href="#i-drop"></use></svg>Sin conservantes</li>
+    </ul>
+  </div>
+</section>
 
-    <p class="legal-note">Este es un documento base editable, redactado en términos generales para Venezuela. Antes de publicarlo, revísalo y adáptalo con asesoría legal y completa los datos marcados con <mark>resaltado</mark>.</p>
+<!-- ===== PREGUNTAS ===== -->
+<section class="sec sec--alt" id="faq" aria-labelledby="faq-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Preguntas frecuentes</p>
+      <h2 id="faq-t" data-reveal="up" style="--i:1">Sobre el producto</h2>
+    </div>
 
-    <h2>1. Aceptación</h2>
-    <p>Al acceder y utilizar el sitio web de <strong>Grupo Indusa</strong> (marcas Tostones Sam y Sharitos) aceptas estos Términos de Uso. Si no estás de acuerdo, te pedimos no utilizar el sitio.</p>
+    <div class="faq" data-reveal="up">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="pa1" id="pq1">
+          ¿Cuánto tiempo se mantienen crujientes?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="pa1" role="region" aria-labelledby="pq1">
+          <div>El empaque va sellado al vacío con nitrógeno alimentario, lo que mantiene la crocancia por varios meses sin usar conservantes. La fecha exacta de vencimiento va impresa en cada lote.</div>
+        </div>
+      </div>
 
-    <h2>2. Uso del sitio</h2>
-    <p>Este sitio tiene fines informativos y de contacto comercial. Te comprometes a usarlo de forma lícita y a no realizar acciones que puedan dañar, sobrecargar o afectar su funcionamiento o el de otros usuarios.</p>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="pa2" id="pq2">
+          ¿Qué presentaciones y sabores hay?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="pa2" role="region" aria-labelledby="pq2">
+          <div>Tres presentaciones —30 g individual, 80 g para compartir y 150 g familiar— y cuatro sabores disponibles en todas ellas: natural con sal, limón, ajo y picante.</div>
+        </div>
+      </div>
 
-    <h2>3. Propiedad intelectual</h2>
-    <p>La marca «Grupo Indusa», «Tostones Sam» y «Sharitos», el logotipo, los diseños de empaque, textos e imágenes de este sitio son propiedad de Grupo Indusa y están protegidos. No pueden reproducirse ni utilizarse sin autorización escrita.</p>
-
-    <h2>4. Información de productos, precios y disponibilidad</h2>
-    <p>Buscamos que la información de productos sea precisa; sin embargo, presentaciones, sabores, precios y disponibilidad pueden cambiar sin previo aviso. Las imágenes son ilustrativas.</p>
-
-    <h2>5. Pedidos mayoristas</h2>
-    <p>El envío del formulario mayorista constituye una <strong>solicitud de cotización</strong>, no una compra ni un contrato. Los niveles (Bronce, Plata, Oro, Platino) son estimaciones orientativas. Todo pedido queda sujeto a confirmación, disponibilidad y a las condiciones que se acuerden con un asesor.</p>
-
-    <h2>6. Enlaces y servicios de terceros</h2>
-    <p>El sitio integra servicios de terceros como el mapa de OpenStreetMap y el contacto vía WhatsApp. No somos responsables del contenido ni de las políticas de dichos servicios.</p>
-
-    <h2>7. Limitación de responsabilidad</h2>
-    <p>Grupo Indusa no será responsable por daños derivados del uso o la imposibilidad de uso del sitio, en la medida que lo permita la legislación aplicable.</p>
-
-    <h2>8. Ley aplicable</h2>
-    <p>Estos términos se rigen por las leyes de la República Bolivariana de Venezuela. Cualquier controversia se someterá a los tribunales competentes de <mark>la jurisdicción que definas</mark>.</p>
-
-    <h2>9. Contacto</h2>
-    <p>Grupo Indusa — Estado Mérida, Venezuela · <a href="mailto:mayoristas@grupoindusa.com">mayoristas@grupoindusa.com</a> · <a href="tel:+584245057479">+58 424 5057479</a></p>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="pa3" id="pq3">
+          ¿Dónde puedo comprarlos si no soy negocio?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="pa3" role="region" aria-labelledby="pq3">
+          <div>Escríbenos por WhatsApp al +58 424 5057479 y te indicamos los puntos de venta más cercanos. También publicamos novedades en <a href="https://instagram.com/TostonesSam" target="_blank" rel="noopener">Instagram</a>.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

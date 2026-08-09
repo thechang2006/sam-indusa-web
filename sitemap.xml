@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thechang2006.github.io/sam-indusa-web/</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://grupoindusa.com/contacto</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://grupoindusa.com/elaboracion</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://grupoindusa.com/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://thechang2006.github.io/sam-indusa-web/privacidad.html</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://grupoindusa.com/marcas</loc>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thechang2006.github.io/sam-indusa-web/terminos.html</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://grupoindusa.com/mayoristas</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://grupoindusa.com/nosotros</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://grupoindusa.com/sharitos</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://grupoindusa.com/tostones-sam</loc>
+    <priority>0.8</priority>
   </url>
 </urlset>

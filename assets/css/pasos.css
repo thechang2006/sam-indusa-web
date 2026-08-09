@@ -1,0 +1,64 @@
+/* ============================================================
+   PASOS — proceso de elaboración con foto por paso
+   Filas alternas foto/texto. Es la página donde rinden las fotos
+   reales de maquinaria y personal.
+   ============================================================ */
+.pasos{display:grid;gap:clamp(52px,7vw,96px);counter-reset:paso}
+
+.paso{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(28px,4.5vw,64px);align-items:center;
+  scroll-margin-top:calc(var(--nav-h) + 24px);
+}
+.paso:nth-child(even) .paso-fig{order:2}
+
+.paso-fig{
+  margin:0;position:relative;
+  border-radius:var(--r-lg);overflow:hidden;
+  background:var(--alt);aspect-ratio:3/2;
+  box-shadow:var(--shadow);
+}
+.paso-fig img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.paso:hover .paso-fig img{transform:scale(1.03)}
+
+.paso-n{
+  position:absolute;top:16px;left:16px;z-index:1;
+  display:grid;place-items:center;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--green-dark);color:var(--lemon);
+  font-family:'Bricolage Grotesque',sans-serif;font-size:1.25rem;font-weight:800;
+  box-shadow:0 8px 20px -8px rgba(13,56,30,.7);
+}
+
+.paso-copy h2{font-size:clamp(1.5rem,2.6vw,2.1rem);margin-bottom:14px}
+.paso-copy p{color:var(--body);font-size:1.03rem;max-width:52ch}
+
+/* Etiqueta del equipo usado en ese paso */
+.paso-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:18px;padding:7px 14px;border-radius:99px;
+  background:var(--green-mint);color:var(--green-dark);
+  font-size:.79rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+}
+.paso-tag svg{width:15px;height:15px;flex:none}
+
+/* Índice de saltos al principio de la página */
+.paso-index{
+  display:flex;flex-wrap:wrap;gap:10px;
+  list-style:none;margin:0 0 clamp(44px,6vw,72px);padding:0;
+}
+.paso-index a{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:10px 18px;border-radius:99px;
+  background:var(--surface);border:1.5px solid var(--line);
+  font-size:.88rem;font-weight:600;color:var(--body);text-decoration:none;
+  transition:border-color .25s,color .25s,transform .25s var(--ease);
+}
+.paso-index a:hover{border-color:var(--green);color:var(--green-dark);transform:translateY(-2px)}
+.paso-index b{color:var(--green);font-weight:800}
+
+@media (max-width:860px){
+  .paso{grid-template-columns:1fr;gap:22px}
+  .paso:nth-child(even) .paso-fig{order:0}
+  .paso-n{width:46px;height:46px;font-size:1.05rem}
+}

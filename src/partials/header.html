@@ -1,0 +1,54 @@
+<!-- ===== NAV — único para todo el sitio =====
+     data-nav lo usa build.js para marcar aria-current="page" en la
+     página activa. Sin JavaScript de por medio. -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="" width="512" height="512">
+      <span><b>Grupo Indusa</b><small>Snacks naturales</small></span>
+    </a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+      <svg id="burgerIcon"><use href="#i-menu"></use></svg>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" data-nav="inicio">Inicio</a></li>
+
+      <li class="has-sub">
+        <button class="sub-toggle" type="button" aria-expanded="false" aria-controls="subMarcas">
+          Nuestras marcas
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="subnav" id="subMarcas">
+          <li>
+            <a href="marcas.html" data-nav="marcas">
+              <b>Ver todas</b>
+              <span>Las marcas del grupo</span>
+            </a>
+          </li>
+          <li>
+            <a href="tostones-sam.html" data-nav="tostones-sam">
+              <b>Tostones Sam</b>
+              <span>Plátano chips, 4 sabores</span>
+            </a>
+          </li>
+          <li>
+            <a href="sharitos.html" data-nav="sharitos">
+              <b>Sharitos</b>
+              <span>Snacks de calidad al mejor precio</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li><a href="elaboracion.html" data-nav="elaboracion">Elaboración</a></li>
+      <li><a href="mayoristas.html" data-nav="mayoristas">Mayoristas</a></li>
+      <li><a href="nosotros.html" data-nav="nosotros">Nosotros</a></li>
+      <li><a href="contacto.html" data-nav="contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-cta"><a class="btn" href="mayoristas.html#cotizar">Pedir cotización</a></div>
+  </div>
+  <div class="nav-progress" aria-hidden="true"><i id="navProgress"></i></div>
+</header>

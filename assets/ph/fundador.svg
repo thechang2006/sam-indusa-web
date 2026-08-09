@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 1024" width="950" height="1024" role="img" aria-label="Retrato del fundador — pendiente">
+  <rect width="950" height="1024" fill="#EEF7F2"/>
+  <rect x="14" y="14" width="922" height="996" fill="none"
+        stroke="#1B6B38" stroke-opacity=".35" stroke-width="3" stroke-dasharray="16 12" rx="18"/>
+  <g font-family="Inter, system-ui, sans-serif" text-anchor="middle">
+    <text x="475" y="426.5" font-size="52.25" font-weight="700"
+          fill="#B71C1C" letter-spacing="5.7">FALTA ESTA FOTO</text>
+    <text x="475" y="516.75" font-size="58.9" font-weight="700"
+          fill="#0D381E">Retrato del fundador</text>
+    <text x="475" y="583.25" font-size="38"
+          fill="#5B6B62">Vertical, fondo limpio</text>
+    <text x="475" y="654.5" font-size="42.75" font-weight="600"
+          fill="#1B6B38">950 × 1024 px</text>
+  </g>
+</svg>

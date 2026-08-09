@@ -1,0 +1,21 @@
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{max-width:820px;margin-inline:auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+  width:100%;display:flex;align-items:center;gap:16px;
+  padding:22px 4px;background:transparent;border:0;cursor:pointer;text-align:left;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:1.08rem;font-weight:700;
+  color:var(--text);letter-spacing:-.01em;transition:color .25s;
+}
+.faq-q:hover{color:var(--green)}
+.faq-q i{
+  margin-left:auto;flex:none;width:30px;height:30px;display:grid;place-items:center;
+  border-radius:50%;background:var(--green-mint);color:var(--green);
+  transition:transform .38s var(--ease),background .3s,color .3s;
+}
+.faq-q i svg{width:15px;height:15px}
+.faq-q[aria-expanded="true"] i{transform:rotate(135deg);background:var(--green);color:#fff}
+.faq-a{overflow:hidden;height:0;transition:height .4s var(--ease)}
+.faq-a>div{padding:0 4px 24px;color:var(--muted);font-size:.98rem;max-width:66ch}

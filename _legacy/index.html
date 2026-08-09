@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="es-VE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tostones Sam — Plátano chips y snacks naturales | Indusa, C.A., Estado Zulia</title>
+<meta name="description" content="Tostones de plátano zuliano seleccionado a mano, fritos a temperatura constante y sellados con nitrógeno alimentario. 4 sabores en 30 g, 80 g y 150 g. Distribución mayorista en toda Venezuela desde el Estado Zulia.">
+<meta name="theme-color" content="#0D381E">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="canonical" href="https://thechang2006.github.io/sam-indusa-web/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tostones Sam">
+<meta property="og:url" content="https://thechang2006.github.io/sam-indusa-web/">
+<meta property="og:title" content="Tostones Sam — Plátano chips y snacks salados naturales">
+<meta property="og:description" content="Plátano zuliano seleccionado a mano. 4 sabores, 3 presentaciones. Distribución mayorista en toda Venezuela.">
+<!-- og:image debe ser URL absoluta para que las redes la lean.
+     Ideal 1200x630 px; esta foto es vertical, conviene una imagen social dedicada. -->
+<meta property="og:image" content="https://thechang2006.github.io/sam-indusa-web/assets/campo-a-mesa.jpg">
+<meta property="og:locale" content="es_VE">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOSTONES SAM — Design System
+   Paleta y tokens según brief v2 (Sam Indusa).
+   Ajustes propios: --muted oscurecido para cumplir WCAG AA,
+   neutros re-templados en cálido para armonizar con los verdes.
+   ============================================================ */
+:root{
+  /* Verdes corporativos */
+  --green-dark:#0D381E;
+  --green:#1B6B38;
+  --green-leaf:#2E8B57;
+  --green-pale:#81C784;
+  --green-mint:#EEF7F2;
+
+  /* Acentos de sabor */
+  --red:#E53935;
+  --red-deep:#B71C1C;
+  --yellow:#F5A623;
+  --lemon:#FFCA28;
+  --cream:#FFF8E1;
+
+  /* Superficies y texto */
+  --page:#FCFCF9;
+  --surface:#FFFFFF;
+  --alt:#F2F5F0;
+  --text:#0F172A;
+  --body:#334155;
+  --muted:#5B6B62;          /* 5.3:1 sobre --page — AA */
+  --line:rgba(13,56,30,.12);
+
+  --shadow-sm:0 2px 8px -2px rgba(13,56,30,.12);
+  --shadow:0 18px 40px -22px rgba(13,56,30,.34);
+  --shadow-lg:0 40px 80px -32px rgba(13,56,30,.42);
+
+  --r-sm:10px; --r:16px; --r-lg:26px; --r-xl:38px;
+  --nav-h:72px;
+  --ease:cubic-bezier(.22,.86,.28,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --maxw:1180px;
+  color-scheme:light;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--body);
+  font:400 17px/1.65 'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%;display:block;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+
+h1,h2,h3,h4,.display{
+  font-family:'Bricolage Grotesque','Inter',system-ui,sans-serif;
+  color:var(--text);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-.022em;
+  text-wrap:balance;
+  margin:0 0 .5em;
+}
+h1{font-size:clamp(2.7rem,6.2vw,5rem);font-weight:800}
+h2{font-size:clamp(2rem,4.1vw,3.2rem)}
+h3{font-size:clamp(1.2rem,1.9vw,1.5rem);letter-spacing:-.012em}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+
+/* Accesibilidad base */
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+.skip{
+  position:absolute;left:16px;top:-100px;z-index:200;
+  background:var(--green-dark);color:#fff;padding:12px 20px;
+  border-radius:0 0 var(--r-sm) var(--r-sm);font-weight:600;text-decoration:none;
+  transition:top .2s var(--ease);
+}
+.skip:focus{top:0}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* Scrollbar de marca */
+::selection{background:var(--lemon);color:var(--green-dark)}
+@supports selector(::-webkit-scrollbar){
+  ::-webkit-scrollbar{width:11px}
+  ::-webkit-scrollbar-track{background:var(--alt)}
+  ::-webkit-scrollbar-thumb{background:var(--green);border-radius:99px;border:3px solid var(--alt)}
+  ::-webkit-scrollbar-thumb:hover{background:var(--green-dark)}
+}
+
+/* ---------- Layout ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+section{position:relative}
+.sec{padding:clamp(72px,10vw,132px) 0}
+.sec--alt{background:var(--alt)}
+.sec--mint{background:var(--green-mint)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 18px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--red);border-radius:2px}
+.sec--dark .eyebrow{color:var(--lemon)}
+.sec--dark .eyebrow::before{background:var(--lemon)}
+.lede{font-size:clamp(1.06rem,1.5vw,1.22rem);color:var(--muted);max-width:60ch}
+.sec-head{max-width:44rem;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head--center{margin-inline:auto;text-align:center}
+.sec-head--center .eyebrow{justify-content:center}
+.sec-head--center .lede{margin-inline:auto}
+
+/* Placeholders pendientes de rellenar — deliberadamente visibles */
+mark{
+  background:var(--lemon);color:#4a3000;
+  padding:1px 7px;border-radius:5px;
+  font-size:.92em;font-weight:650;
+  /* sin white-space:nowrap — algunos placeholders son largos y desbordarían en móvil */
+}
+
+/* ---------- Botones ---------- */
+.btn{
+  --btn-bg:var(--red); --btn-fg:#fff;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 28px;border:2px solid transparent;border-radius:99px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font-weight:650;font-size:.97rem;text-decoration:none;cursor:pointer;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .25s,border-color .25s,color .25s;
+  box-shadow:0 10px 26px -12px rgba(229,57,53,.6);
+}
+.btn:hover{--btn-bg:var(--red-deep);transform:translateY(-3px);box-shadow:0 18px 34px -14px rgba(183,28,28,.62)}
+.btn:active{transform:translateY(-1px)}
+.btn svg{width:19px;height:19px;flex:none}
+.btn--ghost{--btn-bg:transparent;--btn-fg:var(--green-dark);border-color:var(--green);box-shadow:none}
+.btn--ghost:hover{--btn-bg:var(--green);--btn-fg:#fff;border-color:var(--green)}
+.btn--gold{--btn-bg:transparent;--btn-fg:var(--lemon);border-color:var(--lemon);box-shadow:none}
+.btn--gold:hover{--btn-bg:var(--lemon);--btn-fg:var(--green-dark);border-color:var(--lemon)}
+.btn--wa{--btn-bg:#25D366;--btn-fg:#062e14;box-shadow:0 10px 26px -12px rgba(37,211,102,.6)}
+.btn--wa:hover{--btn-bg:#1ebe5b;--btn-fg:#062e14}
+.btn--lg{padding:18px 34px;font-size:1.03rem}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed;inset:0 0 auto;z-index:100;height:var(--nav-h);
+  display:flex;align-items:center;
+  transition:background .35s var(--ease),box-shadow .35s var(--ease),backdrop-filter .35s;
+}
+.nav.is-scrolled{
+  background:rgba(252,252,249,.82);
+  backdrop-filter:blur(14px) saturate(1.4);
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);
+  box-shadow:0 1px 0 var(--line),0 8px 30px -22px rgba(13,56,30,.5);
+}
+.nav-in{display:flex;align-items:center;gap:28px;width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto;flex:none}
+.brand img{width:42px;height:42px;object-fit:contain}
+.brand b{font-family:'Bricolage Grotesque',sans-serif;font-size:1.06rem;font-weight:800;color:var(--green-dark);letter-spacing:-.02em;line-height:1.1}
+.brand small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0}
+.nav-links a{
+  position:relative;display:block;padding:9px 14px;border-radius:99px;
+  font-size:.93rem;font-weight:550;color:var(--body);text-decoration:none;
+  transition:color .22s,background .22s;
+}
+.nav-links a:hover{color:var(--green-dark);background:rgba(27,107,56,.08)}
+.nav-links a[aria-current="true"]{color:var(--green-dark);background:rgba(27,107,56,.11);font-weight:650}
+.nav-cta{flex:none}
+.nav-cta .btn{padding:11px 20px;font-size:.9rem}
+.burger{
+  display:none;width:44px;height:44px;flex:none;place-items:center;
+  background:transparent;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;
+}
+.burger svg{width:22px;height:22px;stroke:var(--green-dark)}
+/* Estado inicial: el nav flota sobre el hero verde oscuro,
+   así que invierte a claro. Al hacer scroll (.is-scrolled) vuelve a oscuro
+   sobre el fondo claro. Excluye .is-open porque el panel móvil es blanco. */
+.nav:not(.is-scrolled):not(.is-open) .brand b{color:#fff}
+.nav:not(.is-scrolled):not(.is-open) .brand small{color:rgba(255,255,255,.66)}
+.nav:not(.is-scrolled):not(.is-open) .nav-links a{color:rgba(255,255,255,.86)}
+.nav:not(.is-scrolled):not(.is-open) .nav-links a:hover{color:#fff;background:rgba(255,255,255,.15)}
+.nav:not(.is-scrolled):not(.is-open) .nav-links a[aria-current="true"]{color:#fff;background:rgba(255,255,255,.2)}
+.nav:not(.is-scrolled):not(.is-open) .burger{border-color:rgba(255,255,255,.34)}
+.nav:not(.is-scrolled):not(.is-open) .burger svg{stroke:#fff}
+
+.nav-progress{position:absolute;left:0;bottom:0;height:2px;width:100%;background:transparent}
+/* width:100% + scaleX — un width de 0 haría que scaleX no tuviese efecto */
+.nav-progress i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--green),var(--yellow),var(--red))}
+
+@media (max-width:940px){
+  .burger{display:grid}
+  .nav-links,.nav-cta{
+    position:fixed;left:0;right:0;top:var(--nav-h);
+    flex-direction:column;align-items:stretch;gap:6px;
+    background:var(--surface);padding:18px 24px;
+    box-shadow:0 24px 40px -28px rgba(13,56,30,.5);
+    opacity:0;visibility:hidden;transform:translateY(-14px);
+    transition:opacity .28s var(--ease),transform .28s var(--ease),visibility .28s;
+  }
+  .nav-cta{padding-top:0;padding-bottom:24px;border-radius:0 0 var(--r-lg) var(--r-lg)}
+  .nav-cta .btn{width:100%;padding:15px 20px}
+  .nav.is-open .nav-links,.nav.is-open .nav-cta{opacity:1;visibility:visible;transform:none}
+  .nav.is-open{background:rgba(252,252,249,.95);backdrop-filter:blur(14px)}
+  .nav-links a{padding:13px 16px;font-size:1rem;border-radius:var(--r-sm)}
+}
+
+/* ============================================================
+   HERO — vídeo a pantalla completa en bucle
+   ============================================================ */
+.hero{
+  position:relative;
+  height:100vh;
+  /* dvh corrige la barra de direcciones de los móviles, que en vh deja un salto */
+  height:100dvh;
+  overflow:hidden;
+  background:var(--green-dark);
+}
+.hero-media{position:absolute;inset:0}
+.hero-media video,.hero-fallback{position:absolute;inset:0;width:100%;height:100%}
+/* cover recorta lo que sobra; el vídeo es más panorámico que la mayoría de pantallas */
+.hero-media video{object-fit:cover;object-position:50% 50%}
+.hero-fallback{
+  background:
+    radial-gradient(ellipse 62% 52% at 50% 40%,rgba(255,202,40,.3),transparent 68%),
+    linear-gradient(168deg,var(--green-dark),var(--green) 74%,#14532d);
+}
+/* Arranca con .no-video puesto; el JS la quita solo cuando el vídeo
+   confirma que puede reproducirse. Así nunca se ve un hueco negro. */
+.hero.no-video .hero-media video{opacity:0;pointer-events:none}
+.hero:not(.no-video) .hero-fallback{display:none}
+
+/* Velo superior: el nav va en blanco y el vídeo puede tener zonas claras.
+   Sin esto, sobre el plano del platanal a plena luz apenas se lee. */
+.hero::after{
+  content:"";position:absolute;top:0;left:0;right:0;z-index:3;
+  height:calc(var(--nav-h) + 90px);pointer-events:none;
+  background:linear-gradient(180deg,rgba(13,56,30,.72),rgba(13,56,30,.34) 55%,transparent);
+}
+
+/* Indicador de scroll */
+.scroll-cue{
+  position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:4;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.9);text-decoration:none;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+  transition:opacity .3s var(--ease),color .3s;
+}
+.scroll-cue:hover{color:var(--lemon)}
+.scroll-cue span{
+  display:block;width:1px;height:34px;
+  background:linear-gradient(180deg,transparent,var(--lemon));
+  animation:cue 2.1s var(--ease) infinite;
+}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:0 0}45%{transform:scaleY(1);transform-origin:0 0}55%{transform:scaleY(1);transform-origin:0 100%}100%{transform:scaleY(0);transform-origin:0 100%}}
+
+/* ============================================================
+   DOS CAMINOS
+   ============================================================ */
+.doors{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.door{
+  position:relative;overflow:hidden;isolation:isolate;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:330px;padding:34px;border-radius:var(--r-xl);
+  text-decoration:none;color:#fff;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+  box-shadow:var(--shadow);
+}
+.door::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:linear-gradient(150deg,var(--green),var(--green-dark));
+  transition:transform .7s var(--ease);
+}
+.door--b::before{background:linear-gradient(150deg,var(--red),var(--red-deep))}
+.door::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(circle at 78% 18%,rgba(255,202,40,.34),transparent 58%);
+  opacity:0;transition:opacity .5s var(--ease);
+}
+.door:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.door:hover::before{transform:scale(1.07)}
+.door:hover::after{opacity:1}
+.door-num{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:.78rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:auto;
+}
+.door h3{color:#fff;font-size:clamp(1.55rem,2.6vw,2.1rem);margin-bottom:.35em}
+.door p{color:rgba(255,255,255,.88);max-width:34ch;margin-bottom:18px}
+.door-go{display:inline-flex;align-items:center;gap:9px;font-weight:650;font-size:.95rem}
+.door-go svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.door:hover .door-go svg{transform:translateX(6px)}
+@media (max-width:760px){.doors{grid-template-columns:1fr}.door{min-height:260px;padding:28px}}
+
+/* ============================================================
+   QUIÉNES SOMOS — bio corporativa, valores y mapa
+   ============================================================ */
+.bio{
+  display:grid;grid-template-columns:1.45fr .55fr;
+  gap:clamp(34px,5vw,68px);align-items:start;
+}
+.bio-copy p{font-size:1.03rem;color:var(--body);margin-bottom:1.1em}
+.bio-lead{
+  font-size:clamp(1.18rem,2vw,1.45rem)!important;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+  line-height:1.35;letter-spacing:-.015em;color:var(--text)!important;
+}
+.bio-lead strong{color:var(--green)}
+
+/* Hitos 2015 → 2026, apilados con línea de continuidad */
+.bio-time{position:relative;display:grid;gap:16px}
+.bio-time::before{
+  content:"";position:absolute;left:26px;top:34px;bottom:34px;width:2px;
+  background:linear-gradient(180deg,var(--line),var(--green-pale));
+}
+.year{
+  position:relative;padding:20px 22px 20px 26px;border-radius:var(--r);
+  background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .3s;
+}
+.year:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--green-pale)}
+.year b{
+  display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:2.1rem;font-weight:800;
+  line-height:1;letter-spacing:-.03em;color:var(--muted);margin-bottom:6px;
+}
+.year--now{border-color:var(--green-pale);background:var(--green-mint)}
+.year--now b{color:var(--green)}
+.year span{font-size:.9rem;color:var(--muted);display:block}
+.year--now span{color:var(--body)}
+
+.values-t{
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:clamp(48px,6vw,72px) 0 20px;
+}
+.values{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.values li{
+  padding:24px 22px;border-radius:var(--r-lg);
+  background:var(--surface);border:1px solid var(--line);
+  transition:transform .42s var(--ease),box-shadow .42s var(--ease),border-color .3s;
+}
+.values li:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--green-pale)}
+.val-ic{
+  width:44px;height:44px;display:grid;place-items:center;border-radius:13px;
+  background:var(--green-mint);color:var(--green);margin-bottom:16px;
+  transition:transform .4s var(--ease),background .3s,color .3s;
+}
+.values li:hover .val-ic{transform:rotate(-8deg) scale(1.08);background:var(--lemon);color:var(--green-dark)}
+.val-ic svg{width:21px;height:21px}
+.values b{
+  display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.06rem;
+  font-weight:700;color:var(--text);margin-bottom:5px;letter-spacing:-.01em;
+}
+/* :not(.val-ic) — si no, esta regla pisaría el display:grid del icono y lo descentraría */
+.values span:not(.val-ic){display:block;font-size:.9rem;color:var(--muted);line-height:1.5}
+
+/* ---------- Mapa ---------- */
+.map-block{
+  display:grid;grid-template-columns:.82fr 1.18fr;
+  margin-top:clamp(48px,6vw,76px);
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow);
+}
+.map-info{padding:clamp(26px,3.2vw,44px)}
+.map-info h3{font-size:clamp(1.3rem,2vw,1.7rem);margin-bottom:22px}
+.map-data{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:15px}
+.map-data li{display:flex;align-items:flex-start;gap:12px;font-size:.95rem;color:var(--body)}
+.map-data svg{width:18px;height:18px;color:var(--green);flex:none;margin-top:3px}
+.map-data b{color:var(--text);font-weight:650}
+.map-data a{color:var(--green);text-decoration:none;font-weight:600}
+.map-data a:hover{text-decoration:underline}
+.map-note{font-size:.82rem;color:var(--muted);margin-top:18px;line-height:1.6}
+
+.map-holder{position:relative;min-height:400px;background:var(--alt)}
+#map{position:absolute;inset:0;width:100%;height:100%;background:var(--alt)}
+/* Leaflet pinta controles con z-index alto; contenerlos evita que tapen el nav */
+.map-holder .leaflet-pane,
+.map-holder .leaflet-control{z-index:1}
+.map-holder .leaflet-top{z-index:2}
+.map-pin{
+  display:grid;place-items:center;width:38px;height:38px;border-radius:50% 50% 50% 4px;
+  background:var(--red);color:#fff;transform:rotate(-45deg);
+  box-shadow:0 8px 20px -6px rgba(183,28,28,.7);border:3px solid #fff;
+}
+.map-pin svg{width:17px;height:17px;transform:rotate(45deg)}
+
+.map-fb{
+  position:absolute;inset:0;z-index:3;display:grid;place-content:center;justify-items:center;
+  gap:10px;padding:32px;text-align:center;background:var(--green-mint);
+}
+.map-fb[hidden]{display:none}
+.map-fb svg{width:34px;height:34px;color:var(--green)}
+.map-fb b{font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;color:var(--text)}
+.map-fb span{font-size:.9rem;color:var(--muted);max-width:30ch}
+.map-fb .btn{margin-top:8px}
+
+@media (max-width:900px){
+  .bio{grid-template-columns:1fr}
+  .values{grid-template-columns:repeat(2,1fr)}
+  .map-block{grid-template-columns:1fr}
+  .map-holder{min-height:340px}
+}
+@media (max-width:520px){.values{grid-template-columns:1fr}}
+
+/* ============================================================
+   PRODUCTOS — configurador
+   ============================================================ */
+.config{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,4vw,64px);align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);
+  padding:clamp(26px,3.6vw,52px);box-shadow:var(--shadow);
+}
+.config-stage{
+  position:relative;display:grid;place-items:center;
+  border-radius:var(--r-lg);padding:26px;min-height:330px;
+  background:radial-gradient(circle at 50% 42%,var(--cream),var(--green-mint) 78%);
+  overflow:hidden;
+}
+.config-stage::after{
+  content:"";position:absolute;width:120%;height:52%;bottom:-16%;
+  background:radial-gradient(ellipse at center,rgba(13,56,30,.16),transparent 66%);
+}
+/* Las fotos de empaque vienen con fondo blanco opaco.
+   multiply funde ese blanco con el degradado del stage; un drop-shadow
+   aquí dibujaría la sombra del rectángulo del JPEG, no del producto. */
+#prodImg{
+  width:min(84%,330px);position:relative;z-index:2;
+  mix-blend-mode:multiply;
+  transition:opacity .28s var(--ease),transform .6s var(--ease);
+}
+.config-stage:hover #prodImg{transform:translateY(-8px) scale(1.03)}
+.size-badge{
+  position:absolute;top:18px;right:18px;z-index:3;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.02rem;
+  padding:9px 16px;border-radius:99px;background:var(--green-dark);color:var(--lemon);
+}
+.flavor-ribbon{position:absolute;left:0;top:0;bottom:0;width:7px;z-index:3;background:var(--yellow);transition:background .35s var(--ease)}
+
+.ctrl{margin-bottom:26px}
+.ctrl-lbl{display:block;font-size:.76rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:11px}
+.seg{display:flex;gap:7px;background:var(--alt);padding:6px;border-radius:99px}
+.seg button{
+  flex:1;padding:12px 10px;border:0;border-radius:99px;background:transparent;cursor:pointer;
+  font-weight:600;font-size:.93rem;color:var(--body);
+  transition:background .28s var(--ease),color .28s,box-shadow .28s,transform .2s;
+}
+.seg button:hover{color:var(--green-dark)}
+.seg button[aria-checked="true"]{background:var(--green);color:#fff;box-shadow:0 8px 18px -10px rgba(27,107,56,.75)}
+.seg button b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.06rem;font-weight:800;line-height:1.2}
+.seg button i{display:block;font-style:normal;font-size:.73rem;opacity:.78;font-weight:500}
+
+.flavors{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.flavor{
+  position:relative;padding:14px 8px 12px;border:2px solid var(--line);border-radius:var(--r);
+  background:var(--surface);cursor:pointer;text-align:center;
+  transition:border-color .28s var(--ease),transform .28s var(--ease),box-shadow .28s;
+}
+.flavor:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
+.flavor .dot{width:22px;height:22px;border-radius:50%;margin:0 auto 8px;background:var(--fc);box-shadow:inset 0 -3px 6px rgba(0,0,0,.16)}
+.flavor span{display:block;font-size:.78rem;font-weight:600;line-height:1.25;color:var(--body)}
+.flavor[aria-checked="true"]{border-color:var(--fc);box-shadow:0 10px 22px -14px var(--fc)}
+.flavor[aria-checked="true"] span{color:var(--text);font-weight:700}
+.flavor[aria-checked="true"]::after{
+  content:"";position:absolute;top:7px;right:7px;width:8px;height:8px;border-radius:50%;background:var(--fc);
+}
+
+.config-out{
+  margin:26px 0;padding:20px 22px;border-radius:var(--r);
+  background:var(--green-mint);border-left:4px solid var(--green);
+}
+.config-out h3{font-size:1.16rem;margin-bottom:.3em}
+.config-out p{font-size:.94rem;color:var(--body);margin:0}
+.config-out .use{display:block;margin-top:8px;font-size:.86rem;color:var(--muted)}
+@media (max-width:880px){.config{grid-template-columns:1fr}.flavors{grid-template-columns:repeat(2,1fr)}}
+/* 480px, no 420: entre 420 y 480 las tres pastillas con "150 g / Familiar" quedan comprimidas */
+@media (max-width:480px){.seg{flex-direction:column;border-radius:var(--r)}.seg button{border-radius:var(--r-sm)}}
+
+/* ============================================================
+   CALIDAD — sección oscura inmersiva + timeline + contadores
+   ============================================================ */
+.sec--dark{background:var(--green-dark);color:rgba(255,255,255,.86);overflow:hidden}
+.sec--dark h2,.sec--dark h3{color:#fff}
+.sec--dark .lede{color:rgba(255,255,255,.74)}
+.sec--dark::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 55% 42% at 15% 8%,rgba(255,202,40,.14),transparent 62%),
+             radial-gradient(ellipse 48% 40% at 88% 92%,rgba(46,139,87,.24),transparent 62%);
+}
+.sec--dark>.wrap{position:relative;z-index:1}
+
+.tl{position:relative;margin-top:14px}
+.tl-track{position:absolute;left:0;right:0;top:33px;height:3px;background:rgba(255,255,255,.14);border-radius:2px}
+.tl-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yellow),var(--lemon));border-radius:2px;transition:width .8s var(--ease)}
+.tl-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;list-style:none;margin:0;padding:0}
+.tl-step{position:relative}
+.tl-ic{
+  width:66px;height:66px;display:grid;place-items:center;border-radius:20px;
+  background:var(--green);border:3px solid var(--green-dark);color:rgba(255,255,255,.5);
+  margin-bottom:18px;position:relative;z-index:2;
+  transition:background .5s var(--ease),color .5s var(--ease),transform .5s var(--ease),box-shadow .5s;
+}
+.tl-ic svg{width:26px;height:26px}
+.tl-step.is-on .tl-ic{background:var(--lemon);color:var(--green-dark);transform:scale(1.06) rotate(-5deg);box-shadow:0 14px 32px -12px rgba(255,202,40,.6)}
+.tl-n{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:.76rem;font-weight:800;
+  letter-spacing:.1em;color:var(--lemon);display:block;margin-bottom:5px;
+}
+.tl-step h3{font-size:1.02rem;margin-bottom:.3em}
+.tl-step p{font-size:.88rem;color:rgba(255,255,255,.66);max-width:24ch;margin:0}
+@media (max-width:980px){
+  .tl-steps{grid-template-columns:1fr;gap:0}
+  .tl-track{left:32px;right:auto;top:0;bottom:0;width:3px;height:auto}
+  .tl-track i{width:100%!important;height:var(--fill,0);transition:height .8s var(--ease)}
+  .tl-step{display:grid;grid-template-columns:66px 1fr;gap:20px;padding-bottom:32px}
+  .tl-ic{margin-bottom:0}
+  .tl-step p{max-width:46ch}
+}
+
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  margin-top:clamp(52px,6vw,84px);
+}
+.stat{
+  position:relative;overflow:hidden;isolation:isolate;
+  padding:30px 26px 28px;border-radius:var(--r-lg);
+  background:linear-gradient(165deg,rgba(255,255,255,.085),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.14);
+  transition:transform .45s var(--ease),border-color .35s,box-shadow .45s var(--ease);
+}
+/* Filete dorado superior que se despliega al hacer hover */
+.stat::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:2;
+  background:linear-gradient(90deg,var(--yellow),var(--lemon));
+  transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .55s var(--ease);
+}
+/* Resplandor dorado difuso en la esquina */
+.stat::after{
+  content:"";position:absolute;top:-40%;right:-25%;width:180px;height:180px;z-index:-1;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,202,40,.22),transparent 68%);
+  opacity:0;transition:opacity .5s var(--ease);
+}
+.stat:hover{
+  transform:translateY(-7px);border-color:rgba(255,202,40,.45);
+  box-shadow:0 26px 50px -30px rgba(0,0,0,.7);
+}
+.stat:hover::before{transform:scaleX(1)}
+.stat:hover::after{opacity:1}
+
+.stat-ic{
+  display:grid;place-items:center;width:42px;height:42px;border-radius:12px;
+  background:rgba(255,202,40,.2);color:var(--lemon);margin-bottom:20px;
+  border:1px solid rgba(255,202,40,.3);
+  transition:transform .45s var(--ease),background .35s,color .35s,border-color .35s;
+}
+.stat-ic svg{width:20px;height:20px}
+.stat:hover .stat-ic{transform:rotate(-8deg) scale(1.08);background:var(--lemon);color:var(--green-dark)}
+
+.stat b{
+  display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.7rem,5.2vw,3.7rem);
+  font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:10px;
+  background:linear-gradient(170deg,#FFE9A8,var(--lemon) 45%,var(--yellow));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:var(--lemon);
+}
+.stat b .u{font-size:.4em;margin-left:3px;letter-spacing:0;vertical-align:.32em}
+.stat-l{
+  display:block;font-weight:650;font-size:1rem;color:#fff;margin-bottom:7px;
+  letter-spacing:-.005em;
+}
+.stat-d{display:block;font-size:.86rem;color:rgba(255,255,255,.62);line-height:1.5}
+@media (max-width:980px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.stats{grid-template-columns:1fr}}
+
+/* ============================================================
+   MAYORISTA
+   ============================================================ */
+.b2b{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,4vw,60px);align-items:start}
+.zones{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.zones li{
+  display:flex;align-items:center;gap:12px;padding:14px 18px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  font-size:.94rem;transition:transform .3s var(--ease),border-color .3s}
+.zones li:hover{transform:translateX(5px);border-color:var(--green-pale)}
+.zones svg{width:18px;height:18px;color:var(--green);flex:none;margin-top:3px}
+.zones li{align-items:flex-start}
+.zones b{color:var(--text);font-weight:650}
+.zones a{color:var(--green);text-decoration:none;font-weight:600}
+.zones a:hover{text-decoration:underline}
+
+/* Pasos del proceso mayorista */
+.b2b-steps{
+  margin-top:22px;padding:26px 28px;border-radius:var(--r-lg);
+  background:var(--surface);border:1px solid var(--line);
+}
+.b2b-steps h3{
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px;
+}
+.b2b-steps ol{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:16px}
+.b2b-steps li{
+  counter-increment:s;position:relative;padding-left:42px;
+  font-size:.94rem;color:var(--muted);line-height:1.5;
+}
+.b2b-steps li::before{
+  content:counter(s);position:absolute;left:0;top:-2px;
+  width:28px;height:28px;display:grid;place-items:center;border-radius:50%;
+  background:var(--green);color:#fff;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:.86rem;font-weight:800;
+}
+.b2b-steps b{display:block;color:var(--text);font-weight:650;font-size:.97rem;margin-bottom:2px}
+
+.form{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);
+  padding:clamp(26px,3.4vw,44px);box-shadow:var(--shadow);
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.86rem;font-weight:600;color:var(--text);margin-bottom:7px}
+.req{color:var(--red)}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 15px;font:inherit;font-size:.96rem;color:var(--text);
+  background:var(--page);border:1.5px solid var(--line);border-radius:var(--r-sm);
+  transition:border-color .25s,box-shadow .25s,background .25s;
+}
+.field textarea{resize:vertical;min-height:110px}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--green-pale)}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:0;border-color:var(--green);background:var(--surface);
+  box-shadow:0 0 0 4px rgba(27,107,56,.13);
+}
+.field input[aria-invalid="true"],.field select[aria-invalid="true"]{border-color:var(--red);box-shadow:0 0 0 4px rgba(229,57,53,.11)}
+.err{display:block;font-size:.82rem;color:var(--red-deep);margin-top:6px;font-weight:550;min-height:0}
+.hint{font-size:.82rem;color:var(--muted);margin-top:7px}
+.tier{
+  display:inline-flex;align-items:center;gap:8px;margin-top:9px;
+  padding:7px 14px;border-radius:99px;background:var(--cream);
+  font-size:.83rem;font-weight:650;color:#7a5200;
+}
+/* display:inline-flex ganaría al [hidden] del navegador */
+.tier[hidden]{display:none}
+.tier svg{width:14px;height:14px}
+.form-note{font-size:.85rem;color:var(--muted);margin-top:16px}
+.form-msg{margin-top:16px;padding:15px 18px;border-radius:var(--r-sm);font-size:.93rem;font-weight:550;display:none}
+.form-msg.is-on{display:block}
+.form-msg.ok{background:var(--green-mint);color:#0d5a2c;border-left:4px solid var(--green)}
+.form-msg.bad{background:#fdeceb;color:var(--red-deep);border-left:4px solid var(--red)}
+@media (max-width:900px){.b2b{grid-template-columns:1fr}}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{max-width:820px;margin-inline:auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+  width:100%;display:flex;align-items:center;gap:16px;
+  padding:22px 4px;background:transparent;border:0;cursor:pointer;text-align:left;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:1.08rem;font-weight:700;
+  color:var(--text);letter-spacing:-.01em;transition:color .25s;
+}
+.faq-q:hover{color:var(--green)}
+.faq-q i{
+  margin-left:auto;flex:none;width:30px;height:30px;display:grid;place-items:center;
+  border-radius:50%;background:var(--green-mint);color:var(--green);
+  transition:transform .38s var(--ease),background .3s,color .3s;
+}
+.faq-q i svg{width:15px;height:15px}
+.faq-q[aria-expanded="true"] i{transform:rotate(135deg);background:var(--green);color:#fff}
+.faq-a{overflow:hidden;height:0;transition:height .4s var(--ease)}
+.faq-a>div{padding:0 4px 24px;color:var(--muted);font-size:.98rem;max-width:66ch}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.foot{background:var(--green-dark);color:rgba(255,255,255,.66);padding:clamp(56px,7vw,88px) 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:clamp(30px,4vw,56px)}
+.foot h4{color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+.foot-brand img{width:60px;margin-bottom:16px}
+.foot-brand p{font-size:.94rem;max-width:32ch}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.foot a{color:rgba(255,255,255,.72);text-decoration:none;font-size:.94rem;transition:color .22s}
+.foot a:hover{color:var(--lemon)}
+.foot-c li{display:flex;align-items:flex-start;gap:11px;font-size:.94rem}
+.foot-c svg{width:17px;height:17px;color:var(--lemon);flex:none;margin-top:3px}
+.socials{display:flex;gap:10px;margin-top:20px}
+.socials a{
+  width:42px;height:42px;display:grid;place-items:center;border-radius:12px;
+  background:rgba(255,255,255,.08);color:#fff;
+  transition:background .28s,transform .28s var(--ease),color .28s;
+}
+.socials a:hover{background:var(--lemon);color:var(--green-dark);transform:translateY(-4px)}
+.socials svg{width:19px;height:19px}
+.foot-btm{
+  margin-top:52px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);
+  display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-size:.86rem;
+}
+.foot-legal{display:flex;flex-wrap:wrap;gap:20px}
+.foot-legal a{font-size:.86rem}
+@media (max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media (max-width:520px){.foot-grid{grid-template-columns:1fr}}
+
+/* Flotantes */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;flex-direction:column;gap:11px}
+.fab{
+  width:52px;height:52px;display:grid;place-items:center;border:0;border-radius:50%;
+  cursor:pointer;box-shadow:0 12px 28px -10px rgba(13,56,30,.5);
+  transition:transform .3s var(--ease),opacity .3s,visibility .3s,background .25s;
+}
+.fab svg{width:24px;height:24px}
+.fab--wa{background:#25D366;color:#fff}
+.fab--wa:hover{background:#1ebe5b;transform:scale(1.09)}
+.fab--top{background:var(--surface);color:var(--green-dark);border:1px solid var(--line);opacity:0;visibility:hidden}
+.fab--top.is-on{opacity:1;visibility:visible}
+.fab--top:hover{background:var(--green-dark);color:#fff;transform:translateY(-4px)}
+.fab--top svg{width:20px;height:20px}
+
+/* ============================================================
+   REVEALS — coreografía de scroll
+   ============================================================ */
+[data-reveal]{opacity:0;transition:opacity .85s var(--ease-out),transform .85s var(--ease-out),clip-path .95s var(--ease-out);transition-delay:calc(var(--i,0) * 85ms)}
+[data-reveal="up"]{transform:translateY(38px)}
+[data-reveal="down"]{transform:translateY(-26px)}
+[data-reveal="left"]{transform:translateX(-44px)}
+[data-reveal="right"]{transform:translateX(44px)}
+[data-reveal="scale"]{transform:scale(.9)}
+[data-reveal="clip"]{clip-path:inset(0 0 100% 0);transform:translateY(14px)}
+[data-reveal].is-in{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}
+  /* El vídeo del hero no se reproduce solo; queda el póster fijo (lo hace el JS) */
+  .scroll-cue{display:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- ===== Sprite de iconos ===== -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5Z"/></symbol>
+  <symbol id="i-cut" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5S12.5 5 12 2c-.5 3-2 4.9-4 6.5S5 13 5 15a7 7 0 0 0 7 7Z"/></symbol>
+  <symbol id="i-seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.3 8 10 4.6-.7 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a1 1 0 0 0-1-1H2v13h12Z"/><path d="M14 9h4l4 4v5h-8"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m9 14.5-1.5 7L12 19l4.5 2.5-1.5-7"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.1-.7.2l-.5.7c-.2.2-.3.3-.6.1a8.3 8.3 0 0 1-2.4-1.5 9 9 0 0 1-1.7-2.1c-.1-.3 0-.4.2-.6l.6-.7c.1-.2.1-.4 0-.6l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 1.5 2.4 3.7 3.4a12 12 0 0 0 2.4.9c.9.2 1.6.1 2.2 0 .6-.1 1.4-.7 1.6-1.3.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3ZM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></symbol>
+</svg>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#inicio">
+      <img src="assets/logo.png" alt="" width="512" height="512">
+      <span><b>Tostones Sam</b><small>Indusa, C.A.</small></span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú">
+      <svg id="burgerIcon"><use href="#i-menu"></use></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#calidad">Proceso</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#mayorista">Mayoristas</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+    <div class="nav-cta"><a class="btn" href="#mayorista">Pedir cotización</a></div>
+  </div>
+  <div class="nav-progress" aria-hidden="true"><i id="navProgress"></i></div>
+</header>
+
+<main id="main">
+
+<!-- ===== HERO: vídeo a pantalla completa en bucle =====
+     El vídeo lleva su propio texto incrustado, así que no se superpone nada encima.
+     El <h1> va oculto visualmente: sin él la página perdería su encabezado
+     principal para buscadores y lectores de pantalla.
+     El src lo elige el JS (escritorio u móvil) antes de cargar, para no
+     descargar los dos archivos. -->
+<section class="hero no-video" id="inicio">
+  <h1 class="sr">Tostones Sam — plátano chips y snacks salados naturales de Indusa, C.A., Estado Zulia, Venezuela</h1>
+
+  <div class="hero-media">
+    <video id="heroVideo" poster="assets/hero-poster.jpg"
+           autoplay muted loop playsinline preload="auto"
+           disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+    <!-- Se ve si el vídeo no carga: degradado verde con luz dorada -->
+    <div class="hero-fallback"></div>
+  </div>
+
+  <a class="scroll-cue" href="#productos" aria-label="Ir a productos">Desliza<span></span></a>
+</section>
+
+<!-- ===== DOS CAMINOS ===== -->
+<section class="sec" aria-labelledby="caminos-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Cómo trabajamos</p>
+      <h2 id="caminos-t" data-reveal="up" style="--i:1">¿En qué podemos ayudarte?</h2>
+    </div>
+    <div class="doors">
+      <a class="door" href="#mayorista" data-reveal="left">
+        <span class="door-num">Canal mayorista</span>
+        <h3>Distribuidores y puntos de venta</h3>
+        <p>Abastos, bodegones, supermercados y distribuidores. Cotización por escala y despacho a todo el territorio nacional.</p>
+        <span class="door-go">Solicitar cotización <svg><use href="#i-arrow"></use></svg></span>
+      </a>
+      <a class="door door--b" href="#productos" data-reveal="right" style="--i:1">
+        <span class="door-num">Catálogo</span>
+        <h3>Conoce la línea de productos</h3>
+        <p>Cuatro sabores en tres presentaciones. Consulta la combinación que necesitas y los puntos de venta disponibles.</p>
+        <span class="door-go">Ver productos <svg><use href="#i-arrow"></use></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTOS — configurador ===== -->
+<section class="sec sec--alt" id="productos" aria-labelledby="productos-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Catálogo</p>
+      <h2 id="productos-t" data-reveal="up" style="--i:1">Un tostón para cada momento</h2>
+      <p class="lede" data-reveal="up" style="--i:2">Elige presentación y sabor. Te armamos la cotización con esa combinación exacta.</p>
+    </div>
+
+    <div class="config" data-reveal="scale">
+      <div class="config-stage">
+        <span class="flavor-ribbon" id="ribbon" aria-hidden="true"></span>
+        <span class="size-badge" id="sizeBadge">30 g</span>
+        <img id="prodImg" src="assets/producto-30g.jpg" alt="Empaque de Tostones Sam de 30 gramos" width="700" height="700" loading="lazy">
+      </div>
+
+      <div>
+        <div class="ctrl">
+          <span class="ctrl-lbl" id="lblSize">Presentación</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lblSize" id="segSize">
+            <button type="button" role="radio" aria-checked="true"  data-size="30"  tabindex="0"><b>30 g</b><i>Individual</i></button>
+            <button type="button" role="radio" aria-checked="false" data-size="80"  tabindex="-1"><b>80 g</b><i>Compartir</i></button>
+            <button type="button" role="radio" aria-checked="false" data-size="150" tabindex="-1"><b>150 g</b><i>Familiar</i></button>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <span class="ctrl-lbl" id="lblFlavor">Sabor</span>
+          <div class="flavors" role="radiogroup" aria-labelledby="lblFlavor" id="segFlavor">
+            <button class="flavor" type="button" role="radio" aria-checked="true"  data-flavor="natural" tabindex="0"  style="--fc:#F5A623"><span class="dot"></span><span>Natural con sal</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="limon"   tabindex="-1" style="--fc:#FFCA28"><span class="dot"></span><span>Limón</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="ajo"     tabindex="-1" style="--fc:#E53935"><span class="dot"></span><span>Ajo</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="picante" tabindex="-1" style="--fc:#B71C1C"><span class="dot"></span><span>Picante</span></button>
+          </div>
+        </div>
+
+        <div class="config-out" aria-live="polite">
+          <h3 id="outName">Tostón Natural con Sal · 30 g</h3>
+          <p id="outDesc">Sal marina y punto justo de fritura. El de siempre, el que no falla.</p>
+          <span class="use" id="outUse">Ideal para: meriendas rápidas, colegios, antojo diario.</span>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn--wa" id="prodWa" href="#" target="_blank" rel="noopener">
+            <svg><use href="#i-wa"></use></svg> Consultar esta combinación
+          </a>
+          <a class="btn btn--ghost" href="#mayorista">Cotizar al mayor</a>
+        </div>
+        <p class="hint" id="imgNote">La foto muestra el empaque real de la presentación seleccionada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALIDAD — oscuro inmersivo ===== -->
+<section class="sec sec--dark" id="calidad" aria-labelledby="calidad-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Trazabilidad</p>
+      <h2 id="calidad-t" data-reveal="up" style="--i:1">Del campo zuliano a tu mesa</h2>
+      <p class="lede" data-reveal="up" style="--i:2">Cinco pasos controlados. Ninguno improvisado. La misma calidad en cada bolsa y en cada lote.</p>
+    </div>
+
+    <div class="tl">
+      <div class="tl-track" aria-hidden="true"><i id="tlFill"></i></div>
+      <ol class="tl-steps" id="tlSteps">
+        <li class="tl-step" data-reveal="up">
+          <span class="tl-ic"><svg><use href="#i-leaf"></use></svg></span>
+          <div><span class="tl-n">01</span><h3>Cosecha</h3><p>Plátano verde seleccionado a mano en su punto exacto de firmeza.</p></div>
+        </li>
+        <li class="tl-step" data-reveal="up" style="--i:1">
+          <span class="tl-ic"><svg><use href="#i-cut"></use></svg></span>
+          <div><span class="tl-n">02</span><h3>Cortado preciso</h3><p>Grosor uniforme para que todas las hojuelas queden igual de crujientes.</p></div>
+        </li>
+        <li class="tl-step" data-reveal="up" style="--i:2">
+          <span class="tl-ic"><svg><use href="#i-flame"></use></svg></span>
+          <div><span class="tl-n">03</span><h3>Fritura térmica</h3><p>Automatizada a temperatura constante. Sin puntos quemados ni crudos.</p></div>
+        </li>
+        <li class="tl-step" data-reveal="up" style="--i:3">
+          <span class="tl-ic"><svg><use href="#i-drop"></use></svg></span>
+          <div><span class="tl-n">04</span><h3>Saborizado</h3><p>Dosificación exacta de cada sabor. Sal, limón, ajo criollo o picante real.</p></div>
+        </li>
+        <li class="tl-step" data-reveal="up" style="--i:4">
+          <span class="tl-ic"><svg><use href="#i-seal"></use></svg></span>
+          <div><span class="tl-n">05</span><h3>Sellado automático</h3><p>Al vacío con nitrógeno alimentario. La crocancia queda encerrada.</p></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="stats" id="stats">
+      <div class="stat" data-reveal="up">
+        <span class="stat-ic"><svg><use href="#i-leaf"></use></svg></span>
+        <b><span class="num" data-to="100">0</span><span class="u">%</span></b>
+        <span class="stat-l">Plátano zuliano</span>
+        <span class="stat-d">Materia prima cultivada y seleccionada en el estado Zulia.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:1">
+        <span class="stat-ic"><svg><use href="#i-shield"></use></svg></span>
+        <b><span class="num" data-to="0">0</span><span class="u">g</span></b>
+        <span class="stat-l">Grasas trans</span>
+        <span class="stat-d">Fritura controlada, sin aceites parcialmente hidrogenados.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:2">
+        <span class="stat-ic"><svg><use href="#i-drop"></use></svg></span>
+        <b><span class="num" data-to="4">0</span></b>
+        <span class="stat-l">Sabores</span>
+        <span class="stat-d">Natural con sal, limón, ajo y picante.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:3">
+        <span class="stat-ic"><svg><use href="#i-seal"></use></svg></span>
+        <b><span class="num" data-to="3">0</span></b>
+        <span class="stat-l">Presentaciones</span>
+        <span class="stat-d">30 g individual, 80 g para compartir y 150 g familiar.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIÉNES SOMOS ===== -->
+<section class="sec" id="nosotros" aria-labelledby="nosotros-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Quiénes somos</p>
+      <h2 id="nosotros-t" data-reveal="up" style="--i:1">Indusa, C.A. — capital 100 % venezolano</h2>
+    </div>
+
+    <div class="bio">
+      <div class="bio-copy">
+        <p class="bio-lead" data-reveal="up">
+          Indusa, C.A., con su marca <strong>Sam</strong>, produce, comercializa y distribuye plátano chips
+          y otros snacks salados naturales.
+        </p>
+        <p data-reveal="up" style="--i:1">
+          Nuestro capital es 100 % venezolano y estamos comprometidos con el desarrollo económico y humano
+          de la comunidad, bajo los mejores estándares de sustentabilidad.
+        </p>
+        <p data-reveal="up" style="--i:2">
+          Desde hace muchos años trabajamos en el mejoramiento continuo de lo que hacemos y del impacto
+          que tenemos en nuestro entorno. Nos motiva producir los mejores productos naturales del mercado.
+        </p>
+      </div>
+
+      <aside class="bio-time" data-reveal="right" aria-label="Hitos de la empresa">
+        <div class="year">
+          <b>2015</b><span>Cerramos nuestras puertas.</span>
+        </div>
+        <div class="year year--now">
+          <b>2026</b><span>Reabrimos con tecnología de punta, modernizando cada proceso.</span>
+        </div>
+      </aside>
+    </div>
+
+    <h3 class="values-t" data-reveal="up">Los valores que nos guían</h3>
+    <ul class="values">
+      <li data-reveal="up">
+        <span class="val-ic"><svg><use href="#i-seal"></use></svg></span>
+        <b>Calidad</b>
+        <span>Estándares industriales verificados en cada lote.</span>
+      </li>
+      <li data-reveal="up" style="--i:1">
+        <span class="val-ic"><svg><use href="#i-flame"></use></svg></span>
+        <b>Innovación</b>
+        <span>Mejoramiento continuo de procesos y productos.</span>
+      </li>
+      <li data-reveal="up" style="--i:2">
+        <span class="val-ic"><svg><use href="#i-award"></use></svg></span>
+        <b>Trabajo en equipo</b>
+        <span>Compromiso con nuestros colaboradores.</span>
+      </li>
+      <li data-reveal="up" style="--i:3">
+        <span class="val-ic"><svg><use href="#i-leaf"></use></svg></span>
+        <b>Compromiso</b>
+        <span>Con la comunidad y con el ambiente.</span>
+      </li>
+    </ul>
+
+    <!-- ===== MAPA DE UBICACIÓN (Leaflet, carga diferida) ===== -->
+    <div class="map-block" data-reveal="up">
+      <div class="map-info">
+        <p class="eyebrow">Dónde estamos</p>
+        <h3>Nuestras oficinas</h3>
+        <ul class="map-data">
+          <li><svg><use href="#i-pin"></use></svg><span><b>Sede:</b> Estado Zulia, Venezuela<br><mark>[DIRECCIÓN COMPLETA AQUÍ]</mark></span></li>
+          <li><svg><use href="#i-clock"></use></svg><span><b>Atención:</b> 8:00 a. m. – 8:00 p. m.</span></li>
+          <li><svg><use href="#i-phone"></use></svg><span><a href="tel:+584245057479">+58 424 5057479</a></span></li>
+        </ul>
+        <a class="btn btn--ghost" id="mapDir" href="#" target="_blank" rel="noopener">
+          Cómo llegar <svg><use href="#i-arrow"></use></svg>
+        </a>
+        <p class="map-note">
+          El mapa está centrado en Maracaibo de forma aproximada.
+          <mark>Falta la dirección exacta para ubicar el marcador</mark>
+        </p>
+      </div>
+
+      <div class="map-holder">
+        <div id="map" aria-label="Mapa de ubicación de Indusa, C.A. en el estado Zulia" role="img"></div>
+        <!-- Se muestra si Leaflet no puede cargarse (sin conexión, CDN bloqueado) -->
+        <div class="map-fb" id="mapFb" hidden>
+          <svg><use href="#i-pin"></use></svg>
+          <b>Estado Zulia, Venezuela</b>
+          <span>No se pudo cargar el mapa interactivo.</span>
+          <a class="btn btn--ghost" id="mapFbLink" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAYORISTA ===== -->
+<section class="sec sec--mint" id="mayorista" aria-labelledby="mayorista-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal="up">Portal mayorista</p>
+      <h2 id="mayorista-t" data-reveal="up" style="--i:1">Llevemos Sam a tu punto de venta</h2>
+      <p class="lede" data-reveal="up" style="--i:2">Cuéntanos tu volumen estimado y un asesor te arma la cotización con precios por escala.</p>
+    </div>
+
+    <div class="b2b">
+      <div class="b2b-aside" data-reveal="left">
+        <ul class="zones">
+          <li><svg><use href="#i-pin"></use></svg><span><b>Sede:</b> Estado Zulia, Venezuela</span></li>
+          <li><svg><use href="#i-truck"></use></svg><span><b>Cobertura:</b> despacho a todo el territorio nacional por pedido mayorista</span></li>
+          <li><svg><use href="#i-clock"></use></svg><span><b>Atención:</b> 8:00 a. m. – 8:00 p. m.</span></li>
+          <li><svg><use href="#i-mail"></use></svg><span><b>Correo:</b> <a href="mailto:mayoristas@samindusa.com">mayoristas@samindusa.com</a></span></li>
+        </ul>
+        <div class="b2b-steps">
+          <h3>Cómo funciona</h3>
+          <ol>
+            <li><b>Envías la solicitud</b> con tu volumen estimado.</li>
+            <li><b>Un asesor te contacta</b> y arma la cotización por escala.</li>
+            <li><b>Coordinamos el despacho</b> a tu punto de venta.</li>
+          </ol>
+        </div>
+      </div>
+
+      <form class="form" id="b2bForm" novalidate data-reveal="right">
+        <div class="grid2">
+          <div class="field">
+            <label for="f-empresa">Nombre del negocio <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-empresa" name="empresa" type="text" required autocomplete="organization" aria-describedby="e-empresa">
+            <span class="err" id="e-empresa" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="f-contacto">Persona de contacto <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-contacto" name="contacto" type="text" required autocomplete="name" aria-describedby="e-contacto">
+            <span class="err" id="e-contacto" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="f-email">Correo <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" aria-describedby="e-email">
+            <span class="err" id="e-email" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Teléfono / WhatsApp <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-tel" name="telefono" type="tel" required autocomplete="tel" placeholder="+58 424 0000000" aria-describedby="e-tel">
+            <span class="err" id="e-tel" role="alert"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-ciudad">Ciudad / municipio <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-ciudad" name="ciudad" type="text" required autocomplete="address-level2" aria-describedby="e-ciudad">
+          <span class="err" id="e-ciudad" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="f-volumen">Volumen estimado por pedido</label>
+          <select id="f-volumen" name="volumen">
+            <option value="">Selecciona un rango</option>
+            <option value="Menos de 500 unidades">Menos de 500 unidades</option>
+            <option value="500 – 2.000 unidades">500 – 2.000 unidades</option>
+            <option value="2.000 – 10.000 unidades">2.000 – 10.000 unidades</option>
+            <option value="Más de 10.000 unidades">Más de 10.000 unidades</option>
+          </select>
+          <span class="tier" id="tier" hidden><svg><use href="#i-award"></use></svg><span id="tierTxt"></span></span>
+        </div>
+
+        <div class="field">
+          <label for="f-msg">¿Qué presentaciones y sabores te interesan?</label>
+          <textarea id="f-msg" name="mensaje" placeholder="Ej.: 30 g con ajo y 80 g picante para un abasto en Maracaibo."></textarea>
+        </div>
+
+        <input type="hidden" name="_subject" value="Nueva solicitud mayorista — Tostones Sam">
+        <input type="hidden" name="origen" id="f-origen" value="">
+
+        <div class="btn-row">
+          <button class="btn btn--lg" type="submit" id="submitBtn">Enviar solicitud <svg><use href="#i-arrow"></use></svg></button>
+          <a class="btn btn--lg btn--wa" id="formWa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"></use></svg> Escribir por WhatsApp</a>
+        </div>
+        <p class="form-note">Un asesor de Indusa, C.A. te contactará. Formas de pago aceptadas: <mark>[CONFIRMAR FORMAS DE PAGO]</mark>. Pedido mínimo: <mark>[PEDIDO MÍNIMO]</mark>.</p>
+        <p class="form-msg ok" id="formOk" role="status">Solicitud enviada. Te contactaremos al correo y teléfono indicados.</p>
+        <p class="form-msg bad" id="formBad" role="alert">No se pudo enviar. Escríbenos por WhatsApp al +58 424 5057479 o a mayoristas@samindusa.com.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec" id="faq" aria-labelledby="faq-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Preguntas frecuentes</p>
+      <h2 id="faq-t" data-reveal="up" style="--i:1">Todo sobre pedidos y distribución</h2>
+    </div>
+    <div class="faq" id="faqList" data-reveal="up">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="a1" id="q1">
+          ¿Cuánto tiempo se mantienen crujientes?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="a1" role="region" aria-labelledby="q1">
+          <div>El empaque va sellado al vacío con nitrógeno alimentario, lo que mantiene la crocancia por varios meses sin usar conservantes. La fecha exacta de vencimiento va impresa en cada lote.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="a2" id="q2">
+          ¿Qué presentaciones y sabores hay?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="a2" role="region" aria-labelledby="q2">
+          <div>Tres presentaciones —30 g individual, 80 g para compartir y 150 g familiar— y cuatro sabores en todas ellas: natural con sal, limón, ajo y picante.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="a3" id="q3">
+          ¿Cuál es el pedido mínimo al mayor?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="a3" role="region" aria-labelledby="q3">
+          <div><mark>[PEDIDO MÍNIMO — confirmar cantidad]</mark>. Escríbenos con tu volumen estimado y un asesor te arma la cotización con los mejores precios por escala.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="a4" id="q4">
+          ¿A qué zonas distribuyen y en cuánto tiempo?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="a4" role="region" aria-labelledby="q4">
+          <div>Nuestra sede está en el Estado Zulia y despachamos a toda Venezuela por pedido mayorista. Tiempos de entrega: <mark>[CONFIRMAR TIEMPOS: Zulia / resto del país]</mark>.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="a5" id="q5">
+          ¿Dónde puedo comprarlos si no soy negocio?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="a5" role="region" aria-labelledby="q5">
+          <div>Escríbenos por WhatsApp al +58 424 5057479 y te indicamos los puntos de venta más cercanos. También publicamos novedades en <a href="https://instagram.com/TostonesSam" target="_blank" rel="noopener">Instagram</a>.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/logo.png" alt="Tostones Sam — Indusa, C.A." width="512" height="512" loading="lazy">
+        <p>Indusa, C.A. — plátano chips y snacks salados naturales. Capital 100 % venezolano.</p>
+        <div class="socials">
+          <a href="https://instagram.com/TostonesSam" target="_blank" rel="noopener" aria-label="Instagram de Tostones Sam"><svg><use href="#i-ig"></use></svg></a>
+          <a href="https://facebook.com/TostonesSam88" target="_blank" rel="noopener" aria-label="Facebook de Tostones Sam"><svg><use href="#i-fb"></use></svg></a>
+        </div>
+      </div>
+
+      <nav aria-labelledby="foot-nav-t">
+        <h4 id="foot-nav-t">Navegar</h4>
+        <ul>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#calidad">Proceso</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#mayorista">Mayoristas</a></li>
+          <li><a href="#faq">Preguntas</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul class="foot-c">
+          <li><svg><use href="#i-phone"></use></svg><a href="tel:+584245057479">+58 424 5057479</a></li>
+          <li><svg><use href="#i-mail"></use></svg><a href="mailto:mayoristas@samindusa.com">mayoristas@samindusa.com</a></li>
+          <li><svg><use href="#i-clock"></use></svg><span>8:00 a. m. – 8:00 p. m.</span></li>
+          <li><svg><use href="#i-pin"></use></svg><span>Estado Zulia, Venezuela<br><mark>[DIRECCIÓN COMPLETA AQUÍ]</mark></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-btm">
+      <span>© <span id="year">2026</span> Indusa, C.A. Hecho en el Zulia, Venezuela.</span>
+      <span class="foot-legal">
+        <a href="privacidad.html">Política de privacidad</a>
+        <a href="terminos.html">Términos de uso</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<div class="fabs">
+  <a class="fab fab--wa" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg><use href="#i-wa"></use></svg></a>
+  <button class="fab fab--top" id="toTop" aria-label="Volver arriba"><svg><use href="#i-up"></use></svg></button>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":["LocalBusiness","FoodEstablishment"],
+      "@id":"#negocio",
+      "name":"Tostones Sam",
+      "legalName":"Indusa, C.A.",
+      "description":"Fabricante de tostones de plátano zuliano. Cuatro sabores en presentaciones de 30 g, 80 g y 150 g. Distribución mayorista en toda Venezuela.",
+      "image":"assets/abanico.jpg",
+      "logo":"assets/logo.png",
+      "telephone":"+58-424-5057479",
+      "email":"mayoristas@samindusa.com",
+      "address":{"@type":"PostalAddress","addressRegion":"Zulia","addressCountry":"VE"},
+      "areaServed":{"@type":"Country","name":"Venezuela"},
+      "openingHoursSpecification":[{
+        "@type":"OpeningHoursSpecification",
+        "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens":"08:00","closes":"20:00"
+      }],
+      "sameAs":["https://instagram.com/TostonesSam","https://facebook.com/TostonesSam88"]
+    },
+    {
+      "@type":"ProductGroup",
+      "name":"Tostones Sam",
+      "brand":{"@type":"Brand","name":"Tostones Sam"},
+      "description":"Hojuelas de plátano verde zuliano fritas a temperatura constante y selladas con nitrógeno alimentario.",
+      "image":"assets/producto-30g.jpg",
+      "variesBy":["https://schema.org/size","https://schema.org/flavor"],
+      "hasVariant":[
+        {"@type":"Product","name":"Tostones Sam 30 g","size":"30 g"},
+        {"@type":"Product","name":"Tostones Sam 80 g","size":"80 g"},
+        {"@type":"Product","name":"Tostones Sam 150 g","size":"150 g"}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"¿Cuánto tiempo se mantienen crujientes?","acceptedAnswer":{"@type":"Answer","text":"El empaque va sellado al vacío con nitrógeno alimentario, lo que mantiene la crocancia por varios meses sin usar conservantes. La fecha exacta de vencimiento va impresa en cada lote."}},
+        {"@type":"Question","name":"¿Qué presentaciones y sabores hay?","acceptedAnswer":{"@type":"Answer","text":"Tres presentaciones (30 g individual, 80 g para compartir y 150 g familiar) y cuatro sabores en todas ellas: natural con sal, limón, ajo y picante."}},
+        {"@type":"Question","name":"¿A qué zonas distribuyen?","acceptedAnswer":{"@type":"Answer","text":"La sede está en el Estado Zulia y se despacha a toda Venezuela por pedido mayorista."}},
+        {"@type":"Question","name":"¿Dónde puedo comprarlos si no soy negocio?","acceptedAnswer":{"@type":"Answer","text":"Escribiendo por WhatsApp al +58 424 5057479 se indican los puntos de venta más cercanos."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  var WA = "584245057479";
+  var FORMSPREE = "https://formspree.io/f/xwvgweja";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(s,c){return (c||document).querySelector(s)};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+  function waLink(msg){ return "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg); }
+
+  /* ---------- Año ---------- */
+  $("#year").textContent = new Date().getFullYear();
+
+  /* ---------- WhatsApp flotante (href real desde el inicio) ---------- */
+  var waFab = $("#waFab");
+  waFab.href = waLink("Hola Indusa, quiero información sobre Tostones Sam.");
+  $("#formWa").href = waLink("Hola Indusa, quiero cotizar Tostones Sam al mayor.");
+
+  /* ============================================================
+     NAV: sticky, scroll-spy, progreso, menú móvil
+     ============================================================ */
+  var nav = $("#nav"), burger = $("#burger"), burgerIcon = $("#burgerIcon");
+  var navProgress = $("#navProgress"), toTop = $("#toTop");
+
+  burger.addEventListener("click", function(){
+    var open = nav.classList.toggle("is-open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    burgerIcon.firstElementChild.setAttribute("href", open ? "#i-close" : "#i-menu");
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+  function closeNav(){
+    if(!nav.classList.contains("is-open")) return;
+    nav.classList.remove("is-open");
+    burger.setAttribute("aria-expanded","false");
+    burger.setAttribute("aria-label","Abrir menú");
+    burgerIcon.firstElementChild.setAttribute("href","#i-menu");
+    document.body.style.overflow = "";
+  }
+  $$("#navLinks a, .nav-cta a").forEach(function(a){ a.addEventListener("click", closeNav); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeNav(); });
+
+  var docH = 0;
+  function measure(){ docH = document.documentElement.scrollHeight - window.innerHeight; }
+  measure();
+
+  function onScroll(){
+    var y = window.scrollY || window.pageYOffset;
+    nav.classList.toggle("is-scrolled", y > 12);
+    toTop.classList.toggle("is-on", y > 700);
+    if(docH > 0) navProgress.style.transform = "scaleX(" + Math.min(1, y / docH) + ")";
+  }
+  toTop.addEventListener("click", function(){
+    window.scrollTo({ top:0, behavior: reduce ? "auto" : "smooth" });
+  });
+
+  /* Scroll-spy */
+  var secs = $$("main section[id]");
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var id = en.target.id;
+      $$("#navLinks a").forEach(function(a){
+        a.setAttribute("aria-current", a.getAttribute("href") === "#" + id ? "true" : "false");
+      });
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  secs.forEach(function(s){ spy.observe(s); });
+
+  /* Scroll suave con offset de nav */
+  $$('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var id = a.getAttribute("href");
+      if(id === "#" || id.length < 2) return;
+      var t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      var top = t.getBoundingClientRect().top + window.scrollY - (id === "#inicio" ? 0 : 66);
+      window.scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
+    });
+  });
+
+  /* ============================================================
+     REVEALS + STAGGER + CONTADORES (un solo observer)
+     ============================================================ */
+  var revealIO = new IntersectionObserver(function(entries, obs){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      en.target.classList.add("is-in");
+      obs.unobserve(en.target);
+    });
+  }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+  $$("[data-reveal]").forEach(function(el){ revealIO.observe(el); });
+
+  /* Stagger automático dentro de grupos que no lo declaran a mano */
+  $$(".zones, .values, .map-data").forEach(function(group){
+    $$("[data-reveal]", group).forEach(function(el, i){
+      if(!el.style.getPropertyValue("--i")) el.style.setProperty("--i", i);
+    });
+  });
+
+  function animateNum(el){
+    var to = parseFloat(el.getAttribute("data-to")) || 0;
+    if(reduce || to === 0){ el.textContent = to; return; }
+    var dur = 1400, t0 = performance.now();
+    (function step(now){
+      var p = Math.min(1, (now - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * e);
+      if(p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  var numIO = new IntersectionObserver(function(entries, obs){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      animateNum(en.target);
+      obs.unobserve(en.target);
+    });
+  }, { threshold: 0.6 });
+  $$(".num").forEach(function(n){ numIO.observe(n); });
+
+  /* ---------- Timeline progresiva ---------- */
+  var tlSteps = $$(".tl-step"), tlFill = $("#tlFill");
+  var vertical = function(){ return window.innerWidth <= 980; };
+  var tlIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting) en.target.classList.add("is-on");
+    });
+    var done = tlSteps.filter(function(s){ return s.classList.contains("is-on"); }).length;
+    var pct = (done / tlSteps.length) * 100;
+    if(vertical()){ tlFill.style.setProperty("--fill", pct + "%"); tlFill.style.height = pct + "%"; }
+    else { tlFill.style.width = pct + "%"; tlFill.style.height = "100%"; }
+  }, { threshold: 0.5 });
+  tlSteps.forEach(function(s){ tlIO.observe(s); });
+
+  /* ============================================================
+     PARALLAX (rAF, transform-only)
+     ============================================================ */
+  function parallax(){ /* el hero ya no lleva parallax: el vídeo lo ocupa entero */ }
+
+  /* ============================================================
+     HERO — vídeo a pantalla completa en bucle infinito
+     ============================================================ */
+  var hero = $("#inicio"), video = $("#heroVideo");
+  var MQ_MOBILE = "(max-width: 860px)";
+  var isMobile = window.matchMedia(MQ_MOBILE).matches;
+  var loadedSrc = null;
+
+  var SRC = {
+    desktop: { video: "assets/hero.mp4",        poster: "assets/hero-poster.jpg" },
+    mobile:  { video: "assets/hero-mobile.mp4", poster: "assets/hero-poster-mobile.jpg" }
+  };
+
+  function noVideo(){ hero.classList.add("no-video"); }
+
+  /* Carga la versión que toca. Solo se descarga una de las dos. */
+  function loadHeroVideo(){
+    var pick = isMobile ? SRC.mobile : SRC.desktop;
+    if(loadedSrc === pick.video) return;
+    loadedSrc = pick.video;
+    video.poster = pick.poster;
+    video.src = pick.video;
+    video.load();
+    tryPlay();
+  }
+
+  /* El autoplay puede rechazarse (modo ahorro de energía en iOS, ajustes del
+     navegador). Si pasa, dejamos el póster visible en vez de un hueco negro. */
+  function tryPlay(){
+    var p = video.play();
+    if(p && typeof p.catch === "function"){
+      p.catch(function(){
+        /* Reintento tras la primera interacción del usuario */
+        var retry = function(){
+          video.play().catch(function(){});
+          document.removeEventListener("touchstart", retry);
+          document.removeEventListener("click", retry);
+        };
+        document.addEventListener("touchstart", retry, { once: true, passive: true });
+        document.addEventListener("click", retry, { once: true });
+      });
+    }
+  }
+
+  if(reduce){
+    /* Sin animación: se queda el póster fijo, sin reproducir */
+    video.removeAttribute("autoplay");
+    video.poster = isMobile ? SRC.mobile.poster : SRC.desktop.poster;
+    hero.classList.remove("no-video");
+  } else {
+    video.addEventListener("error", noVideo);
+    /* canplay = hay datos suficientes para pintar: recién ahí quitamos el fallback */
+    video.addEventListener("canplay", function(){
+      hero.classList.remove("no-video");
+      tryPlay();
+    });
+    /* Cinturón: si el navegador pausa el vídeo por su cuenta, lo reanudamos */
+    video.addEventListener("pause", function(){
+      if(!document.hidden && !video.ended) tryPlay();
+    });
+    /* loop es un atributo del <video>, pero algunos navegadores lo ignoran
+       si el archivo trae metadatos raros; esto lo garantiza. */
+    video.addEventListener("ended", function(){
+      video.currentTime = 0;
+      tryPlay();
+    });
+    document.addEventListener("visibilitychange", function(){
+      if(!document.hidden) tryPlay();
+    });
+    loadHeroVideo();
+    setTimeout(function(){ if(video.readyState < 2) noVideo(); }, 6000);
+  }
+
+  /* ---------- Bucle único de scroll ---------- */
+  var ticking = false;
+  function frame(){ onScroll(); ticking = false; }
+  window.addEventListener("scroll", function(){
+    if(!ticking){ requestAnimationFrame(frame); ticking = true; }
+  }, { passive: true });
+
+  var rzT;
+  window.addEventListener("resize", function(){
+    clearTimeout(rzT);
+    rzT = setTimeout(function(){
+      var wasMobile = isMobile;
+      isMobile = window.matchMedia(MQ_MOBILE).matches;
+      /* Solo recarga si se cruzó el umbral: evita recargar al girar el móvil */
+      if(wasMobile !== isMobile && !reduce) loadHeroVideo();
+      measure(); frame();
+    }, 200);
+  });
+
+  /* ============================================================
+     CONFIGURADOR DE PRODUCTO
+     ============================================================ */
+  var SIZES = {
+    "30":  { label:"30 g",  tag:"Individual", use:"meriendas rápidas, colegios, antojo diario",   img:"assets/producto-30g.jpg" },
+    "80":  { label:"80 g",  tag:"Compartir",  use:"reuniones pequeñas, snack de oficina",         img:"assets/producto-80g.jpg" },
+    "150": { label:"150 g", tag:"Familiar",   use:"fiestas, reuniones familiares, para acompañar con salsas", img:"assets/producto-150g.jpg" }
+  };
+  var FLAVORS = {
+    natural: { name:"Natural con Sal", color:"#F5A623", desc:"Sal marina y punto justo de fritura. El de siempre, el que no falla." },
+    limon:   { name:"Limón",           color:"#FFCA28", desc:"Un toque cítrico que despierta el sabor del plátano frito." },
+    ajo:     { name:"Ajo",             color:"#E53935", desc:"Ajito criollo dosificado al detalle. El favorito para compartir." },
+    picante: { name:"Picante",         color:"#B71C1C", desc:"Picor real, no solo color: para quienes piden «más pique»." }
+  };
+  var curSize = "30", curFlavor = "natural";
+
+  var prodImg = $("#prodImg"), sizeBadge = $("#sizeBadge"), ribbon = $("#ribbon");
+  var outName = $("#outName"), outDesc = $("#outDesc"), outUse = $("#outUse");
+  var prodWa = $("#prodWa"), imgNote = $("#imgNote");
+
+  function render(changedSize){
+    var s = SIZES[curSize], f = FLAVORS[curFlavor];
+
+    sizeBadge.textContent = s.label;
+    ribbon.style.background = f.color;
+    outName.textContent = "Tostón " + f.name + " · " + s.label;
+    outDesc.textContent = f.desc;
+    outUse.textContent = "Ideal para: " + s.use + ".";
+    prodWa.href = waLink("Hola Indusa, me interesa el Tostón " + f.name + " en presentación de " + s.label + ".");
+    imgNote.textContent = "La foto muestra el empaque de " + s.label + ". El diseño varía según el sabor.";
+
+    if(changedSize){
+      prodImg.style.opacity = "0";
+      setTimeout(function(){
+        prodImg.src = s.img;
+        prodImg.alt = "Empaque de Tostones Sam de " + s.label;
+        prodImg.style.opacity = "1";
+      }, 170);
+    }
+  }
+
+  /* Radiogroup accesible: click + flechas + Home/End */
+  function wireRadios(container, onPick){
+    var radios = $$('[role="radio"]', container);
+    function select(i){
+      i = (i + radios.length) % radios.length;
+      radios.forEach(function(r, j){
+        var on = j === i;
+        r.setAttribute("aria-checked", on ? "true" : "false");
+        r.tabIndex = on ? 0 : -1;
+      });
+      radios[i].focus();
+      onPick(radios[i]);
+    }
+    radios.forEach(function(r, i){
+      r.addEventListener("click", function(){ select(i); });
+      r.addEventListener("keydown", function(e){
+        var k = e.key;
+        if(k === "ArrowRight" || k === "ArrowDown"){ e.preventDefault(); select(i + 1); }
+        else if(k === "ArrowLeft" || k === "ArrowUp"){ e.preventDefault(); select(i - 1); }
+        else if(k === "Home"){ e.preventDefault(); select(0); }
+        else if(k === "End"){ e.preventDefault(); select(radios.length - 1); }
+      });
+    });
+  }
+  wireRadios($("#segSize"), function(btn){ curSize = btn.getAttribute("data-size"); render(true); });
+  wireRadios($("#segFlavor"), function(btn){ curFlavor = btn.getAttribute("data-flavor"); render(false); });
+  render(false);
+
+  /* ============================================================
+     FAQ — acordeón con altura animada
+     ============================================================ */
+  $$(".faq-q").forEach(function(q){
+    var panel = document.getElementById(q.getAttribute("aria-controls"));
+    q.addEventListener("click", function(){
+      var open = q.getAttribute("aria-expanded") === "true";
+      /* cerrar el resto */
+      $$(".faq-q").forEach(function(o){
+        if(o === q) return;
+        o.setAttribute("aria-expanded","false");
+        document.getElementById(o.getAttribute("aria-controls")).style.height = "0px";
+      });
+      q.setAttribute("aria-expanded", open ? "false" : "true");
+      panel.style.height = open ? "0px" : panel.scrollHeight + "px";
+    });
+  });
+  window.addEventListener("resize", function(){
+    $$('.faq-q[aria-expanded="true"]').forEach(function(q){
+      var p = document.getElementById(q.getAttribute("aria-controls"));
+      p.style.height = p.scrollHeight + "px";
+    });
+  });
+
+  /* ============================================================
+     FORMULARIO MAYORISTA
+     ============================================================ */
+  var form = $("#b2bForm"), formOk = $("#formOk"), formBad = $("#formBad");
+  var submitBtn = $("#submitBtn"), tier = $("#tier"), tierTxt = $("#tierTxt");
+  var TIERS = {
+    "Menos de 500 unidades":"Nivel inicial",
+    "500 – 2.000 unidades":"Nivel intermedio",
+    "2.000 – 10.000 unidades":"Nivel alto",
+    "Más de 10.000 unidades":"Nivel distribuidor"
+  };
+  $("#f-volumen").addEventListener("change", function(){
+    var t = TIERS[this.value];
+    if(t){ tierTxt.textContent = t + " — cotización por escala"; tier.hidden = false; }
+    else tier.hidden = true;
+  });
+  $("#f-origen").value = "web-tostones-sam";
+
+  function setErr(input, msg){
+    var box = document.getElementById("e-" + input.id.replace("f-",""));
+    if(msg){
+      input.setAttribute("aria-invalid","true");
+      if(box) box.textContent = msg;
+    } else {
+      input.removeAttribute("aria-invalid");
+      if(box) box.textContent = "";
+    }
+  }
+  function validate(){
+    var ok = true, first = null;
+    [["f-empresa","Indica el nombre del negocio."],
+     ["f-contacto","Indica una persona de contacto."],
+     ["f-email","Indica un correo válido."],
+     ["f-tel","Indica un teléfono de contacto."],
+     ["f-ciudad","Indica la ciudad o municipio."]].forEach(function(pair){
+      var el = document.getElementById(pair[0]);
+      var val = el.value.trim();
+      var bad = !val || (el.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val));
+      setErr(el, bad ? pair[1] : "");
+      if(bad){ ok = false; if(!first) first = el; }
+    });
+    if(first) first.focus();
+    return ok;
+  }
+  $$("#b2bForm input").forEach(function(el){
+    el.addEventListener("input", function(){ if(el.getAttribute("aria-invalid")) setErr(el, ""); });
+  });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    formOk.classList.remove("is-on");
+    formBad.classList.remove("is-on");
+    if(!validate()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Enviando…";
+
+    fetch(FORMSPREE, {
+      method:"POST",
+      headers:{ "Accept":"application/json" },
+      body:new FormData(form)
+    }).then(function(r){
+      if(!r.ok) throw new Error("bad response");
+      form.reset();
+      tier.hidden = true;
+      formOk.classList.add("is-on");
+    }).catch(function(){
+      formBad.classList.add("is-on");
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Enviar solicitud <svg><use href="#i-arrow"></use></svg>';
+    });
+  });
+
+  /* ============================================================
+     MAPA — Leaflet + OpenStreetMap, cargado solo al acercarse
+     ============================================================
+
+     ⚠️ COORDENADAS APROXIMADAS.
+     Están centradas en Maracaibo porque todavía no tenemos la dirección
+     exacta de las oficinas. Cuando la tengas, sustituye lat/lng por las
+     reales (búscala en Google Maps, clic derecho → copiar coordenadas)
+     y actualiza también `direccion`.
+  */
+  var OFICINA = {
+    lat: 10.6545,
+    lng: -71.6425,
+    zoom: 13,
+    nombre: "Indusa, C.A. — Tostones Sam",
+    direccion: "Estado Zulia, Venezuela"
+  };
+
+  var mapEl = $("#map"), mapFb = $("#mapFb");
+  var gmaps = "https://www.google.com/maps/search/?api=1&query=" + OFICINA.lat + "," + OFICINA.lng;
+  var mapDir = $("#mapDir"), mapFbLink = $("#mapFbLink");
+  if(mapDir) mapDir.href = "https://www.google.com/maps/dir/?api=1&destination=" + OFICINA.lat + "," + OFICINA.lng;
+  if(mapFbLink) mapFbLink.href = gmaps;
+
+  function showMapFallback(){
+    if(mapFb) mapFb.hidden = false;
+  }
+
+  function loadCss(href){
+    return new Promise(function(res, rej){
+      var l = document.createElement("link");
+      l.rel = "stylesheet"; l.href = href;
+      l.onload = res; l.onerror = rej;
+      document.head.appendChild(l);
+    });
+  }
+  function loadJs(src){
+    return new Promise(function(res, rej){
+      var s = document.createElement("script");
+      s.src = src; s.async = true;
+      s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+  }
+
+  function initMap(){
+    if(!window.L){ showMapFallback(); return; }
+    try{
+      var map = L.map(mapEl, {
+        center: [OFICINA.lat, OFICINA.lng],
+        zoom: OFICINA.zoom,
+        scrollWheelZoom: false,   /* no secuestrar el scroll de la página */
+        attributionControl: true
+      });
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+
+      /* Marcador con el pin de marca en vez del icono azul por defecto */
+      var icon = L.divIcon({
+        className: "",
+        html: '<span class="map-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>',
+        iconSize: [38, 38],
+        iconAnchor: [19, 34],
+        popupAnchor: [0, -32]
+      });
+      L.marker([OFICINA.lat, OFICINA.lng], { icon: icon, title: OFICINA.nombre })
+        .addTo(map)
+        .bindPopup(
+          "<strong>" + OFICINA.nombre + "</strong><br>" + OFICINA.direccion +
+          '<br><a href="' + gmaps + '" target="_blank" rel="noopener">Ver en Google Maps</a>'
+        );
+
+      /* El zoom con rueda se activa al hacer clic, y se desactiva al salir */
+      map.on("click", function(){ map.scrollWheelZoom.enable(); });
+      map.on("mouseout", function(){ map.scrollWheelZoom.disable(); });
+    } catch(e){
+      showMapFallback();
+    }
+  }
+
+  if(mapEl){
+    var mapLoaded = false;
+    var mapIO = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(en){
+        if(!en.isIntersecting || mapLoaded) return;
+        mapLoaded = true;
+        obs.unobserve(en.target);
+        Promise.all([
+          loadCss("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"),
+          loadJs("https://unpkg.com/leaflet@1.9.4/dist/leaflet.js")
+        ]).then(initMap).catch(showMapFallback);
+      });
+    }, { rootMargin: "250px 0px" });
+    mapIO.observe(mapEl);
+  }
+
+  /* Primer pintado + re-medida cuando las imágenes ya ocupan su alto real */
+  frame();
+  window.addEventListener("load", function(){ measure(); frame(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+/* ============================================================
+   FLYER — panel de marca a sangre completa
+   El patrón de INVECA: fondo de color de borde a borde, producto
+   recortado SIN marco (nada de tarjetas ni sombras de foto), logo
+   de la marca como imagen y motivos decorativos sueltos.
+
+   Cada marca define sus colores en su modificador. Para añadir una
+   marca nueva basta con un bloque .flyer--<marca> aquí abajo.
+   ============================================================ */
+.flyer{
+  --flyer-bg:var(--green-mint);
+  --flyer-ink:var(--text);
+  --flyer-body:var(--body);
+  --flyer-accent:var(--green);
+  --flyer-glow:rgba(245,166,35,.22);
+
+  position:relative;
+  padding:clamp(60px,7.5vw,104px) 0;
+  background:var(--flyer-bg);
+  color:var(--flyer-body);
+  /* clip y no hidden: recorta el arte que sobresale por los lados sin
+     cortar el resplandor de los botones al elevarse. */
+  overflow-x:hidden;
+  overflow-x:clip;
+  isolation:isolate;
+}
+
+/* Luz de fondo. Da profundidad al panel sin necesitar ninguna imagen. */
+.flyer::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(85% 90% at var(--glow-x,78%) 12%, var(--flyer-glow), transparent 62%);
+  pointer-events:none;
+}
+
+.flyer-in{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1.08fr;
+  align-items:center;gap:clamp(30px,4.5vw,64px);
+}
+/* Alternancia explícita por clase: no depende del orden en el HTML,
+   así mover una sección no descoloca las demás. */
+.flyer--art-left .flyer-art{order:-1}
+
+/* ---------- Columna de texto ---------- */
+.flyer-logo{margin:0 0 22px;line-height:0}
+.flyer-logo img{width:100%;max-width:var(--logo-w,320px);height:auto}
+/* Si algún día no hay archivo de logo, el <h2> sigue leyéndose como texto */
+.flyer-logo--text{line-height:1.05;color:var(--flyer-ink);margin-bottom:18px}
+
+.flyer-copy .lede{color:var(--flyer-body);max-width:44ch}
+.flyer-copy p{color:var(--flyer-body)}
+
+/* ---------- Arte del producto ---------- */
+.flyer-art{position:relative;line-height:0}
+/* Sin borde, sin recorte, sin aspect-ratio: la imagen manda.
+   La sombra proyectada sigue la silueta del recorte, no una caja. */
+.flyer-pack{
+  width:100%;height:auto;
+  filter:drop-shadow(0 26px 42px rgba(8,37,20,.32));
+}
+/* Recorte de emergencia para fotos que vienen sobre fondo BLANCO:
+   multiply hace desaparecer el blanco contra un panel claro, así la
+   foto se lee como recorte sin tener que retocarla.
+   Solo funciona sobre paneles claros. Cuando llegue el PNG con fondo
+   transparente, quita esta clase y ya. */
+.flyer-pack--knockout{
+  mix-blend-mode:multiply;
+  filter:drop-shadow(0 18px 30px rgba(8,37,20,.16));
+}
+/* El producto se sale del panel, como el bodegón de Salseritos */
+.flyer--bleed .flyer-art{width:118%;max-width:none;margin-inline:-9%}
+
+/* ---------- Motivos decorativos ----------
+   Se colocan con variables en el propio HTML:
+   <img class="flyer-motif" style="--x:6%;--y:12%;--w:120px;--r:-12deg" …>
+   Son puramente ornamentales: van con alt="" y aria-hidden. */
+.flyer-motif{
+  position:absolute;z-index:0;
+  left:var(--x,50%);top:var(--y,50%);
+  width:var(--w,110px);height:auto;
+  rotate:var(--r,0deg);
+  opacity:var(--o,.9);
+  pointer-events:none;user-select:none;
+}
+@media (prefers-reduced-motion:no-preference){
+  .flyer-motif{transition:translate .6s var(--ease)}
+  .flyer:hover .flyer-motif{translate:0 -6px}
+}
+
+/* ---------- Sellos sobre panel oscuro ---------- */
+.flyer--dark{color:rgba(255,255,255,.82)}
+.flyer--dark .flyer-logo--text,
+.flyer--dark h2{color:#fff}
+.flyer--dark .lede,
+.flyer--dark p{color:rgba(255,255,255,.82)}
+.flyer--dark .eyebrow{color:var(--lemon)}
+.flyer--dark .eyebrow::before{background:var(--lemon)}
+.flyer--dark .seals li{
+  background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.22);
+  color:#fff;
+  backdrop-filter:blur(6px);
+}
+.flyer--dark .seals li:hover{border-color:var(--lemon);background:rgba(255,255,255,.16)}
+.flyer--dark .seals svg{color:var(--lemon)}
+
+/* ============================================================
+   Las marcas
+   ============================================================ */
+/* Tostones Sam — panel claro y cálido, como el de Iselitas en INVECA.
+   Claro a propósito: permite el recorte por multiply de abanico.jpg. */
+.flyer--sam{
+  --flyer-bg:linear-gradient(155deg, #FFFDF4 0%, var(--cream) 55%, #FDEFC9 100%);
+  --flyer-ink:var(--green-dark);
+  --flyer-body:#3E4A42;
+  --flyer-accent:var(--red);
+  --flyer-glow:rgba(245,166,35,.26);
+  /* El logo de Sam es cuadrado, no un lockup horizontal: por eso va más
+     estrecho que el de Sharitos. Si algún día hay versión horizontal,
+     sube este valor a ~300px. */
+  --logo-w:200px;
+}
+.flyer--sam .eyebrow{color:var(--green)}
+.flyer--sam .eyebrow::before{background:var(--red)}
+.flyer--sam .seals li{color:var(--green-dark);border-color:rgba(13,56,30,.14)}
+.flyer--sam .seals svg{color:var(--green)}
+
+/* Sharitos — misma estructura que Sam, distinto tono.
+   Panel claro también, para que las dos marcas se lean como hermanas
+   y no como si una fuese la buena y la otra la de rebajas. */
+.flyer--sharitos{
+  --flyer-bg:linear-gradient(155deg, #F3FAF4 0%, var(--green-mint) 55%, #DDF0E4 100%);
+  --flyer-ink:var(--green-dark);
+  --flyer-body:#3E4A42;
+  --flyer-accent:var(--green-leaf);
+  --flyer-glow:rgba(46,139,87,.2);
+  --logo-w:300px;
+}
+.flyer--sharitos .eyebrow{color:var(--green)}
+.flyer--sharitos .eyebrow::before{background:var(--red)}
+.flyer--sharitos .seals li{color:var(--green-dark);border-color:rgba(13,56,30,.14)}
+.flyer--sharitos .seals svg{color:var(--green-leaf)}
+
+/* ============================================================
+   HUECO PARA EL FLYER DEL DISEÑADOR
+   Recuadro vacío con las medidas escritas dentro. Cuando llegue la
+   pieza, se sustituye este <div class="flyer-slot"> entero por:
+   <img class="flyer-pack" src="assets/flyer-<marca>.png" alt="…">
+   ============================================================ */
+.flyer-slot{
+  display:grid;place-content:center;gap:6px;
+  min-height:clamp(280px,30vw,430px);
+  padding:32px 26px;
+  border:2px dashed rgba(13,56,30,.34);
+  border-radius:var(--r-lg);
+  background:rgba(255,255,255,.42);
+  text-align:center;line-height:1.5;
+}
+.flyer--dark .flyer-slot{
+  border-color:rgba(255,255,255,.4);
+  background:rgba(255,255,255,.07);
+}
+.flyer-slot b{
+  display:block;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.02rem;font-weight:800;letter-spacing:.02em;
+  color:var(--red-deep);
+  text-transform:uppercase;
+}
+.flyer-slot .slot-what{
+  font-size:1.22rem;font-weight:700;color:var(--flyer-ink);
+  font-family:'Bricolage Grotesque',sans-serif;
+  margin-top:2px;
+}
+.flyer-slot dl{
+  display:grid;grid-template-columns:auto auto;
+  justify-content:center;gap:4px 14px;
+  margin:16px 0 0;font-size:.92rem;
+}
+.flyer-slot dt{font-weight:700;color:var(--flyer-ink);text-align:right}
+.flyer-slot dd{margin:0;color:var(--flyer-body);text-align:left;font-variant-numeric:tabular-nums}
+.flyer-slot .slot-note{
+  margin-top:14px;font-size:.82rem;color:var(--flyer-body);opacity:.85;
+  max-width:34ch;margin-inline:auto;
+}
+
+/* ============================================================
+   FLYER COMPLETO — el bloque entero ES la pieza del diseñador
+   Nada de media columna de texto y media de imagen: la imagen ocupa
+   todo el bloque, de borde a borde. El texto sigue existiendo en el
+   HTML, oculto a la vista pero disponible para Google y para lectores
+   de pantalla, que si no la sección quedaría muda.
+   ============================================================ */
+.flyer--full{padding:0;background:var(--flyer-bg)}
+.flyer--full .flyer-in{display:block;gap:0;padding:0;max-width:none}
+
+/* El flyer es un enlace: al pulsarlo se va a la página de la marca */
+.flyer-sheet{
+  display:block;width:100%;
+  text-decoration:none;color:inherit;
+  transition:filter .5s var(--ease);
+}
+.flyer-sheet img{width:100%;height:auto;display:block}
+.flyer-sheet:hover{filter:brightness(1.03) saturate(1.04)}
+.flyer-sheet:focus-visible{outline:4px solid var(--red);outline-offset:-4px}
+
+/* El texto que Google sí lee */
+.flyer--full .flyer-copy{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+/* ---------- Hueco a tamaño real, mientras no llega la pieza ---------- */
+.flyer-slot--full{
+  border-radius:0;border-width:2px;
+  min-height:0;
+  /* La proporción real de la pieza de escritorio, para que se vea
+     exactamente el espacio que va a ocupar */
+  aspect-ratio:2400 / 1100;
+}
+@media (max-width:900px){
+  .flyer-slot--full{aspect-ratio:1080 / 1350}
+}
+
+@media (max-width:900px){
+  .flyer-in{grid-template-columns:1fr;text-align:center}
+  .flyer--art-left .flyer-art{order:0}
+  .flyer-logo{margin-inline:auto}
+  .flyer-copy .lede{margin-inline:auto}
+  .flyer .seals{justify-content:center}
+  .flyer .btn-row{justify-content:center}
+  .flyer--bleed .flyer-art{width:100%;margin-inline:0}
+  /* En móvil los motivos estorban más que decoran */
+  .flyer-motif{display:none}
+}

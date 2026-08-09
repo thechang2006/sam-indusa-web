@@ -1,0 +1,32 @@
+/* ============================================================
+   LEGAL — tipografía de privacidad.html y terminos.html
+   Columna estrecha, pensada para leer un texto largo.
+   ============================================================ */
+.legal{max-width:820px;margin-inline:auto}
+.legal h2{
+  font-size:clamp(1.15rem,1.8vw,1.35rem);
+  color:var(--green-dark);
+  margin:44px 0 12px;
+}
+.legal h2:first-of-type{margin-top:0}
+.legal p,
+.legal li{color:var(--body)}
+.legal ul{padding-left:22px;margin:0 0 1em}
+.legal li{margin-bottom:.4em}
+.legal a{color:var(--green);text-underline-offset:3px}
+
+.legal-updated{
+  color:var(--muted);font-size:.85rem;
+  margin:0 0 32px;
+}
+
+/* Aviso de que el documento es una base a revisar con un abogado */
+.legal-note{
+  background:var(--green-mint);
+  border:1px solid var(--line);
+  border-left:4px solid var(--green);
+  border-radius:var(--r-sm);
+  padding:18px 22px;
+  font-size:.95rem;
+  margin:0 0 40px;
+}

@@ -1,0 +1,27 @@
+/* ---------- Layout ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+section{position:relative}
+.sec{padding:clamp(72px,10vw,132px) 0}
+.sec--alt{background:var(--alt)}
+.sec--mint{background:var(--green-mint)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);margin:0 0 18px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--red);border-radius:2px}
+.sec--dark .eyebrow{color:var(--lemon)}
+.sec--dark .eyebrow::before{background:var(--lemon)}
+.lede{font-size:clamp(1.06rem,1.5vw,1.22rem);color:var(--muted);max-width:60ch}
+.sec-head{max-width:44rem;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head--center{margin-inline:auto;text-align:center}
+.sec-head--center .eyebrow{justify-content:center}
+.sec-head--center .lede{margin-inline:auto}
+
+/* Placeholders pendientes de rellenar — deliberadamente visibles */
+mark{
+  background:var(--lemon);color:#4a3000;
+  padding:1px 7px;border-radius:5px;
+  font-size:.92em;font-weight:650;
+  /* sin white-space:nowrap — algunos placeholders son largos y desbordarían en móvil */
+}

@@ -1,0 +1,222 @@
+<!--meta
+{
+  "title": "Grupo Indusa — Plátano chips y snacks salados naturales | El Vigía, Mérida",
+  "description": "Producimos, comercializamos y distribuimos plátano chips y snacks salados naturales desde El Vigía, Estado Mérida. Marcas Tostones Sam y Sharitos. Capital 100 % venezolano.",
+  "nav": "inicio",
+  "bodyClass": "has-hero",
+  "css": ["hero", "cards", "brand", "flyer", "nosotros"],
+  "js": ["hero"],
+  "schema": "schema-org.json"
+}
+-->
+
+<!-- ===== HERO: vídeo a pantalla completa en bucle =====
+     El vídeo lleva su propia rotulación incrustada, así que no se superpone
+     nada encima. El <h1> va oculto visualmente: sin él la página perdería su
+     encabezado principal para buscadores y lectores de pantalla.
+     El src lo elige assets/js/hero.js según el ancho, para no descargar los dos. -->
+<section class="hero no-video" id="inicio">
+  <h1 class="sr">Grupo Indusa — plátano chips y snacks salados naturales desde El Vigía, Estado Mérida, Venezuela</h1>
+
+  <div class="hero-media">
+    <video id="heroVideo" poster="assets/hero-poster.jpg"
+           autoplay muted loop playsinline preload="auto"
+           disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+    <!-- Se ve si el vídeo no carga: degradado verde con luz dorada -->
+    <div class="hero-fallback"></div>
+  </div>
+
+  <a class="scroll-cue" href="#grupo" aria-label="Ir al contenido">Desliza<span></span></a>
+</section>
+
+<!-- ===== QUIÉNES SOMOS, EN UNA FRASE ===== -->
+<section class="sec" id="grupo" aria-labelledby="grupo-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Grupo Indusa</p>
+      <h2 id="grupo-t" data-reveal="up" style="--i:1">Snacks naturales hechos en el Sur del Lago</h2>
+      <p class="lede" data-reveal="up" style="--i:2">
+        Desde nuestra planta en El&nbsp;Vigía, Estado Mérida, producimos, comercializamos y distribuimos
+        plátano chips y otros snacks salados naturales bajo dos marcas propias.
+        Capital 100&nbsp;% venezolano.
+      </p>
+    </div>
+
+    <div class="doors">
+      <a class="door" href="mayoristas.html#cotizar" data-reveal="left">
+        <span class="door-num">Canal mayorista</span>
+        <h3>Distribuidores y puntos de venta</h3>
+        <p>Abastos, bodegones, supermercados y distribuidores. Cotización por escala y despacho a todo el territorio nacional.</p>
+        <span class="door-go">Solicitar cotización <svg><use href="#i-arrow"></use></svg></span>
+      </a>
+      <a class="door door--b" href="marcas.html" data-reveal="right" style="--i:1">
+        <span class="door-num">Catálogo</span>
+        <h3>Conoce nuestras marcas</h3>
+        <p>Tostones Sam y Sharitos: sabores, presentaciones y en qué se diferencia cada una.</p>
+        <span class="door-go">Ver las marcas <svg><use href="#i-arrow"></use></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLYER 1 — TOSTONES SAM =====
+     El bloque ENTERO es la pieza del diseñador, de borde a borde.
+     No hay columna de texto: el texto va oculto ahí abajo para que
+     Google y los lectores de pantalla sí lo lean.
+
+     Cuando llegue la pieza, sustituye TODO el <div class="flyer-slot--full">
+     por esto, que sirve la versión de móvil o la de escritorio según toque:
+
+     <picture>
+       <source media="(max-width:900px)" srcset="assets/flyer-sam-movil.png">
+       <img src="assets/flyer-sam.png" alt="Tostones Sam — plátano chips en cuatro sabores">
+     </picture>
+-->
+<section class="flyer flyer--full flyer--sam" aria-labelledby="sam-t">
+  <div class="flyer-in">
+    <a class="flyer-sheet" href="tostones-sam.html">
+      <div class="flyer-slot flyer-slot--full">
+        <b>Flyer del diseñador</b>
+        <span class="slot-what">Tostones Sam</span>
+        <dl>
+          <dt>PC</dt><dd>2400 × 1100 px</dd>
+          <dt>Móvil</dt><dd>1080 × 1350 px</dd>
+        </dl>
+        <p class="slot-note">
+          El bloque completo. Dos archivos: uno horizontal para escritorio y
+          uno vertical para móvil. JPG o PNG, 72 ppp, menos de 500 KB cada uno.
+        </p>
+      </div>
+    </a>
+
+    <!-- Texto para buscadores y lectores de pantalla -->
+    <div class="flyer-copy">
+      <h2 id="sam-t">Tostones Sam</h2>
+      <p>
+        Plátano verde seleccionado a mano, cortado a grosor uniforme y frito a temperatura
+        constante. Cuatro sabores en tres presentaciones, sellados al vacío con nitrógeno
+        alimentario. Sin gluten, vegano, no GMO y sin grasas trans.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLYER 2 — SHARITOS ===== -->
+<section class="flyer flyer--full flyer--sharitos" aria-labelledby="sharitos-t">
+  <div class="flyer-in">
+    <a class="flyer-sheet" href="sharitos.html">
+      <div class="flyer-slot flyer-slot--full">
+        <b>Flyer del diseñador</b>
+        <span class="slot-what">Sharitos</span>
+        <dl>
+          <dt>PC</dt><dd>2400 × 1100 px</dd>
+          <dt>Móvil</dt><dd>1080 × 1350 px</dd>
+        </dl>
+        <p class="slot-note">
+          El bloque completo. Dos archivos: uno horizontal para escritorio y
+          uno vertical para móvil. JPG o PNG, 72 ppp, menos de 500 KB cada uno.
+        </p>
+      </div>
+    </a>
+
+    <!-- Texto para buscadores y lectores de pantalla -->
+    <div class="flyer-copy">
+      <h2 id="sharitos-t">Sharitos</h2>
+      <p>
+        Snacks de excelente calidad al mejor precio. La opción del día a día, pensada para
+        llegar a más mesas sin renunciar a lo natural. Sin gluten, vegano y sin grasas trans.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ASÍ LO HACEMOS ===== -->
+<section class="sec sec--alt" aria-labelledby="proceso-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Elaboración</p>
+      <h2 id="proceso-t" data-reveal="up" style="--i:1">Así lo hacemos</h2>
+      <p class="lede" data-reveal="up" style="--i:2">
+        Nueve pasos, del plátano recién llegado del campo a la caja lista para despacho.
+        Cada uno con su control de calidad.
+      </p>
+    </div>
+
+    <div class="brand-grid">
+      <a class="brand-card" href="elaboracion.html#seleccion" data-reveal="up">
+        <figure><img src="assets/ph/proceso-01.svg" alt="Selección de la materia prima en planta" width="1200" height="800" loading="lazy"></figure>
+        <div class="brand-card-body">
+          <h3>Selección y pesado</h3>
+          <p>El plátano llega del campo y se selecciona por maduración, calibre y textura antes de entrar a proceso.</p>
+          <span class="brand-more">Ver el proceso <svg><use href="#i-arrow"></use></svg></span>
+        </div>
+      </a>
+      <a class="brand-card" href="elaboracion.html#freido" data-reveal="up" style="--i:1">
+        <figure><img src="assets/ph/proceso-05.svg" alt="Freidora industrial en operación" width="1200" height="800" loading="lazy"></figure>
+        <div class="brand-card-body">
+          <h3>Cortado y freído</h3>
+          <p>Grosor uniforme y temperatura constante. Control riguroso de los parámetros del aceite en toda la jornada.</p>
+          <span class="brand-more">Ver el proceso <svg><use href="#i-arrow"></use></svg></span>
+        </div>
+      </a>
+      <a class="brand-card" href="elaboracion.html#empacado" data-reveal="up" style="--i:2">
+        <figure><img src="assets/ph/proceso-08.svg" alt="Empacadoras digitales en la planta" width="1200" height="800" loading="lazy"></figure>
+        <div class="brand-card-body">
+          <h3>Empacado y despacho</h3>
+          <p>Empacadoras digitales, sellado al vacío con nitrógeno y salida a distribución en cajas de cartón corrugado.</p>
+          <span class="brand-more">Ver el proceso <svg><use href="#i-arrow"></use></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE NOSOTROS ===== -->
+<section class="sec" aria-labelledby="nosotros-t">
+  <div class="wrap">
+    <div class="about-split">
+      <figure class="about-portrait" data-reveal="left">
+        <img src="assets/ph/fundador.svg" alt="Fundador de Grupo Indusa" width="950" height="1024" loading="lazy">
+        <figcaption>Fundador de Grupo Indusa, El Vigía</figcaption>
+      </figure>
+
+      <div class="about-copy">
+        <p class="eyebrow" data-reveal="up">Sobre nosotros</p>
+        <h2 id="nosotros-t" data-reveal="up" style="--i:1">Comprometidos con el desarrollo de nuestro país</h2>
+        <p class="bio-lead" data-reveal="up" style="--i:2">
+          Grupo Indusa, con sus marcas <strong>Tostones Sam</strong> y <strong>Sharitos</strong>,
+          produce, comercializa y distribuye plátano chips y otros snacks salados naturales.
+        </p>
+        <p data-reveal="up" style="--i:3">
+          Nuestro capital es 100&nbsp;% venezolano y estamos comprometidos con el desarrollo económico
+          y humano de la comunidad, bajo los mejores estándares de sustentabilidad.
+        </p>
+        <p data-reveal="up" style="--i:4">
+          Cerramos en 2015 y reabrimos modernizando cada proceso. Hoy trabajamos en el mejoramiento
+          continuo de lo que hacemos y del impacto que tenemos en nuestro entorno.
+        </p>
+        <div class="btn-row" data-reveal="up" style="--i:5">
+          <a class="btn btn--ghost" href="nosotros.html">Nuestra historia <svg><use href="#i-arrow"></use></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FRANJA MAYORISTA ===== -->
+<section class="sec sec--mint" aria-labelledby="cta-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Canal mayorista</p>
+      <h2 id="cta-t" data-reveal="up" style="--i:1">Llevemos nuestras marcas a tu punto de venta</h2>
+      <p class="lede" data-reveal="up" style="--i:2">
+        Atendemos abastos, bodegones, supermercados y distribuidores en todo el país.
+        Cuéntanos qué necesitas y te enviamos una cotización por escala.
+      </p>
+      <div class="btn-row btn-row--center" data-reveal="up" style="--i:3">
+        <a class="btn btn--lg" href="mayoristas.html#cotizar">Pedir cotización <svg><use href="#i-arrow"></use></svg></a>
+        <a class="btn btn--ghost btn--lg" href="contacto.html">Cómo contactarnos</a>
+      </div>
+    </div>
+  </div>
+</section>

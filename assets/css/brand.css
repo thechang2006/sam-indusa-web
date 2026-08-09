@@ -1,0 +1,53 @@
+/* ============================================================
+   BRAND — sellos y tarjetas de marca
+   El panel de marca a sangre completa está en flyer.css
+   ============================================================ */
+/* ---------- Sellos ---------- */
+.seals{
+  display:flex;flex-wrap:wrap;gap:10px;
+  list-style:none;margin:26px 0 30px;padding:0;
+}
+.seals li{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;border-radius:99px;
+  background:var(--surface);border:1.5px solid var(--line);
+  font-size:.79rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  /* --flyer-ink / --flyer-accent los define el panel de marca si lo hay;
+     si no, se usa el verde corporativo. */
+  color:var(--flyer-ink, var(--green-dark));
+  transition:transform .25s var(--ease),border-color .25s,background .25s;
+}
+.seals li:hover{transform:translateY(-3px);border-color:var(--flyer-accent, var(--green))}
+.seals svg{width:17px;height:17px;flex:none;color:var(--flyer-accent, var(--green))}
+
+/* ---------- Rejilla del hub de marcas ---------- */
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3vw,34px)}
+.brand-card{
+  display:flex;flex-direction:column;
+  border-radius:var(--r-lg);overflow:hidden;
+  background:var(--surface);border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);text-decoration:none;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s;
+}
+.brand-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:var(--green-pale)}
+.brand-card figure{margin:0;aspect-ratio:16/10;background:var(--alt);overflow:hidden}
+.brand-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.brand-card:hover img{transform:scale(1.05)}
+.brand-card .brand-card-body{padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:12px;flex:1}
+.brand-card h3{margin:0;font-size:clamp(1.35rem,2.2vw,1.75rem)}
+.brand-card p{color:var(--muted);font-size:.97rem;margin:0}
+.brand-card .brand-more{
+  margin-top:auto;display:inline-flex;align-items:center;gap:8px;
+  font-weight:650;color:var(--green);font-size:.94rem;
+}
+.brand-card .brand-more svg{width:18px;height:18px;transition:transform .3s var(--ease)}
+.brand-card:hover .brand-more svg{transform:translateX(4px)}
+
+
+
+.seals--center{justify-content:center;margin-inline:auto;max-width:70ch}
+
+/* Tarjeta que no es enlace: sin elevación ni zoom al pasar el ratón */
+.brand-card--static{cursor:default}
+.brand-card--static:hover{transform:none;box-shadow:var(--shadow-sm);border-color:var(--line)}
+.brand-card--static:hover img{transform:none}

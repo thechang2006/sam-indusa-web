@@ -1,0 +1,172 @@
+<!--meta
+{
+  "title": "Mayoristas — Cotización por escala y despacho nacional | Grupo Indusa",
+  "description": "Portal mayorista de Grupo Indusa. Abastos, bodegones, supermercados y distribuidores: solicita cotización de Tostones Sam y Sharitos con precios por escala y despacho a toda Venezuela.",
+  "nav": "mayoristas",
+  "css": ["page-hero", "forms", "faq"],
+  "js": ["form", "faq"]
+}
+-->
+
+<section class="page-hero page-hero--mayoristas">
+  <div class="wrap">
+    <ol class="crumbs">
+      <li><a href="index.html">Inicio</a></li>
+      <li aria-current="page">Mayoristas</li>
+    </ol>
+    <p class="eyebrow">Canal mayorista</p>
+    <h1>Llevemos nuestras marcas a tu punto de venta</h1>
+    <p class="lede">
+      Atendemos abastos, bodegones, supermercados y distribuidores en todo el país.
+      Cuéntanos tu volumen estimado y un asesor arma la cotización con precios por escala.
+    </p>
+  </div>
+</section>
+
+<section class="sec" id="cotizar" aria-labelledby="mayorista-t">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal="up">Solicitud de cotización</p>
+      <h2 id="mayorista-t" data-reveal="up" style="--i:1">Cuéntanos qué necesitas</h2>
+    </div>
+
+    <div class="b2b">
+      <div class="b2b-aside" data-reveal="left">
+        <ul class="zones">
+          <li><svg><use href="#i-pin"></use></svg><span><b>Planta:</b> El Vigía, Estado Mérida</span></li>
+          <li><svg><use href="#i-truck"></use></svg><span><b>Cobertura:</b> despacho a todo el territorio nacional por pedido mayorista</span></li>
+          <li><svg><use href="#i-clock"></use></svg><span><b>Atención:</b> lunes a sábado, 8:00 a. m. – 5:00 p. m.</span></li>
+          <li><svg><use href="#i-mail"></use></svg><span><b>Correo:</b> <a href="mailto:mayoristas@grupoindusa.com">mayoristas@grupoindusa.com</a></span></li>
+        </ul>
+        <div class="b2b-steps">
+          <h3>Cómo funciona</h3>
+          <ol>
+            <li><b>Envías la solicitud</b> con tu volumen estimado.</li>
+            <li><b>Un asesor te contacta</b> y arma la cotización por escala.</li>
+            <li><b>Coordinamos el despacho</b> a tu punto de venta.</li>
+          </ol>
+        </div>
+      </div>
+
+      <form class="form" id="b2bForm" novalidate data-reveal="right">
+        <div class="grid2">
+          <div class="field">
+            <label for="f-empresa">Nombre del negocio <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-empresa" name="empresa" type="text" required autocomplete="organization" aria-describedby="e-empresa">
+            <span class="err" id="e-empresa" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="f-contacto">Persona de contacto <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-contacto" name="contacto" type="text" required autocomplete="name" aria-describedby="e-contacto">
+            <span class="err" id="e-contacto" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="f-email">Correo <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" aria-describedby="e-email">
+            <span class="err" id="e-email" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="f-tel">Teléfono / WhatsApp <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-tel" name="telefono" type="tel" required autocomplete="tel" placeholder="+58 424 0000000" aria-describedby="e-tel">
+            <span class="err" id="e-tel" role="alert"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-ciudad">Ciudad / municipio <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-ciudad" name="ciudad" type="text" required autocomplete="address-level2" aria-describedby="e-ciudad">
+          <span class="err" id="e-ciudad" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="f-marca">¿Qué marca te interesa?</label>
+          <select id="f-marca" name="marca">
+            <option value="">Selecciona una marca</option>
+            <option value="Tostones Sam">Tostones Sam</option>
+            <option value="Sharitos">Sharitos</option>
+            <option value="Las dos">Las dos</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-volumen">Volumen estimado por pedido</label>
+          <select id="f-volumen" name="volumen">
+            <option value="">Selecciona un rango</option>
+            <option value="Menos de 500 unidades">Menos de 500 unidades</option>
+            <option value="500 – 2.000 unidades">500 – 2.000 unidades</option>
+            <option value="2.000 – 10.000 unidades">2.000 – 10.000 unidades</option>
+            <option value="Más de 10.000 unidades">Más de 10.000 unidades</option>
+          </select>
+          <span class="tier" id="tier" hidden><svg><use href="#i-award"></use></svg><span id="tierTxt"></span></span>
+        </div>
+
+        <div class="field">
+          <label for="f-msg">¿Qué presentaciones y sabores te interesan?</label>
+          <textarea id="f-msg" name="mensaje" placeholder="Ej.: 30 g con ajo y 80 g picante para un abasto en El Vigía."></textarea>
+        </div>
+
+        <input type="hidden" name="_subject" value="Nueva solicitud mayorista — Grupo Indusa">
+        <input type="hidden" name="origen" id="f-origen" value="">
+
+        <div class="btn-row">
+          <button class="btn btn--lg" type="submit" id="submitBtn">Enviar solicitud <svg><use href="#i-arrow"></use></svg></button>
+          <a class="btn btn--lg btn--wa" id="formWa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"></use></svg> Escribir por WhatsApp</a>
+        </div>
+        <p class="form-msg ok" id="formOk" role="status">Solicitud enviada. Te contactaremos al correo y teléfono indicados.</p>
+        <p class="form-msg bad" id="formBad" role="alert">No se pudo enviar. Escríbenos por WhatsApp al +58 424 5057479 o a mayoristas@grupoindusa.com.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PREGUNTAS DE DISTRIBUCIÓN ===== -->
+<section class="sec sec--alt" id="faq" aria-labelledby="faq-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Preguntas frecuentes</p>
+      <h2 id="faq-t" data-reveal="up" style="--i:1">Sobre pedidos y distribución</h2>
+    </div>
+
+    <div class="faq" data-reveal="up">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="ma1" id="mq1">
+          ¿A qué zonas distribuyen?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="ma1" role="region" aria-labelledby="mq1">
+          <div>La planta está en El Vigía, Estado Mérida, y despachamos a todo el territorio nacional por pedido mayorista. La ruta y el tiempo de entrega dependen del volumen y de la zona.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="ma2" id="mq2">
+          ¿Cuál es el pedido mínimo?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="ma2" role="region" aria-labelledby="mq2">
+          <div>Depende de la zona de despacho y de la combinación de presentaciones. <mark>[CONFIRMAR PEDIDO MÍNIMO]</mark> Envía la solicitud y un asesor te lo confirma junto con la cotización.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="ma3" id="mq3">
+          ¿Puedo pedir las dos marcas en el mismo despacho?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="ma3" role="region" aria-labelledby="mq3">
+          <div>Sí. Tostones Sam y Sharitos salen de la misma planta, así que se pueden combinar en un solo pedido y en un solo despacho.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="ma4" id="mq4">
+          ¿Cuánto tardan en responder?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="ma4" role="region" aria-labelledby="mq4">
+          <div>Atendemos de lunes a sábado, de 8:00 a. m. a 5:00 p. m. Si necesitas una respuesta más rápida, escríbenos directamente por WhatsApp al +58 424 5057479.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

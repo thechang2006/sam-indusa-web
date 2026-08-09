@@ -1,0 +1,56 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://grupoindusa.com/#organizacion",
+      "name": "Grupo Indusa",
+      "url": "https://grupoindusa.com/",
+      "logo": "https://grupoindusa.com/assets/logo.png",
+      "description": "Producción, comercialización y distribución de plátano chips y snacks salados naturales. Marcas Tostones Sam y Sharitos. Capital 100 % venezolano.",
+      "email": "mayoristas@grupoindusa.com",
+      "telephone": "+58-424-5057479",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carretera vía Los Cañitos, Local La Guadalupana, Barrio Los Pozones",
+        "addressLocality": "El Vigía",
+        "addressRegion": "Mérida",
+        "addressCountry": "VE"
+      },
+      "areaServed": { "@type": "Country", "name": "Venezuela" },
+      "brand": [
+        { "@type": "Brand", "name": "Tostones Sam" },
+        { "@type": "Brand", "name": "Sharitos" }
+      ],
+      "sameAs": [
+        "https://instagram.com/TostonesSam",
+        "https://facebook.com/TostonesSam88"
+      ]
+    },
+    {
+      "@type": ["LocalBusiness", "FoodEstablishment"],
+      "@id": "https://grupoindusa.com/#planta",
+      "name": "Grupo Indusa — Planta El Vigía",
+      "parentOrganization": { "@id": "https://grupoindusa.com/#organizacion" },
+      "image": "https://grupoindusa.com/assets/abanico.jpg",
+      "telephone": "+58-424-5057479",
+      "email": "mayoristas@grupoindusa.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carretera vía Los Cañitos, Local La Guadalupana, Barrio Los Pozones",
+        "addressLocality": "El Vigía",
+        "addressRegion": "Mérida",
+        "addressCountry": "VE"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 8.6135, "longitude": -71.65 },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ]
+    }
+  ]
+}

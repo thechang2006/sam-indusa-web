@@ -1,0 +1,36 @@
+/* ============================================================
+   DOS CAMINOS
+   ============================================================ */
+.doors{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.door{
+  position:relative;overflow:hidden;isolation:isolate;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:330px;padding:34px;border-radius:var(--r-xl);
+  text-decoration:none;color:#fff;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+  box-shadow:var(--shadow);
+}
+.door::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:linear-gradient(150deg,var(--green),var(--green-dark));
+  transition:transform .7s var(--ease);
+}
+.door--b::before{background:linear-gradient(150deg,var(--red),var(--red-deep))}
+.door::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(circle at 78% 18%,rgba(255,202,40,.34),transparent 58%);
+  opacity:0;transition:opacity .5s var(--ease);
+}
+.door:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.door:hover::before{transform:scale(1.07)}
+.door:hover::after{opacity:1}
+.door-num{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:.78rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:auto;
+}
+.door h3{color:#fff;font-size:clamp(1.55rem,2.6vw,2.1rem);margin-bottom:.35em}
+.door p{color:rgba(255,255,255,.88);max-width:34ch;margin-bottom:18px}
+.door-go{display:inline-flex;align-items:center;gap:9px;font-weight:650;font-size:.95rem}
+.door-go svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.door:hover .door-go svg{transform:translateX(6px)}
+@media (max-width:760px){.doors{grid-template-columns:1fr}.door{min-height:260px;padding:28px}}

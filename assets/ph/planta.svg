@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1067" width="1600" height="1067" role="img" aria-label="Vista general de la planta — pendiente">
+  <rect width="1600" height="1067" fill="#EEF7F2"/>
+  <rect x="14" y="14" width="1572" height="1039" fill="none"
+        stroke="#1B6B38" stroke-opacity=".35" stroke-width="3" stroke-dasharray="16 12" rx="18"/>
+  <g font-family="Inter, system-ui, sans-serif" text-anchor="middle">
+    <text x="800" y="437.47" font-size="58.685" font-weight="700"
+          fill="#B71C1C" letter-spacing="6.402">FALTA ESTA FOTO</text>
+    <text x="800" y="538.835" font-size="66.154" font-weight="700"
+          fill="#0D381E">Vista general de la planta</text>
+    <text x="800" y="613.525" font-size="42.68"
+          fill="#5B6B62">El Vigía, Mérida</text>
+    <text x="800" y="693.55" font-size="48.015" font-weight="600"
+          fill="#1B6B38">1600 × 1067 px</text>
+  </g>
+</svg>

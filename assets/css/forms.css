@@ -1,0 +1,74 @@
+/* ============================================================
+   MAYORISTA
+   ============================================================ */
+.b2b{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,4vw,60px);align-items:start}
+.zones{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.zones li{
+  display:flex;align-items:center;gap:12px;padding:14px 18px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  font-size:.94rem;transition:transform .3s var(--ease),border-color .3s}
+.zones li:hover{transform:translateX(5px);border-color:var(--green-pale)}
+.zones svg{width:18px;height:18px;color:var(--green);flex:none;margin-top:3px}
+.zones li{align-items:flex-start}
+.zones b{color:var(--text);font-weight:650}
+.zones a{color:var(--green);text-decoration:none;font-weight:600}
+.zones a:hover{text-decoration:underline}
+
+/* Pasos del proceso mayorista */
+.b2b-steps{
+  margin-top:22px;padding:26px 28px;border-radius:var(--r-lg);
+  background:var(--surface);border:1px solid var(--line);
+}
+.b2b-steps h3{
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px;
+}
+.b2b-steps ol{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:16px}
+.b2b-steps li{
+  counter-increment:s;position:relative;padding-left:42px;
+  font-size:.94rem;color:var(--muted);line-height:1.5;
+}
+.b2b-steps li::before{
+  content:counter(s);position:absolute;left:0;top:-2px;
+  width:28px;height:28px;display:grid;place-items:center;border-radius:50%;
+  background:var(--green);color:#fff;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:.86rem;font-weight:800;
+}
+.b2b-steps b{display:block;color:var(--text);font-weight:650;font-size:.97rem;margin-bottom:2px}
+
+.form{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);
+  padding:clamp(26px,3.4vw,44px);box-shadow:var(--shadow);
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.86rem;font-weight:600;color:var(--text);margin-bottom:7px}
+.req{color:var(--red)}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 15px;font:inherit;font-size:.96rem;color:var(--text);
+  background:var(--page);border:1.5px solid var(--line);border-radius:var(--r-sm);
+  transition:border-color .25s,box-shadow .25s,background .25s;
+}
+.field textarea{resize:vertical;min-height:110px}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--green-pale)}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:0;border-color:var(--green);background:var(--surface);
+  box-shadow:0 0 0 4px rgba(27,107,56,.13);
+}
+.field input[aria-invalid="true"],.field select[aria-invalid="true"]{border-color:var(--red);box-shadow:0 0 0 4px rgba(229,57,53,.11)}
+.err{display:block;font-size:.82rem;color:var(--red-deep);margin-top:6px;font-weight:550;min-height:0}
+.tier{
+  display:inline-flex;align-items:center;gap:8px;margin-top:9px;
+  padding:7px 14px;border-radius:99px;background:var(--cream);
+  font-size:.83rem;font-weight:650;color:#7a5200;
+}
+/* display:inline-flex ganaría al [hidden] del navegador */
+.tier[hidden]{display:none}
+.tier svg{width:14px;height:14px}
+.form-note{font-size:.85rem;color:var(--muted);margin-top:16px}
+.form-msg{margin-top:16px;padding:15px 18px;border-radius:var(--r-sm);font-size:.93rem;font-weight:550;display:none}
+.form-msg.is-on{display:block}
+.form-msg.ok{background:var(--green-mint);color:#0d5a2c;border-left:4px solid var(--green)}
+.form-msg.bad{background:#fdeceb;color:var(--red-deep);border-left:4px solid var(--red)}
+@media (max-width:900px){.b2b{grid-template-columns:1fr}}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}

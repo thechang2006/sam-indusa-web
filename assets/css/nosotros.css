@@ -1,0 +1,43 @@
+/* ============================================================
+   QUIÉNES SOMOS — bio corporativa, valores y mapa
+   ============================================================ */
+.bio{
+  display:grid;grid-template-columns:1.45fr .55fr;
+  gap:clamp(34px,5vw,68px);align-items:start;
+}
+.bio-copy p{font-size:1.03rem;color:var(--body);margin-bottom:1.1em}
+.bio-lead{
+  font-size:clamp(1.18rem,2vw,1.45rem)!important;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+  line-height:1.35;letter-spacing:-.015em;color:var(--text)!important;
+}
+.bio-lead strong{color:var(--green)}
+
+/* Los hitos estáticos y los valores se retiraron de /nosotros: su sitio lo
+   ocupa ahora la línea de tiempo interactiva (assets/css/timeline.css). */
+
+/* ---------- Sobre nosotros con retrato (portada y /nosotros) ---------- */
+.about-split{
+  display:grid;grid-template-columns:.85fr 1.15fr;
+  gap:clamp(32px,5vw,72px);align-items:center;
+}
+.about-portrait{
+  margin:0;position:relative;
+  border-radius:var(--r-xl);overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  background:var(--alt);aspect-ratio:950/1024;
+}
+.about-portrait img{width:100%;height:100%;object-fit:cover}
+.about-portrait figcaption{
+  position:absolute;inset:auto 0 0;
+  padding:34px 24px 20px;
+  background:linear-gradient(to top, rgba(8,37,20,.88), transparent);
+  color:#fff;font-size:.86rem;font-weight:600;letter-spacing:.01em;
+}
+.about-copy p{font-size:1.03rem;margin-bottom:1.1em}
+
+@media (max-width:880px){
+  .about-split{grid-template-columns:1fr}
+  .about-portrait{max-width:420px;margin-inline:auto}
+}
+

@@ -1,0 +1,66 @@
+/* ============================================================
+   PAGE-HERO — cabecera de las páginas interiores
+   INVECA usa una franja plana con el título en mayúsculas. Aquí:
+   degradado de marca, hoja de ruta y un titular que respira.
+   ============================================================ */
+.page-hero{
+  position:relative;
+  padding:calc(var(--nav-h) + clamp(52px,7vw,92px)) 0 clamp(52px,7vw,92px);
+  background:
+    radial-gradient(120% 130% at var(--hero-glow-x,85%) -20%, var(--hero-glow,rgba(245,166,35,.22)), transparent 58%),
+    linear-gradient(160deg, var(--green-dark), #082514 78%);
+  color:#fff;
+  /* clip en lugar de hidden: si se recorta también en vertical, los botones
+     pierden el resplandor al elevarse con el ratón. */
+  overflow-x:hidden;
+  overflow-x:clip;
+}
+/* El <main> ya lleva padding-top en páginas sin hero; aquí sobra */
+body:not(.has-hero) main > .page-hero:first-child{margin-top:calc(var(--nav-h) * -1)}
+
+/* Antes había aquí un degradado de 120 px que difuminaba el borde inferior.
+   Se veía como una sombra sucia debajo del texto en todas las páginas
+   interiores, así que fuera: el corte limpio se lee mucho mejor. */
+.page-hero .wrap{position:relative;z-index:1}
+.page-hero h1{
+  color:#fff;
+  font-size:clamp(2.1rem,4.6vw,3.6rem);
+  max-width:20ch;margin-bottom:0;
+}
+.page-hero .lede{color:rgba(255,255,255,.78);margin-top:20px;max-width:56ch}
+.page-hero .eyebrow{color:var(--lemon)}
+.page-hero .eyebrow::before{background:var(--lemon)}
+
+/* ---------- Miga de pan ---------- */
+.crumbs{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  list-style:none;margin:0 0 22px;padding:0;
+  font-size:.83rem;color:rgba(255,255,255,.6);
+}
+.crumbs a{color:rgba(255,255,255,.78);text-decoration:none;transition:color .2s}
+.crumbs a:hover{color:#fff;text-decoration:underline}
+.crumbs li + li::before{content:"/";margin-right:8px;color:rgba(255,255,255,.34)}
+.crumbs [aria-current]{color:#fff;font-weight:600}
+
+/* ---------- Variación por página ----------
+   Todas comparten la misma estructura, pero mover el foco de luz y el
+   acento evita que parezcan la misma pantalla repetida cinco veces. */
+.page-hero--elaboracion{--hero-glow-x:16%;--hero-glow:rgba(229,57,53,.2)}
+.page-hero--mayoristas {--hero-glow-x:88%;--hero-glow:rgba(46,139,87,.28)}
+.page-hero--nosotros   {--hero-glow-x:50%;--hero-glow:rgba(245,166,35,.24)}
+.page-hero--contacto   {--hero-glow-x:22%;--hero-glow:rgba(255,202,40,.2)}
+.page-hero--marcas     {--hero-glow-x:95%;--hero-glow:rgba(229,57,53,.16)}
+
+/* Variante clara, para páginas que no quieren la franja oscura */
+.page-hero--light{
+  background:linear-gradient(170deg, var(--green-mint), var(--page) 72%);
+  color:var(--body);
+}
+.page-hero--light h1{color:var(--text)}
+.page-hero--light .lede{color:var(--muted)}
+.page-hero--light .eyebrow{color:var(--green)}
+.page-hero--light .eyebrow::before{background:var(--red)}
+.page-hero--light .crumbs{color:var(--muted)}
+.page-hero--light .crumbs a{color:var(--green)}
+.page-hero--light .crumbs [aria-current]{color:var(--text)}
+.page-hero--light .crumbs li + li::before{color:var(--line)}

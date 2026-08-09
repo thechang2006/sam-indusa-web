@@ -1,0 +1,22 @@
+/* ---------- Botones ---------- */
+.btn{
+  --btn-bg:var(--red); --btn-fg:#fff;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 28px;border:2px solid transparent;border-radius:99px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font-weight:650;font-size:.97rem;text-decoration:none;cursor:pointer;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .25s,border-color .25s,color .25s;
+  box-shadow:0 10px 26px -12px rgba(229,57,53,.6);
+}
+.btn:hover{--btn-bg:var(--red-deep);transform:translateY(-3px);box-shadow:0 18px 34px -14px rgba(183,28,28,.62)}
+.btn:active{transform:translateY(-1px)}
+.btn svg{width:19px;height:19px;flex:none}
+.btn--ghost{--btn-bg:transparent;--btn-fg:var(--green-dark);border-color:var(--green);box-shadow:none}
+.btn--ghost:hover{--btn-bg:var(--green);--btn-fg:#fff;border-color:var(--green)}
+.btn--gold{--btn-bg:transparent;--btn-fg:var(--lemon);border-color:var(--lemon);box-shadow:none}
+.btn--gold:hover{--btn-bg:var(--lemon);--btn-fg:var(--green-dark);border-color:var(--lemon)}
+.btn--wa{--btn-bg:#25D366;--btn-fg:#062e14;box-shadow:0 10px 26px -12px rgba(37,211,102,.6)}
+.btn--wa:hover{--btn-bg:#1ebe5b;--btn-fg:#062e14}
+.btn--lg{padding:18px 34px;font-size:1.03rem}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px}
+.btn-row--center{justify-content:center}

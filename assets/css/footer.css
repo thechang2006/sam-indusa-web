@@ -1,0 +1,55 @@
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.foot{background:var(--green-dark);color:rgba(255,255,255,.66);padding:clamp(56px,7vw,88px) 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.7fr .8fr .9fr 1.4fr;gap:clamp(30px,4vw,52px)}
+.foot h4{color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+.foot-brand img{width:60px;margin-bottom:16px}
+.foot-brand p{font-size:.94rem;max-width:32ch}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.foot a{color:rgba(255,255,255,.72);text-decoration:none;font-size:.94rem;transition:color .22s}
+.foot a:hover{color:var(--lemon)}
+.foot-c li{display:flex;align-items:flex-start;gap:11px;font-size:.94rem}
+.foot-c svg{width:17px;height:17px;color:var(--lemon);flex:none;margin-top:3px}
+.socials{display:flex;gap:10px;margin-top:20px}
+.socials a{
+  width:42px;height:42px;display:grid;place-items:center;border-radius:12px;
+  background:rgba(255,255,255,.08);color:#fff;
+  transition:background .28s,transform .28s var(--ease),color .28s;
+}
+.socials a:hover{background:var(--lemon);color:var(--green-dark);transform:translateY(-4px)}
+.socials svg{width:19px;height:19px}
+.foot-btm{
+  margin-top:52px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);
+  display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-size:.86rem;
+}
+.foot-legal{display:flex;flex-wrap:wrap;gap:20px}
+.foot-legal a{font-size:.86rem}
+
+/* Crédito de autoría, al final de todas las páginas */
+.foot-credit{
+  margin:20px 0 0;padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:.8rem;color:rgba(255,255,255,.5);
+}
+.foot-credit b{color:rgba(255,255,255,.72);font-weight:600}
+.foot-credit a{color:rgba(255,255,255,.6);text-decoration:none;text-underline-offset:3px}
+.foot-credit a:hover{color:var(--lemon);text-decoration:underline}
+@media (max-width:980px){.foot-grid{grid-template-columns:1fr 1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media (max-width:700px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot-grid{grid-template-columns:1fr}}
+
+/* Flotantes */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;flex-direction:column;gap:11px}
+.fab{
+  width:52px;height:52px;display:grid;place-items:center;border:0;border-radius:50%;
+  cursor:pointer;box-shadow:0 12px 28px -10px rgba(13,56,30,.5);
+  transition:transform .3s var(--ease),opacity .3s,visibility .3s,background .25s;
+}
+.fab svg{width:24px;height:24px}
+.fab--wa{background:#25D366;color:#fff}
+.fab--wa:hover{background:#1ebe5b;transform:scale(1.09)}
+.fab--top{background:var(--surface);color:var(--green-dark);border:1px solid var(--line);opacity:0;visibility:hidden}
+.fab--top.is-on{opacity:1;visibility:visible}
+.fab--top:hover{background:var(--green-dark);color:#fff;transform:translateY(-4px)}
+.fab--top svg{width:20px;height:20px}
