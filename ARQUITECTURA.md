@@ -19,7 +19,7 @@ Guía rápida para tocar el sitio sin tener que abrirlo entero.
 | Dirección, teléfono, correo, horario | `src/partials/footer.html` y `src/pages/contacto.html` |
 | El texto de una página concreta | `src/pages/<esa-pagina>.html` |
 | Título y descripción para Google de una página | bloque `<!--meta-->` al principio de esa página |
-| Los sabores o presentaciones del configurador | `assets/js/configurador.js` |
+| Sabores, presentaciones o fotos de producto | bloque `<script id="catalogo">` al principio de `src/pages/tostones-sam.html` o `sharitos.html` |
 | Los 9 pasos del proceso | `src/pages/elaboracion.html` |
 | Las coordenadas del mapa | `assets/js/map.js` (objeto `OFICINA`) |
 | A dónde llega el formulario | `assets/js/core.js` (constante `FORMSPREE`) |
@@ -205,6 +205,36 @@ degradado de luz por CSS, así que no se ve vacío.
 Usa `flyer--full` y una sola imagen de 2400 px de ancho. Pierdes que el texto
 se adapte al móvil y que Google lo lea como texto, así que solo lo recomiendo
 para campañas puntuales, no para los bloques permanentes.
+
+---
+
+## El configurador de producto
+
+`/tostones-sam` y `/sharitos` son la **misma página con distinto catálogo**.
+El catálogo no vive en el JavaScript: cada página lleva el suyo en un bloque
+al principio, así que cambiar un sabor, una presentación o una foto es editar
+solo esa página.
+
+```html
+<script type="application/json" id="catalogo">
+{
+  "marca": "Sharitos",
+  "producto": "Sharitos",
+  "presentaciones": {
+    "30": { "label": "30 g", "tag": "Individual", "use": "…", "img": "assets/…" }
+  },
+  "sabores": {
+    "natural": { "name": "Natural con Sal", "color": "#F5A623", "desc": "…" }
+  }
+}
+</script>
+```
+
+Los botones de presentación y sabor del HTML tienen que coincidir en sus
+`data-size` y `data-flavor` con las claves de ese JSON.
+
+Para una marca nueva: se copia `sharitos.html`, se cambia el catálogo y ya.
+`assets/js/configurador.js` no se toca nunca.
 
 ---
 

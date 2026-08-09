@@ -6,19 +6,32 @@
 
   /* ============================================================
      CONFIGURADOR DE PRODUCTO
+     El catálogo NO vive aquí: cada página lleva el suyo en un bloque
+     <script type="application/json" id="catalogo">. Así la misma pieza
+     sirve para Tostones Sam, para Sharitos y para la marca que venga,
+     y cambiar un sabor o una presentación es editar solo esa página.
      ============================================================ */
-  var SIZES = {
-    "30":  { label:"30 g",  tag:"Individual", use:"meriendas rápidas, colegios, antojo diario",   img:"assets/producto-30g.jpg" },
-    "80":  { label:"80 g",  tag:"Compartir",  use:"reuniones pequeñas, snack de oficina",         img:"assets/producto-80g.jpg" },
-    "150": { label:"150 g", tag:"Familiar",   use:"fiestas, reuniones familiares, para acompañar con salsas", img:"assets/producto-150g.jpg" }
-  };
-  var FLAVORS = {
-    natural: { name:"Natural con Sal", color:"#F5A623", desc:"Sal marina y punto justo de fritura. El de siempre, el que no falla." },
-    limon:   { name:"Limón",           color:"#FFCA28", desc:"Un toque cítrico que despierta el sabor del plátano frito." },
-    ajo:     { name:"Ajo",             color:"#E53935", desc:"Ajito criollo dosificado al detalle. El favorito para compartir." },
-    picante: { name:"Picante",         color:"#B71C1C", desc:"Picor real, no solo color: para quienes piden «más pique»." }
-  };
-  var curSize = "30", curFlavor = "natural";
+  var datos = $("#catalogo");
+  if(!datos){
+    console.warn("Configurador: falta el bloque JSON #catalogo en la página.");
+    return;
+  }
+
+  var CAT;
+  try{
+    CAT = JSON.parse(datos.textContent);
+  }catch(e){
+    console.warn("Configurador: el bloque #catalogo no es JSON válido —", e.message);
+    return;
+  }
+
+  var SIZES   = CAT.presentaciones;
+  var FLAVORS = CAT.sabores;
+  var MARCA   = CAT.marca    || "";
+  var PIEZA   = CAT.producto || "";
+
+  var curSize   = Object.keys(SIZES)[0];
+  var curFlavor = Object.keys(FLAVORS)[0];
 
   var prodImg = $("#prodImg"), sizeBadge = $("#sizeBadge"), ribbon = $("#ribbon");
   var outName = $("#outName"), outDesc = $("#outDesc"), outUse = $("#outUse");
@@ -29,17 +42,20 @@
 
     sizeBadge.textContent = s.label;
     ribbon.style.background = f.color;
-    outName.textContent = "Tostón " + f.name + " · " + s.label;
+    outName.textContent = (PIEZA ? PIEZA + " " : "") + f.name + " · " + s.label;
     outDesc.textContent = f.desc;
     outUse.textContent = "Ideal para: " + s.use + ".";
-    prodWa.href = waLink("Hola Indusa, me interesa el Tostón " + f.name + " en presentación de " + s.label + ".");
+    prodWa.href = waLink(
+      "Hola Grupo Indusa, me interesa " + MARCA + " " + f.name +
+      " en presentación de " + s.label + "."
+    );
     imgNote.textContent = "La foto muestra el empaque de " + s.label + ". El diseño varía según el sabor.";
 
     if(changedSize){
       prodImg.style.opacity = "0";
       setTimeout(function(){
         prodImg.src = s.img;
-        prodImg.alt = "Empaque de Tostones Sam de " + s.label;
+        prodImg.alt = "Empaque de " + MARCA + " de " + s.label;
         prodImg.style.opacity = "1";
       }, 170);
     }

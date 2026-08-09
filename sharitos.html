@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Sharitos — Snacks naturales de calidad al mejor precio | Grupo Indusa</title>
-<meta name="description" content="Sharitos es la marca de acceso de Grupo Indusa: snacks salados naturales de excelente calidad al mejor precio, producidos en la planta de El Vigía, Estado Mérida.">
+<meta name="description" content="Sharitos, la marca de acceso de Grupo Indusa: snacks salados naturales de excelente calidad al mejor precio, producidos en la planta de El Vigía, Estado Mérida.">
 <meta name="theme-color" content="#0D381E">
 <link rel="canonical" href="https://grupoindusa.com/sharitos">
 
@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Grupo Indusa">
 <meta property="og:url" content="https://grupoindusa.com/sharitos">
 <meta property="og:title" content="Sharitos — Snacks naturales de calidad al mejor precio | Grupo Indusa">
-<meta property="og:description" content="Sharitos es la marca de acceso de Grupo Indusa: snacks salados naturales de excelente calidad al mejor precio, producidos en la planta de El Vigía, Estado Mérida.">
+<meta property="og:description" content="Sharitos, la marca de acceso de Grupo Indusa: snacks salados naturales de excelente calidad al mejor precio, producidos en la planta de El Vigía, Estado Mérida.">
 <meta property="og:image" content="https://grupoindusa.com/assets/campo-a-mesa.jpg">
 <meta property="og:locale" content="es_VE">
 <meta name="twitter:card" content="summary_large_image">
@@ -36,11 +36,15 @@
   <link rel="stylesheet" href="assets/css/reveal.css">
   <link rel="stylesheet" href="assets/css/page-hero.css">
   <link rel="stylesheet" href="assets/css/brand.css">
-  <link rel="stylesheet" href="assets/css/flyer.css">
+  <link rel="stylesheet" href="assets/css/configurador.css">
+  <link rel="stylesheet" href="assets/css/proceso.css">
+  <link rel="stylesheet" href="assets/css/faq.css">
 
 <script src="assets/js/core.js" defer></script>
   <script src="assets/js/nav.js" defer></script>
   <script src="assets/js/reveal.js" defer></script>
+  <script src="assets/js/configurador.js" defer></script>
+  <script src="assets/js/faq.js" defer></script>
 </head>
 <body>
 
@@ -136,74 +140,178 @@
     <p class="eyebrow">Marca</p>
     <h1>Sharitos</h1>
     <p class="lede">
-      Snacks de excelente calidad al mejor precio. La misma planta, el mismo control,
-      en un formato pensado para el día a día.
+      Snacks de excelente calidad al mejor precio. La misma planta y el mismo control
+      que el resto del grupo, en un formato pensado para el día a día.
     </p>
   </div>
 </section>
 
-<section class="flyer flyer--sharitos flyer--dark" aria-labelledby="que-t">
-  <div class="wrap flyer-in">
-    <div class="flyer-copy">
-      <p class="eyebrow" data-reveal="up">Qué es Sharitos</p>
-      <h2 id="que-t" class="flyer-logo--text" data-reveal="up" style="--i:1">La opción de todos los días</h2>
-      <p class="lede" data-reveal="up" style="--i:2">
-        Sharitos nace para llegar a más mesas. Sale de la misma línea de producción que
-        Tostones Sam y pasa por los mismos controles: selección de materia prima, fritura
-        con temperatura controlada y sellado automático.
-      </p>
-      <p data-reveal="up" style="--i:3">
-        Lo que cambia es el enfoque comercial: presentaciones y precio pensados para el
-        consumo cotidiano y para los canales de mayor rotación.
-      </p>
+<!-- ===== CONFIGURADOR =====
+     Mismo bloque que en Tostones Sam. El catálogo va aquí, no en el
+     JavaScript: cambiar un sabor, una presentación o una foto es
+     editar solo este bloque. -->
+<script type="application/json" id="catalogo">
+{
+  "marca": "Sharitos",
+  "producto": "Sharitos",
+  "presentaciones": {
+    "30":  { "label": "30 g",  "tag": "Individual", "use": "meriendas rápidas, colegios, antojo diario", "img": "assets/ph/sharitos-30.svg" },
+    "80":  { "label": "80 g",  "tag": "Compartir",  "use": "reuniones pequeñas, snack de oficina", "img": "assets/ph/sharitos-80.svg" },
+    "150": { "label": "150 g", "tag": "Familiar",   "use": "fiestas, reuniones familiares, para acompañar con salsas", "img": "assets/ph/sharitos-150.svg" }
+  },
+  "sabores": {
+    "natural": { "name": "Natural con Sal", "color": "#F5A623", "desc": "Sal marina y punto justo de fritura. El de todos los días." },
+    "limon":   { "name": "Limón",           "color": "#FFCA28", "desc": "Un toque cítrico que despierta el sabor del plátano frito." },
+    "ajo":     { "name": "Ajo",             "color": "#E53935", "desc": "Ajito criollo dosificado al detalle. El favorito para compartir." },
+    "picante": { "name": "Picante",         "color": "#B71C1C", "desc": "Picor real, no solo color: para quienes piden «más pique»." }
+  }
+}
+</script>
 
-      <ul class="seals" data-reveal="up" style="--i:4">
-        <li><svg><use href="#i-leaf"></use></svg>Sin gluten</li>
-        <li><svg><use href="#i-leaf"></use></svg>Vegano</li>
-        <li><svg><use href="#i-shield"></use></svg>Sin grasas trans</li>
-        <li><svg><use href="#i-drop"></use></svg>Sin conservantes</li>
-      </ul>
-
-      <div class="btn-row" data-reveal="up" style="--i:5">
-        <a class="btn" href="mayoristas.html#cotizar">Pedir cotización <svg><use href="#i-arrow"></use></svg></a>
-        <a class="btn btn--gold" href="elaboracion.html">Cómo se hace</a>
-      </div>
-    </div>
-
-    <div class="flyer-art" data-reveal="right">
-      <img class="flyer-pack" src="assets/ph/sharitos-producto.svg" alt="Empaque de Sharitos" width="900" height="1100" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<section class="sec">
+<section class="sec" id="productos" aria-labelledby="productos-t">
   <div class="wrap">
     <div class="sec-head sec-head--center">
       <p class="eyebrow" data-reveal="up">Catálogo</p>
-      <h2 data-reveal="up" style="--i:1">Presentaciones</h2>
-      <p class="lede" data-reveal="up" style="--i:2">
-        Estamos terminando la ficha de producto de Sharitos. Mientras tanto, escríbenos
-        y te enviamos el catálogo con presentaciones, gramajes y precios por escala.
-      </p>
-      <div class="btn-row btn-row--center" data-reveal="up" style="--i:3">
-        <a class="btn btn--wa" href="https://wa.me/584245057479?text=Hola%20Grupo%20Indusa%2C%20quiero%20el%20cat%C3%A1logo%20de%20Sharitos." target="_blank" rel="noopener">
-          <svg><use href="#i-wa"></use></svg> Pedir el catálogo
-        </a>
+      <h2 id="productos-t" data-reveal="up" style="--i:1">Un Sharitos para cada momento</h2>
+      <p class="lede" data-reveal="up" style="--i:2">Elige presentación y sabor. Te armamos la cotización con esa combinación exacta.</p>
+    </div>
+
+    <div class="config" data-reveal="scale">
+      <div class="config-stage">
+        <span class="flavor-ribbon" id="ribbon" aria-hidden="true"></span>
+        <span class="size-badge" id="sizeBadge">30 g</span>
+        <img id="prodImg" src="assets/ph/sharitos-30.svg" alt="Empaque de Sharitos de 30 gramos" width="900" height="900" loading="lazy">
+      </div>
+
+      <div>
+        <div class="ctrl">
+          <span class="ctrl-lbl" id="lblSize">Presentación</span>
+          <div class="seg" role="radiogroup" aria-labelledby="lblSize" id="segSize">
+            <button type="button" role="radio" aria-checked="true"  data-size="30"  tabindex="0"><b>30 g</b><i>Individual</i></button>
+            <button type="button" role="radio" aria-checked="false" data-size="80"  tabindex="-1"><b>80 g</b><i>Compartir</i></button>
+            <button type="button" role="radio" aria-checked="false" data-size="150" tabindex="-1"><b>150 g</b><i>Familiar</i></button>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <span class="ctrl-lbl" id="lblFlavor">Sabor</span>
+          <div class="flavors" role="radiogroup" aria-labelledby="lblFlavor" id="segFlavor">
+            <button class="flavor" type="button" role="radio" aria-checked="true"  data-flavor="natural" tabindex="0"  style="--fc:#F5A623"><span class="dot"></span><span>Natural con sal</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="limon"   tabindex="-1" style="--fc:#FFCA28"><span class="dot"></span><span>Limón</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="ajo"     tabindex="-1" style="--fc:#E53935"><span class="dot"></span><span>Ajo</span></button>
+            <button class="flavor" type="button" role="radio" aria-checked="false" data-flavor="picante" tabindex="-1" style="--fc:#B71C1C"><span class="dot"></span><span>Picante</span></button>
+          </div>
+        </div>
+
+        <div class="config-out" aria-live="polite">
+          <h3 id="outName">Sharitos Natural con Sal · 30 g</h3>
+          <p id="outDesc">Sal marina y punto justo de fritura. El de todos los días.</p>
+          <span class="use" id="outUse">Ideal para: meriendas rápidas, colegios, antojo diario.</span>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn--wa" id="prodWa" href="#" target="_blank" rel="noopener">
+            <svg><use href="#i-wa"></use></svg> Consultar esta combinación
+          </a>
+          <a class="btn btn--ghost" href="mayoristas.html#cotizar">Cotizar al mayor</a>
+        </div>
+        <p class="hint" id="imgNote">La foto muestra el empaque real de la presentación seleccionada.</p>
+        <p class="hint"><mark>Confirmar presentaciones y sabores de Sharitos</mark> — ahora mismo reproducen los de Tostones Sam.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec sec--mint">
+<!-- ===== SELLOS Y CIFRAS ===== -->
+<section class="sec sec--dark" aria-labelledby="specs-t">
   <div class="wrap">
     <div class="sec-head sec-head--center">
-      <p class="eyebrow" data-reveal="up">También te puede interesar</p>
-      <h2 data-reveal="up" style="--i:1">La otra marca del grupo</h2>
-      <p class="lede" data-reveal="up" style="--i:2">
-        Tostones Sam: plátano chips en cuatro sabores y tres presentaciones.
-      </p>
-      <div class="btn-row btn-row--center" data-reveal="up" style="--i:3">
-        <a class="btn btn--ghost btn--lg" href="tostones-sam.html">Ver Tostones Sam <svg><use href="#i-arrow"></use></svg></a>
+      <p class="eyebrow" data-reveal="up">Lo que hay dentro</p>
+      <h2 id="specs-t" data-reveal="up" style="--i:1">Precio de acceso, calidad de siempre</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat" data-reveal="up">
+        <span class="stat-ic"><svg><use href="#i-leaf"></use></svg></span>
+        <b><span class="num" data-to="100">0</span><span class="u">%</span></b>
+        <span class="stat-l">Plátano natural</span>
+        <span class="stat-d">Materia prima cultivada y seleccionada en el Sur del Lago de Maracaibo.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:1">
+        <span class="stat-ic"><svg><use href="#i-shield"></use></svg></span>
+        <b><span class="num" data-to="0">0</span><span class="u">g</span></b>
+        <span class="stat-l">Grasas trans</span>
+        <span class="stat-d">Fritura controlada, sin aceites parcialmente hidrogenados.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:2">
+        <span class="stat-ic"><svg><use href="#i-drop"></use></svg></span>
+        <b><span class="num" data-to="4">0</span></b>
+        <span class="stat-l">Sabores</span>
+        <span class="stat-d">Natural con sal, limón, ajo criollo y picante real.</span>
+      </div>
+      <div class="stat" data-reveal="up" style="--i:3">
+        <span class="stat-ic"><svg><use href="#i-seal"></use></svg></span>
+        <b><span class="num" data-to="3">0</span></b>
+        <span class="stat-l">Presentaciones</span>
+        <span class="stat-d">30 g individual, 80 g para compartir y 150 g familiar.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SELLOS ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Certificaciones y garantías</p>
+      <h2 data-reveal="up" style="--i:1">Apto para cualquier mesa</h2>
+    </div>
+    <ul class="seals seals--center" data-reveal="up">
+      <li><svg><use href="#i-leaf"></use></svg>Sin gluten</li>
+      <li><svg><use href="#i-leaf"></use></svg>Vegano</li>
+      <li><svg><use href="#i-shield"></use></svg>Sin grasas trans</li>
+      <li><svg><use href="#i-drop"></use></svg>Sin conservantes</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== PREGUNTAS ===== -->
+<section class="sec sec--alt" id="faq" aria-labelledby="faq-t">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <p class="eyebrow" data-reveal="up">Preguntas frecuentes</p>
+      <h2 id="faq-t" data-reveal="up" style="--i:1">Sobre el producto</h2>
+    </div>
+
+    <div class="faq" data-reveal="up">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="sa1" id="sq1">
+          ¿En qué se diferencia de Tostones Sam?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="sa1" role="region" aria-labelledby="sq1">
+          <div>Salen de la misma planta y pasan por los mismos controles. Lo que cambia es el enfoque comercial: Sharitos está pensada para el consumo diario y para los canales de mayor rotación.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="sa2" id="sq2">
+          ¿Cuánto tiempo se mantienen crujientes?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="sa2" role="region" aria-labelledby="sq2">
+          <div>El empaque va sellado al vacío con nitrógeno alimentario, lo que mantiene la crocancia por varios meses sin usar conservantes. La fecha exacta de vencimiento va impresa en cada lote.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" aria-controls="sa3" id="sq3">
+          ¿Dónde puedo comprarlos si no soy negocio?
+          <i aria-hidden="true"><svg><use href="#i-plus"></use></svg></i>
+        </button>
+        <div class="faq-a" id="sa3" role="region" aria-labelledby="sq3">
+          <div>Escríbenos por WhatsApp al +58 424 5057479 y te indicamos los puntos de venta más cercanos.</div>
+        </div>
       </div>
     </div>
   </div>

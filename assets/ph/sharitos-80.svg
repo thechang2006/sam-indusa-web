@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" aria-label="Empaque Sharitos 80 g — pendiente">
+  <rect width="900" height="900" fill="#EEF7F2"/>
+  <rect x="14" y="14" width="872" height="872" fill="none"
+        stroke="#1B6B38" stroke-opacity=".35" stroke-width="3" stroke-dasharray="16 12" rx="18"/>
+  <g font-family="Inter, system-ui, sans-serif" text-anchor="middle">
+    <text x="450" y="369" font-size="49.5" font-weight="700"
+          fill="#B71C1C" letter-spacing="5.4">FALTA ESTA FOTO</text>
+    <text x="450" y="454.5" font-size="55.8" font-weight="700"
+          fill="#0D381E">Empaque Sharitos 80 g</text>
+    <text x="450" y="517.5" font-size="36"
+          fill="#5B6B62">Mismo encuadre que producto-80g.jpg</text>
+    <text x="450" y="585" font-size="40.5" font-weight="600"
+          fill="#1B6B38">900 × 900 px</text>
+  </g>
+</svg>

@@ -146,7 +146,27 @@
   </div>
 </section>
 
-<!-- ===== CONFIGURADOR ===== -->
+<!-- ===== CONFIGURADOR =====
+     El catálogo va aquí, no en el JavaScript: cambiar un sabor, una
+     presentación o una foto es editar solo este bloque. -->
+<script type="application/json" id="catalogo">
+{
+  "marca": "Tostones Sam",
+  "producto": "Tostón",
+  "presentaciones": {
+    "30":  { "label": "30 g",  "tag": "Individual", "use": "meriendas rápidas, colegios, antojo diario", "img": "assets/producto-30g.jpg" },
+    "80":  { "label": "80 g",  "tag": "Compartir",  "use": "reuniones pequeñas, snack de oficina", "img": "assets/producto-80g.jpg" },
+    "150": { "label": "150 g", "tag": "Familiar",   "use": "fiestas, reuniones familiares, para acompañar con salsas", "img": "assets/producto-150g.jpg" }
+  },
+  "sabores": {
+    "natural": { "name": "Natural con Sal", "color": "#F5A623", "desc": "Sal marina y punto justo de fritura. El de siempre, el que no falla." },
+    "limon":   { "name": "Limón",           "color": "#FFCA28", "desc": "Un toque cítrico que despierta el sabor del plátano frito." },
+    "ajo":     { "name": "Ajo",             "color": "#E53935", "desc": "Ajito criollo dosificado al detalle. El favorito para compartir." },
+    "picante": { "name": "Picante",         "color": "#B71C1C", "desc": "Picor real, no solo color: para quienes piden «más pique»." }
+  }
+}
+</script>
+
 <section class="sec" id="productos" aria-labelledby="productos-t">
   <div class="wrap">
     <div class="sec-head sec-head--center">

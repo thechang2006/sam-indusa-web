@@ -23,6 +23,12 @@ const FALTAN = [
   ['sharitos-grupo',    1400,  900, 'Flyer Sharitos',              'PNG transparente · productos juntos'],
   ['logo-sharitos',     1024,  300, 'Logo Sharitos',               'SVG o PNG transparente, horizontal'],
   ['sharitos-producto',  900, 1100, 'Empaque Sharitos',            'PNG con fondo transparente'],
+
+  /* Las tres presentaciones de Sharitos, para su configurador.
+     Mismo encuadre que producto-30g/80g/150g de Tostones Sam. */
+  ['sharitos-30',        900,  900, 'Empaque Sharitos 30 g',       'Mismo encuadre que producto-30g.jpg'],
+  ['sharitos-80',        900,  900, 'Empaque Sharitos 80 g',       'Mismo encuadre que producto-80g.jpg'],
+  ['sharitos-150',       900,  900, 'Empaque Sharitos 150 g',      'Mismo encuadre que producto-150g.jpg'],
   ['equipo',            1600, 1067, 'Equipo en planta',            'Personal trabajando'],
   ['planta',            1600, 1067, 'Vista general de la planta',  'El Vigía, Mérida'],
   ['proceso-01',        1600, 1067, '01 · Selección materia prima','Plátano recién llegado del campo'],
