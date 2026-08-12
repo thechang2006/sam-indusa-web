@@ -64,3 +64,7 @@ body:not(.has-hero) main > .page-hero:first-child{margin-top:calc(var(--nav-h) *
 .page-hero--light .crumbs a{color:var(--green)}
 .page-hero--light .crumbs [aria-current]{color:var(--text)}
 .page-hero--light .crumbs li + li::before{color:var(--line)}
+
+/* Las migas medían 16px de alto: por debajo del mínimo cómodo en táctil */
+.crumbs a{display:inline-block;padding:8px 0}
+.crumbs{gap:6px}

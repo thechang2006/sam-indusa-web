@@ -116,9 +116,14 @@ body:not(.has-hero) main{padding-top:var(--nav-h)}
   }
   .nav.is-open .nav-panel{opacity:1;visibility:visible;transform:none;overflow-y:auto}
 
+  /* OJO: aquí NO se puede poner visibility:visible. La visibilidad se
+     hereda, así que ponerla en los hijos anula el visibility:hidden del
+     panel cerrado: el menú se veía transparente pero sus enlaces seguían
+     capturando los toques sobre la mitad superior de la página.
+     Quien esconde y enseña es .nav-panel, y solo él. */
   .nav-links,.nav-cta{
     position:static;background:transparent;padding:0;box-shadow:none;
-    opacity:1;visibility:visible;transform:none;
+    transform:none;
     flex-direction:column;align-items:stretch;gap:6px;
   }
   .nav-cta{margin-top:10px}
@@ -133,11 +138,18 @@ body:not(.has-hero) main{padding-top:var(--nav-h)}
     margin:2px 0 6px;padding:4px 0 4px 12px;
     border:0;border-left:2px solid var(--line);border-radius:0;
     background:transparent;box-shadow:none;
-    display:none;opacity:1;visibility:visible;transform:none;
+    /* inherit, no visible: hay que deshacer el visibility:hidden que trae
+       la regla de escritorio, pero sin desligarse del panel. Con `visible`
+       el submenú seguiría capturando toques con el menú cerrado. */
+    display:none;opacity:1;visibility:inherit;transform:none;
   }
-  .has-sub.is-open .subnav{display:block}
-  /* En táctil el hover no debe abrirlo: solo el clic */
-  .has-sub:hover .subnav:not(.is-open){display:none}
+  /* En móvil el submenú solo se abre al pulsar. No hace falta ninguna
+     regla que anule el hover: la base ya es display:none y el hover no
+     lo cambia.
+     Aquí hubo una regla `.has-sub:hover .subnav:not(.is-open){display:none}`
+     que rompía el menú en el teléfono: el :not() la subía a (0,4,0), por
+     encima de la de abajo (0,3,0), y como al tocar en táctil el :hover se
+     queda pegado, el submenú no llegaba a mostrarse nunca. */
   .has-sub.is-open .subnav{display:block}
   .has-sub::after{display:none}
 }

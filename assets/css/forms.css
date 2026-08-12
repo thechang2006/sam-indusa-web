@@ -72,3 +72,6 @@
 .form-msg.bad{background:#fdeceb;color:var(--red-deep);border-left:4px solid var(--red)}
 @media (max-width:900px){.b2b{grid-template-columns:1fr}}
 @media (max-width:560px){.grid2{grid-template-columns:1fr}}
+
+/* El correo del panel lateral era de 19px de alto */
+.zones a{display:inline-block;padding:6px 0}

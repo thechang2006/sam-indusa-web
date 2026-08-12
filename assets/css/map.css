@@ -53,3 +53,6 @@
   .map-holder{min-height:340px}
 }
 @media (max-width:520px){.values{grid-template-columns:1fr}}
+
+/* Teléfono y correo: eran de 19px de alto, poco para el dedo */
+.map-data a{display:inline-block;padding:6px 0}

@@ -3,7 +3,7 @@
    ============================================================ */
 .foot{background:var(--green-dark);color:rgba(255,255,255,.66);padding:clamp(56px,7vw,88px) 0 30px}
 .foot-grid{display:grid;grid-template-columns:1.7fr .8fr .9fr 1.4fr;gap:clamp(30px,4vw,52px)}
-.foot h4{color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+.foot h3{color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
 .foot-brand img{width:60px;margin-bottom:16px}
 .foot-brand p{font-size:.94rem;max-width:32ch}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
@@ -53,3 +53,13 @@
 .fab--top.is-on{opacity:1;visibility:visible}
 .fab--top:hover{background:var(--green-dark);color:#fff;transform:translateY(-4px)}
 .fab--top svg{width:20px;height:20px}
+
+/* ---------- Zonas táctiles ----------
+   Los enlaces del pie medían 19px de alto: en un teléfono es muy poco
+   para acertar. El padding los sube a ~43px sin cambiar la separación
+   visual, porque a cambio se quita el gap de la lista. */
+.foot nav ul{gap:0}
+.foot nav ul a{display:block;padding:12px 0}
+.foot-c a{display:inline-block;padding:7px 0}
+.foot-credit a{display:inline-block;padding:6px 0}
+.foot-legal a{display:inline-block;padding:7px 0}

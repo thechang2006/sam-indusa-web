@@ -51,6 +51,23 @@ node tools/check.js
 Busca enlaces rotos, imágenes que faltan, iconos no definidos e ids duplicados.
 Sale con error si encuentra algo, así que sirve para no subir nada roto.
 
+```bash
+node tools/audit-css.js
+```
+Busca trampas de CSS que **solo se notan en el teléfono**: reglas `:hover`
+que esconden algo, o que pesan más que la regla de estado del mismo elemento.
+En táctil el `:hover` se queda pegado al tocar, así que esas reglas anulan el
+estado y el componente deja de funcionar. Así se rompió el submenú
+«Nuestras marcas»: `.has-sub:hover .subnav:not(.is-open)` pesaba (0,4,0) —el
+`:not()` suma— frente a `.has-sub.is-open .subnav` (0,3,0).
+
+**Regla práctica:** en móvil, quien esconde y enseña debe ser **un solo
+elemento**, y sus hijos no deben tocar `visibility`. Poner
+`visibility:visible` en un hijo anula el `visibility:hidden` del padre, y el
+menú cerrado sigue capturando toques aunque no se vea. Si hace falta
+deshacer un `visibility:hidden` heredado de otra regla, se usa
+`visibility:inherit`, nunca `visible`.
+
 ---
 
 ## Cómo está organizado
