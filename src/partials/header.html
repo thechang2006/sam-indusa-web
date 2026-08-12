@@ -12,6 +12,11 @@
       <svg id="burgerIcon"><use href="#i-menu"></use></svg>
     </button>
 
+    <!-- En móvil, enlaces y CTA forman UN solo panel desplegable.
+         Antes eran dos capas fijas con el mismo top y se pisaban: el botón
+         rojo caía encima de los enlaces. En escritorio este div no existe
+         para el diseño (display:contents), así que nada cambia ahí. -->
+    <div class="nav-panel">
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" data-nav="inicio">Inicio</a></li>
 
@@ -48,7 +53,8 @@
       <li><a href="contacto.html" data-nav="contacto">Contacto</a></li>
     </ul>
 
-    <div class="nav-cta"><a class="btn" href="mayoristas.html#cotizar">Pedir cotización</a></div>
+      <div class="nav-cta"><a class="btn" href="mayoristas.html#cotizar">Pedir cotización</a></div>
+    </div>
   </div>
   <div class="nav-progress" aria-hidden="true"><i id="navProgress"></i></div>
 </header>

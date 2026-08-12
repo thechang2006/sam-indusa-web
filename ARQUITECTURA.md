@@ -15,6 +15,7 @@ Guía rápida para tocar el sitio sin tener que abrirlo entero.
 | La línea de tiempo de `/nosotros` | `src/pages/nosotros.html` (solo HTML) |
 | El crédito de autoría del pie | `src/partials/footer.html` |
 | El menú, sus enlaces o el desplegable de marcas | `src/partials/header.html` + `assets/css/nav.css` |
+| El cursor personalizado | `assets/css/cursor.css` (aspecto) · `assets/js/cursor.js` (qué se considera pulsable) |
 | El pie de página | `src/partials/footer.html` + `assets/css/footer.css` |
 | Dirección, teléfono, correo, horario | `src/partials/footer.html` y `src/pages/contacto.html` |
 | El texto de una página concreta | `src/pages/<esa-pagina>.html` |
@@ -205,6 +206,38 @@ degradado de luz por CSS, así que no se ve vacío.
 Usa `flyer--full` y una sola imagen de 2400 px de ancho. Pierdes que el texto
 se adapte al móvil y que Google lo lea como texto, así que solo lo recomiendo
 para campañas puntuales, no para los bloques permanentes.
+
+---
+
+## El cursor personalizado
+
+Dos piezas: un punto sólido que va pegado al ratón y un anillo que lo persigue
+con inercia. Sobre algo pulsable el anillo crece y el punto desaparece.
+
+**Solo aparece con ratón de verdad** — `(hover:hover) and (pointer:fine)`. En
+móvil y tableta no se crea. Con `prefers-reduced-motion` tampoco: ahí vuelve el
+cursor del sistema.
+
+El cursor del sistema se oculta con la clase `.cursor-on`, que **pone el
+JavaScript**. Si el JS fallara, la clase no llega y el visitante conserva su
+puntero: nunca se queda sin cursor.
+
+Estados, todos en `cursor.css`:
+
+| Clase en `<html>` | Cuándo |
+|---|---|
+| `cursor-dentro` | El ratón está dentro de la ventana |
+| `cursor-activo` | Encima de algo pulsable → el anillo crece a 56px |
+| `cursor-pulsando` | Botón del ratón apretado → el anillo encoge |
+| `cursor-oscuro` | Sobre una sección de fondo oscuro → pasa a dorado |
+| `cursor-texto` | Sobre un campo de escritura → se apaga y vuelve la barra |
+
+Para cambiar **qué se considera pulsable**, la constante `PULSABLE` de
+`cursor.js`. Para cambiar **colores o tamaños**, `cursor.css`.
+
+Nota: los sellos («sin gluten», «vegano») quedan fuera a propósito. Tienen
+animación al pasar por encima pero no llevan a ninguna parte, y un cursor que
+crece ahí promete un clic que no existe.
 
 ---
 

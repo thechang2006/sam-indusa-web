@@ -27,8 +27,8 @@ const SITE = {
 
 /* CSS y JS que carga TODA página. Lo específico se declara en el
    bloque <!--meta--> de cada página. */
-const CORE_CSS = ['tokens', 'base', 'layout', 'buttons', 'nav', 'footer', 'reveal'];
-const CORE_JS  = ['core', 'nav', 'reveal'];
+const CORE_CSS = ['tokens', 'base', 'layout', 'buttons', 'nav', 'footer', 'reveal', 'cursor'];
+const CORE_JS  = ['core', 'nav', 'reveal', 'cursor'];
 
 const AVISO = '<!-- GENERADO POR build.js · NO EDITAR ·'
             + ' edita src/ y ejecuta: node build.js -->';

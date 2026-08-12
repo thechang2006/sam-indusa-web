@@ -1,0 +1,94 @@
+/* ============================================================
+   CURSOR — puntero personalizado, solo en escritorio
+   Dos piezas: un punto sólido que va pegado al ratón y un anillo
+   que lo persigue con inercia. Sobre cualquier cosa pulsable el
+   anillo crece y el punto desaparece.
+
+   Se activa desde assets/js/cursor.js, que pone .cursor-on en <html>.
+   Si el JavaScript falla, no se pone esa clase y queda el cursor
+   normal del sistema: nunca se pierde el puntero.
+   ============================================================ */
+
+/* Solo con ratón de verdad. En táctil no existe puntero que sustituir,
+   y en pantallas con lápiz o dedo esto solo estorbaría. */
+@media (hover: hover) and (pointer: fine) {
+
+  html.cursor-on,
+  html.cursor-on * { cursor: none; }
+
+  /* Campos de texto: ahí sí hace falta la barra del sistema para saber
+     dónde vas a escribir. */
+  html.cursor-on input:not([type="button"]):not([type="submit"]):not([type="radio"]):not([type="checkbox"]),
+  html.cursor-on textarea { cursor: text; }
+  html.cursor-on.cursor-texto .cur-dot,
+  html.cursor-on.cursor-texto .cur-ring { opacity: 0; }
+
+  .cur-dot,
+  .cur-ring {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    border-radius: 50%;
+    opacity: 0;
+    will-change: transform;
+    /* El translate lo escribe el JS en cada fotograma; aquí solo se
+       animan tamaño, color y opacidad. */
+    transition: opacity .25s ease, width .3s var(--ease), height .3s var(--ease),
+                background-color .3s var(--ease), border-color .3s var(--ease);
+  }
+
+  /* El punto: pegado al ratón, sin retraso */
+  .cur-dot {
+    width: 8px; height: 8px;
+    margin: -4px 0 0 -4px;
+    background: var(--red);
+  }
+
+  /* El anillo: llega un poco después, es lo que da la sensación de peso */
+  .cur-ring {
+    width: 34px; height: 34px;
+    margin: -17px 0 0 -17px;
+    border: 1.6px solid rgba(229, 57, 53, .55);
+    background: transparent;
+  }
+
+  /* Visible solo cuando el ratón está dentro de la ventana */
+  html.cursor-dentro .cur-dot,
+  html.cursor-dentro .cur-ring { opacity: 1; }
+
+  /* ---------- Sobre algo pulsable ---------- */
+  html.cursor-activo .cur-dot { width: 0; height: 0; margin: 0; }
+  html.cursor-activo .cur-ring {
+    width: 56px; height: 56px;
+    margin: -28px 0 0 -28px;
+    border-color: var(--red);
+    background: rgba(229, 57, 53, .12);
+  }
+
+  /* ---------- Al pulsar ---------- */
+  html.cursor-pulsando .cur-ring { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+  html.cursor-pulsando.cursor-activo .cur-ring { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
+
+  /* ---------- Sobre fondo oscuro ---------- */
+  /* Las secciones oscuras llevan su propia versión para que el anillo
+     no se pierda contra el verde. */
+  html.cursor-oscuro .cur-dot { background: var(--lemon); }
+  html.cursor-oscuro .cur-ring { border-color: rgba(255, 202, 40, .6); }
+  html.cursor-oscuro.cursor-activo .cur-ring {
+    border-color: var(--lemon);
+    background: rgba(255, 202, 40, .14);
+  }
+
+  /* Quien pide menos movimiento no quiere un puntero persiguiéndole:
+     se apaga entero y vuelve el del sistema. */
+  @media (prefers-reduced-motion: reduce) {
+    html.cursor-on, html.cursor-on * { cursor: auto; }
+    .cur-dot, .cur-ring { display: none; }
+  }
+}
+
+/* Fuera de escritorio no se pintan nunca */
+@media not all and (hover: hover) and (pointer: fine) {
+  .cur-dot, .cur-ring { display: none; }
+}

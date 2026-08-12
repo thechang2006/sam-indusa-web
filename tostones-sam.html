@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="assets/css/nav.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/reveal.css">
+  <link rel="stylesheet" href="assets/css/cursor.css">
   <link rel="stylesheet" href="assets/css/page-hero.css">
   <link rel="stylesheet" href="assets/css/brand.css">
   <link rel="stylesheet" href="assets/css/configurador.css">
@@ -43,6 +44,7 @@
 <script src="assets/js/core.js" defer></script>
   <script src="assets/js/nav.js" defer></script>
   <script src="assets/js/reveal.js" defer></script>
+  <script src="assets/js/cursor.js" defer></script>
   <script src="assets/js/configurador.js" defer></script>
   <script src="assets/js/faq.js" defer></script>
 </head>
@@ -88,6 +90,11 @@
       <svg id="burgerIcon"><use href="#i-menu"></use></svg>
     </button>
 
+    <!-- En móvil, enlaces y CTA forman UN solo panel desplegable.
+         Antes eran dos capas fijas con el mismo top y se pisaban: el botón
+         rojo caía encima de los enlaces. En escritorio este div no existe
+         para el diseño (display:contents), así que nada cambia ahí. -->
+    <div class="nav-panel">
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" data-nav="inicio">Inicio</a></li>
 
@@ -124,7 +131,8 @@
       <li><a href="contacto.html" data-nav="contacto">Contacto</a></li>
     </ul>
 
-    <div class="nav-cta"><a class="btn" href="mayoristas.html#cotizar">Pedir cotización</a></div>
+      <div class="nav-cta"><a class="btn" href="mayoristas.html#cotizar">Pedir cotización</a></div>
+    </div>
   </div>
   <div class="nav-progress" aria-hidden="true"><i id="navProgress"></i></div>
 </header>
