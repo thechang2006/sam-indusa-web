@@ -19,9 +19,14 @@
   <h1 class="sr">Grupo Indusa — plátano chips y snacks salados naturales desde El Vigía, Estado Mérida, Venezuela</h1>
 
   <div class="hero-media">
+    <!-- controlslist y disableremoteplayback quitan las opciones de descarga
+         y de envío a otro dispositivo. El bloqueo real del menú al dejar
+         pulsado está en hero.css (pointer-events:none). -->
     <video id="heroVideo" poster="assets/hero-poster.jpg"
            autoplay muted loop playsinline preload="auto"
-           disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+           disablepictureinpicture disableremoteplayback
+           controlslist="nodownload noplaybackrate noremoteplayback"
+           aria-hidden="true" tabindex="-1"></video>
     <!-- Se ve si el vídeo no carga: degradado verde con luz dorada -->
     <div class="hero-fallback"></div>
   </div>

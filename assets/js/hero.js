@@ -77,6 +77,11 @@
     setTimeout(function(){ if(video.readyState < 2) noVideo(); }, 6000);
   }
 
+  /* Cinturón por si algún navegador ignora el pointer-events:none del CSS:
+     sin menú de contexto no hay opción de guardar el vídeo. */
+  video.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+  video.addEventListener("dragstart",   function(e){ e.preventDefault(); });
+
   /* Solo recarga el vídeo si se cruzó el umbral de 860 px: así girar el móvil
      no vuelve a descargar 5 MB. */
   SAM.onResize(function(){
