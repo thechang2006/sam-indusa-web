@@ -11,6 +11,7 @@ Guía rápida para tocar el sitio sin tener que abrirlo entero.
 |---|---|
 | Un color, la tipografía, sombras, redondeos | `assets/css/tokens.css` |
 | Cualquier botón | `assets/css/buttons.css` |
+| Las dos puertas grandes (los paneles verde y rojo) | `assets/css/cards.css` (forma) · `assets/css/door-fx.css` (la marea y los tostones) |
 | Los paneles de marca (los flyers) | `assets/css/flyer.css` |
 | La línea de tiempo de `/nosotros` | `src/pages/nosotros.html` (solo HTML) |
 | El crédito de autoría del pie | `src/partials/footer.html` |
@@ -133,6 +134,64 @@ Si añades un módulo y usas algo de `SAM` sin declararlo ahí, fallará en tiem
 de ejecución. Todos los `<script>` van con `defer`, así que el DOM ya está listo.
 
 ---
+
+## Las dos puertas grandes
+
+Los paneles verde y rojo de la portada y de `/contacto`. Son una copia del
+bloque **«2a Marea escalonada»** de `Puertas Hover.html`, el archivo del
+diseñador. El efecto es **continuo, no depende del ratón**, así que también se
+ve en el teléfono.
+
+| Puerta | Decoración | Clase |
+|---|---|---|
+| Verde | Nueve columnas que suben y bajan con tres ritmos distintos | `door-fx--marea` |
+| Rojo | Cinco tostones que suben en bucle y se desvanecen arriba | `door-fx--tostones` |
+
+`cards.css` tiene la hechura de la tarjeta: contenido **centrado en los dos
+ejes**, 330 px de alto mínimo, 40/34 de relleno, 38 de radio, 16 de separación
+entre titular y párrafo. **No lleva antetítulo ni línea de flecha**: la
+referencia no los tiene.
+
+### door-fx.css está generado, no escrito a mano
+
+Cada número de ese archivo está copiado de la referencia declaración por
+declaración. Si llega una versión nueva del diseñador, **se vuelve a generar**
+en vez de retocarlo. En el HTML solo va la estructura, con los elementos
+vacíos:
+
+```html
+<a class="door" href="…">
+  <span class="door-fx door-fx--marea" aria-hidden="true"><i></i>…nueve…</span>
+  <h3>…</h3>
+  <p>…</p>
+</a>
+```
+
+Cada tostón es `<i class="tos--a"><b><s></s>…quince…</b></i>` y repite las
+capas de la referencia: el borde tostado es el `<i>`, el aro de masa su
+`::before`, el cuerpo dorado el `<b>`, y los quince `<s>` son las marcas
+(3 manchas, 4 barras del majado y 8 guiones del borde). Hay tres variantes de
+silueta, `a`, `b` y `c`.
+
+**Para mover una columna, un ritmo o un tostón se toca la fila
+`:nth-child()` de `door-fx.css`, nunca la página.**
+
+### Dos cosas que no salen de la referencia
+
+- La referencia dibuja las tarjetas a **439 px de ancho** y pone los tostones
+  en píxeles. Aquí van en **% de la puerta**, para que la proporción sea la
+  misma a cualquier ancho: en el sitio la puerta mide 555 px en escritorio y
+  327 en el teléfono. Comprobado: el tostón grande ocupa el 52 % de la puerta
+  en los tres casos, igual que en el diseño.
+- `prefers-reduced-motion`: la marea se queda quieta en su alto máximo y los
+  tostones no aparecen. La referencia no contempla este caso.
+
+### Trampa: el desvanecido no es igual en las tres variantes
+
+Entra y sale en **14/82 %** en la variante `a`, **16/80 %** en la `b` y
+**12/84 %** en la `c`. Usar los mismos porcentajes para las tres desajusta la
+opacidad hasta 0,07 en los tramos de entrada y salida. Por eso hay tres juegos
+de fotogramas, `door-toston-a`, `-b` y `-c`, y no uno solo.
 
 ## Los flyers de marca
 
