@@ -17,7 +17,7 @@ Guía rápida para tocar el sitio sin tener que abrirlo entero.
 | El crédito de autoría del pie | `src/partials/footer.html` |
 | El menú, sus enlaces o el desplegable de marcas | `src/partials/header.html` + `assets/css/nav.css` |
 | El cursor personalizado | `assets/css/cursor.css` (aspecto) · `assets/js/cursor.js` (qué se considera pulsable) |
-| El pie de página | `src/partials/footer.html` + `assets/css/footer.css` |
+| El pie de página | `src/partials/footer.html` + `assets/css/footer.css` — dos columnas: marca y contacto. Las listas de enlaces se quitaron: ya están en la cabecera |
 | Dirección, teléfono, correo, horario | `src/partials/footer.html` y `src/pages/contacto.html` |
 | El texto de una página concreta | `src/pages/<esa-pagina>.html` |
 | Título y descripción para Google de una página | bloque `<!--meta-->` al principio de esa página |

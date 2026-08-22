@@ -191,7 +191,10 @@
 </section>
 </main>
 
-<!-- ===== FOOTER — único para todo el sitio ===== -->
+<!-- ===== FOOTER — único para todo el sitio =====
+     Dos columnas y una barra abajo. Las listas de «Navegar» y «Nuestras
+     marcas» se quitaron a propósito: esos ocho enlaces ya están todos en el
+     menú de la cabecera, así que aquí solo repetían y cargaban el pie. -->
 <footer class="foot">
   <div class="wrap">
     <div class="foot-grid">
@@ -204,32 +207,12 @@
         </div>
       </div>
 
-      <nav aria-labelledby="foot-nav-t">
-        <h3 id="foot-nav-t">Navegar</h3>
-        <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="elaboracion.html">Elaboración</a></li>
-          <li><a href="mayoristas.html">Mayoristas</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </nav>
-
-      <nav aria-labelledby="foot-marcas-t">
-        <h3 id="foot-marcas-t">Nuestras marcas</h3>
-        <ul>
-          <li><a href="marcas.html">Ver todas</a></li>
-          <li><a href="tostones-sam.html">Tostones Sam</a></li>
-          <li><a href="sharitos.html">Sharitos</a></li>
-        </ul>
-      </nav>
-
-      <div>
+      <div class="foot-contacto">
         <h3>Contacto</h3>
         <ul class="foot-c">
           <li><svg><use href="#i-phone"></use></svg><a href="tel:+584245057479">+58 424 5057479</a></li>
           <li><svg><use href="#i-mail"></use></svg><a href="mailto:mayoristas@grupoindusa.com">mayoristas@grupoindusa.com</a></li>
-          <li><svg><use href="#i-clock"></use></svg><span>Lunes a sábado, 8:00 a. m. – 5:00 p. m.</span></li>
+          <li><svg><use href="#i-clock"></use></svg><span>Lunes a sábado, 8:00 a.&nbsp;m. – 5:00 p.&nbsp;m.</span></li>
           <li>
             <svg><use href="#i-pin"></use></svg>
             <span>
@@ -242,18 +225,18 @@
       </div>
     </div>
 
+    <!-- Una sola línea de cierre: antes eran dos, y dos rayas seguidas
+         ensuciaban el final de todas las páginas -->
     <div class="foot-btm">
-      <span>© <span id="year">2026</span> Grupo Indusa. Hecho en El Vigía, Estado Mérida, Venezuela.</span>
+      <div class="foot-btm-txt">
+        <span>© <span id="year">2026</span> Grupo Indusa. Hecho en El Vigía, Estado Mérida, Venezuela.</span>
+        <span class="foot-credit">Sitio creado por <b>Sammy Durán</b> — <a href="mailto:sammyduran2006@gmail.com">sammyduran2006@gmail.com</a></span>
+      </div>
       <span class="foot-legal">
         <a href="privacidad.html">Política de privacidad</a>
         <a href="terminos.html">Términos de uso</a>
       </span>
     </div>
-
-    <p class="foot-credit">
-      Sitio creado por <b>Sammy Durán</b> —
-      <a href="mailto:sammyduran2006@gmail.com">sammyduran2006@gmail.com</a>
-    </p>
   </div>
 </footer>
 
